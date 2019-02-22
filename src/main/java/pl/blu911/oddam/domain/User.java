@@ -9,6 +9,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -21,9 +22,16 @@ public class User {
     private Long id;
     @NotBlank
     @Email
+    @Column(nullable = false, unique = true)
     private String email;
     @NotBlank
     private String password;
+    private int enabled;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinTable(name = "users_role", joinColumns = @JoinColumn(name = "users_id"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+
     private String userFirstName;
     private String userLastName;
     private String institutionName;

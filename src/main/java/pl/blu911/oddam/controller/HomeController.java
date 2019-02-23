@@ -13,4 +13,11 @@ public class HomeController {
 
         return "home";
     }
+
+    @GetMapping("kontakt")
+    public String contact() {
+
+        return "contact";
+    }
+
 }

@@ -20,4 +20,9 @@ public class HomeController {
         return "contact";
     }
 
+    @GetMapping("o-nas")
+    public String about() {
+
+        return "about";
+    }
 }

@@ -13,16 +13,4 @@ public class HomeController {
 
         return "home";
     }
-
-    @GetMapping("kontakt")
-    public String contact() {
-
-        return "contact";
-    }
-
-    @GetMapping("o-nas")
-    public String about() {
-
-        return "about";
-    }
 }

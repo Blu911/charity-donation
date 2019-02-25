@@ -6,7 +6,6 @@ INSERT INTO `oddam`.`categories` (`name`) VALUES
 ('inne');
 
 INSERT INTO `oddam`.`roles` (`role`) VALUES
-('ROLE_VIEWER'),
 ('ROLE_USER'),
 ('ROLE_INSTITUTION'),
 ('ROLE_ADMIN'),

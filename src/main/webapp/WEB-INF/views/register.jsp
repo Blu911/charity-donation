@@ -2,8 +2,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 
-<jsp:include page="components/header.jsp"/>
-
+<jsp:include page="components/head.jsp"/>
+<body>
+<header>
+    <jsp:include page="components/navigation.jsp"/>
+</header>
 <section class="login-page">
     <h2>Załóż konto</h2>
     <form>

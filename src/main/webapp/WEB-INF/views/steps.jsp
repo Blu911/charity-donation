@@ -3,24 +3,39 @@
          pageEncoding="UTF-8" %>
 
 <jsp:include page="components/head.jsp"/>
+
 <body>
-<header class="header--main-page">
+<header>
     <jsp:include page="components/navigation.jsp"/>
+</header>
+<section class="steps" id="steps">
+    <h2>Wystarczą 4 proste kroki</h2>
 
-    <div class="slogan container container--90" id="start">
-        <div class="slogan--item">
-            <h1>
-                Zacznij pomagać!<br/>
-                Oddaj niechciane rzeczy w zaufane ręce
-            </h1>
-
-            <ul class="slogan--buttons">
-                <li><a href="#" class="btn btn--large">Oddaj rzeczy</a></li>
-                <li><a href="#" class="btn btn--large">Zorganizuj zbiórkę</a></li>
-            </ul>
+    <div class="steps--container">
+        <div class="steps--item">
+            <span class="icon icon--hands"></span>
+            <h3>Wybierz rzeczy</h3>
+            <p>ubrania, zabawki, sprzęt i inne</p>
+        </div>
+        <div class="steps--item">
+            <span class="icon icon--arrow"></span>
+            <h3>Spakuj je</h3>
+            <p>skorzystaj z worków na śmieci</p>
+        </div>
+        <div class="steps--item">
+            <span class="icon icon--glasses"></span>
+            <h3>Zdecyduj komu chcesz pomóc</h3>
+            <p>wybierz zaufane miejsce</p>
+        </div>
+        <div class="steps--item">
+            <span class="icon icon--courier"></span>
+            <h3>Zamów kuriera</h3>
+            <p>kurier przyjedzie w dogodnym terminie</p>
         </div>
     </div>
-</header>
+
+    <a href="<c:url value="/register"/>" class="btn btn--large">Załóż konto</a>
+</section>
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
@@ -45,5 +60,4 @@
         </div>
     </div>
 </section>
-
 <jsp:include page="components/footer.jsp"/>

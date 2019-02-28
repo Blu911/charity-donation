@@ -18,11 +18,11 @@
                 <li><a href="<c:url value="/register"/>" class="btn btn--small btn--without-border">Załóż konto</a></li>
             </ul>
             <ul>
-                <li><a href="#start" class="btn btn--without-border">Start</a></li>
-                <li><a href="#steps" class="btn btn--without-border">O co chodzi?</a></li>
-                <li><a href="#about" class="btn btn--without-border">O nas</a></li>
-                <li><a href="#help" class="btn btn--without-border">Fundacje i organizacje</a></li>
-                <li><a href="#contact" class="btn btn--without-border">Kontakt</a></li>
+                <li><a href="<c:url value="/start"/>" class="btn btn--without-border">Start</a></li>
+                <li><a href="<c:url value="/info"/>" class="btn btn--without-border">O co chodzi?</a></li>
+                <li><a href="<c:url value="/about-us"/>" class="btn btn--without-border">O nas</a></li>
+                <li><a href="<c:url value="/institutions"/>" class="btn btn--without-border">Fundacje i organizacje</a></li>
+                <li><a href="<c:url value="/contact"/>" class="btn btn--without-border">Kontakt</a></li>
             </ul>
         </nav>
 </header>

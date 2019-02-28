@@ -17,4 +17,7 @@ public class Category {
 
     @NotBlank
     private String name;
+
+    @ManyToOne
+    private Category parent;
 }

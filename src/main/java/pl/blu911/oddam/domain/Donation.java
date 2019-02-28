@@ -19,6 +19,10 @@ public class Donation {
     private Long id;
     @ManyToOne
     private Category type;
+
+    private String forWho;
+
+
     @NotNull
     private int quantity;
     @ManyToOne

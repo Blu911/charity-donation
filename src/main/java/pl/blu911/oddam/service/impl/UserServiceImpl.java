@@ -1,4 +1,4 @@
-package pl.blu911.oddam.service;
+package pl.blu911.oddam.service.impl;
 
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -7,6 +7,7 @@ import pl.blu911.oddam.domain.Role;
 import pl.blu911.oddam.domain.User;
 import pl.blu911.oddam.repository.RoleRepository;
 import pl.blu911.oddam.repository.UserRepository;
+import pl.blu911.oddam.service.UserService;
 
 import javax.validation.Valid;
 import java.util.Arrays;
@@ -35,7 +36,7 @@ public class UserServiceImpl implements UserService {
     public void saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setEnabled(1);
-        Role userRole = roleRepository.findByName("ROLE_USER");
+        Role userRole = roleRepository.findByName("ROLE_ADMIN");
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
     }

@@ -1,4 +1,4 @@
-package pl.blu911.oddam.service;
+package pl.blu911.oddam.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
@@ -9,6 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import pl.blu911.oddam.domain.CurrentUser;
 import pl.blu911.oddam.domain.Role;
 import pl.blu911.oddam.domain.User;
+import pl.blu911.oddam.service.UserService;
 
 import java.util.HashSet;
 import java.util.Set;

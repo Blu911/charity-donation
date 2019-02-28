@@ -6,13 +6,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import pl.blu911.oddam.domain.User;
-import pl.blu911.oddam.service.UserServiceImpl;
+import pl.blu911.oddam.service.impl.UserServiceImpl;
 
 import javax.validation.Valid;
 
 @Controller
 public class LoginController {
-
 
     private final UserServiceImpl userServiceImpl;
 

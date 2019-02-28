@@ -27,6 +27,6 @@ public class AdminController {
 //    }
     @GetMapping("")
     public String adminPanel (@AuthenticationPrincipal CurrentUser customUser, Model model) {
-        return "/admin/adminPanel";
+        return "/admin/admin-panel";
     }
 }

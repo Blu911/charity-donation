@@ -20,11 +20,12 @@ public class AdminController {
         this.userService = userService;
     }
 
-//    @ModelAttribute("currentUser")
-//    public void getCurrentUser(@AuthenticationPrincipal CurrentUser customUser, Model model) {
-//        User currentUser = customUser.getUser();
-//        model.addAttribute("currentUser", currentUser);
-//    }
+    @ModelAttribute("currentUser")
+    public void getCurrentUser(@AuthenticationPrincipal CurrentUser customUser, Model model) {
+        User currentUser = customUser.getUser();
+        model.addAttribute("currentUser", currentUser);
+    }
+
     @GetMapping("")
     public String adminPanel (@AuthenticationPrincipal CurrentUser customUser, Model model) {
         return "/admin/admin-panel";

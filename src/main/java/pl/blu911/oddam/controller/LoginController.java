@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import pl.blu911.oddam.domain.User;
 import pl.blu911.oddam.service.impl.UserServiceImpl;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller

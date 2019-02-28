@@ -13,18 +13,24 @@ import pl.blu911.oddam.service.impl.SpringDataUserDetailsService;
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/app/**").hasAnyRole("USER")
-                .anyRequest().permitAll()
-                .and().formLogin().defaultSuccessUrl("/app")
-                .loginPage("/login").and().logout().logoutSuccessUrl("/")
-                .permitAll();
+//        http
+//            .authorizeRequests()
+//                .antMatchers("/app/**").hasRole("USER")
+//                .antMatchers("/admin/**").hasRole("ADMIN")
+//                .anyRequest().permitAll()
+//                .and()
+//            .formLogin()
+//                .loginPage("/login")
+//                .defaultSuccessUrl("/admin")
+//                .and()
+//            .logout().logoutSuccessUrl("/")
+//                .permitAll();
 
         http.authorizeRequests()
                 .antMatchers("/admin/**").hasAnyRole("ADMIN")
                 .anyRequest().permitAll()
-                .and().formLogin().defaultSuccessUrl("/app")
-                .loginPage("/login").and().logout().logoutSuccessUrl("/")
+                .and().formLogin().defaultSuccessUrl("/admin")
+                .loginPage("/login").and().logout().logoutSuccessUrl("/login")
                 .permitAll();
     }
 

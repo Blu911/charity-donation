@@ -37,7 +37,7 @@ public class User {
     private String institutionName;
     @ManyToOne
     private Category institutionType;
-    private int phoneNumber;
+    private int phoneNumber = 0;
 
     @OneToMany
     private List<Address> userAddress;

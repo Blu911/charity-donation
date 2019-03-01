@@ -7,7 +7,7 @@ import pl.blu911.oddam.domain.User;
 import javax.validation.Valid;
 
 public interface UserService {
-    User findByUserEmail(String email);
+    User findByUserUsername(String email);
 
     void saveUser(User user);
 

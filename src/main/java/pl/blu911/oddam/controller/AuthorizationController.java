@@ -12,11 +12,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 @Controller
-public class LoginController {
+public class AuthorizationController {
 
     private final UserServiceImpl userServiceImpl;
 
-    public LoginController(UserServiceImpl userServiceImpl) {
+    public AuthorizationController(UserServiceImpl userServiceImpl) {
         this.userServiceImpl = userServiceImpl;
     }
 
@@ -37,6 +37,14 @@ public class LoginController {
         }
         userServiceImpl.saveUser(user);
         return "redirect:/login";
+    }
+
+    @GetMapping("/default")
+    public String defaultAfterLogin(HttpServletRequest request) {
+        if (request.isUserInRole("ROLE_ADMIN")) {
+            return "redirect:/admin";
+        }
+        return "redirect:/app";
     }
 
 }

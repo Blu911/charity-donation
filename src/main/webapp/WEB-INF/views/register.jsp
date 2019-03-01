@@ -15,17 +15,17 @@
                modelAttribute="user" role="form">
         <div class="form-group">
                 <%--<input type="email" name="email" placeholder="Email"/>--%>
-            <form:input path="email" type="email" placeholder="Email"/>
-            <form:errors path="email"/>
+            <form:input path="username" type="username" placeholder="Login"/>
+            <form:errors path="username"/>
         </div>
         <div class="form-group">
                 <%--<input type="password" name="password" placeholder="Hasło"/>--%>
             <form:input path="password" type="password" placeholder="Hasło"/>
             <form:errors path="password"/>
         </div>
-        <%--<div class="form-group">--%>
-        <%--<input type="password" name="password2" placeholder="Powtórz hasło"/>--%>
-        <%--</div>--%>
+        <div class="form-group">
+            <input type="password" name="password2" placeholder="Powtórz hasło"/>
+        </div>
 
         <div class="form-group form-group--buttons">
             <a href="<c:url value="/login"/>" class="btn btn--without-border">Zaloguj się</a>

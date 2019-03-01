@@ -64,8 +64,22 @@ public class UserServiceImpl implements UserService {
         User userToUpdate = userRepository.getOne(customUser.getUser().getId());
         userToUpdate.setUserFirstName(user.getUserFirstName());
         userToUpdate.setUserLastName(user.getUserLastName());
+        userToUpdate.setEmail(user.getEmail());
         userToUpdate.setPhoneNumber(user.getPhoneNumber());
+        userToUpdate.setUsername(user.getUsername());
         userToUpdate.setPassword(user.getPassword());
+        userRepository.save(userToUpdate);
+    }
+
+    @Override
+    public void updateUserByAdmin(@Valid User user) {
+        User userToUpdate = userRepository.getOne(user.getId());
+        userToUpdate.setUserFirstName(user.getUserFirstName());
+        userToUpdate.setUserLastName(user.getUserLastName());
+        userToUpdate.setEmail(user.getEmail());
+        userToUpdate.setPhoneNumber(user.getPhoneNumber());
+        userToUpdate.setUsername(user.getUsername());
+        userToUpdate.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(userToUpdate);
     }
 }

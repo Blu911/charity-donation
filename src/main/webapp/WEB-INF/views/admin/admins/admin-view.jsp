@@ -34,45 +34,45 @@
                 <div class="panel-body">
                     <form class="form-horizontal" action="" method="post">
                         <fieldset>
-                            <span> Dodano: <javatime:format value="${user.created}" style="MM"/></span>
+                            <span> Dodano: <javatime:format value="${admin.created}" style="MM"/></span>
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Id</label>
                                 <div class="col-md-9">
-                                    ${user.id}
+                                    ${admin.id}
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Login</label>
                                 <div class="col-md-9">
-                                    ${user.username}
+                                    ${admin.username}
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Imię</label>
                                 <div class="col-md-9">
-                                    ${user.userFirstName}
+                                    ${admin.userFirstName}
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Nazwisko</label>
                                 <div class="col-md-9">
-                                    ${user.userLastName}
+                                    ${admin.userLastName}
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Email</label>
                                 <div class="col-md-9">
-                                    ${user.email}
+                                    ${admin.email}
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Telefon</label>
                                 <div class="col-md-9">
-                                    ${user.phoneNumber}
+                                    ${admin.phoneNumber}
                                 </div>
                             </div>
                         </fieldset>

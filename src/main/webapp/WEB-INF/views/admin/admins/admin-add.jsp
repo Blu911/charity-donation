@@ -34,7 +34,7 @@
                 </div>
                 <div class="panel-body">
                     <form:form method="post"
-                               modelAttribute="user" role="form">
+                               modelAttribute="admin" role="form">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Imię</label>

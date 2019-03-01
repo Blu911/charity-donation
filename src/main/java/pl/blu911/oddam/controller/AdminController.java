@@ -10,6 +10,7 @@ import pl.blu911.oddam.domain.User;
 import pl.blu911.oddam.service.impl.UserServiceImpl;
 
 import javax.validation.Valid;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Controller
@@ -59,17 +60,25 @@ public class AdminController {
     @GetMapping("/admins/view/{id}")
     public String viewAdmin(@PathVariable long id, Model model) {
         User userToView = userService.findByUserId(id);
-        model.addAttribute("user", userToView);
+        model.addAttribute("admin", userToView);
         return "admin/admins/admin-view";
     }
 
     @GetMapping("/admins/edit/{id}")
     public String editAdmin(@PathVariable long id, Model model) {
         User userToEdit = userService.findByUserId(id);
-        model.addAttribute("user", userToEdit);
+        model.addAttribute("admin", userToEdit);
         return "admin/admins/admin-edit";
     }
 
+    @PostMapping("/admins/edit/{id}")
+    public String editAdminSuccess(@Valid User user, BindingResult result, @PathVariable long id) {
+        if (result.hasErrors()) {
+            return "admin/admins/admin-edit";
+        }
+        userService.updateUserByAdmin(user);
+        return "redirect:/admin/admins";
+    }
 
     //USER MANAGEMENT ACTIONS
     @GetMapping("/users")

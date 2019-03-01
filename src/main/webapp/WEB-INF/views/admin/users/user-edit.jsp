@@ -15,19 +15,19 @@
             <li><a href="<c:url value="/admin"/>">
                 <em class="fa fa-home"></em>
             </a></li>
-            <li class="active">Administratorzy / Edytuj Administratora</li>
+            <li class="active">Użytkownicy / Edytuj Użytkownika</li>
         </ol>
     </div><!--/.row-->
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Administratorzy</h1>
+            <h1 class="page-header">Użytkownicy</h1>
         </div>
     </div><!--/.row-->
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Edytuj Administratora
-                    <a class="btn btn-primary pull-right" href="<c:url value="/admin/admins"/>" role="button">
+                <div class="panel-heading">Edytuj Użytkownika
+                    <a class="btn btn-primary pull-right" href="<c:url value="/admin/users"/>" role="button">
                         Powrót</a>
                 </div>
                 <div class="panel-body">

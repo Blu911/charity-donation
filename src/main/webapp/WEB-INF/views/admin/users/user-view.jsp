@@ -16,7 +16,7 @@
             <li><a href="<c:url value="/admin"/>">
                 <em class="fa fa-home"></em>
             </a></li>
-            <li class="active">Administratorzy / Dane Użytkownika</li>
+            <li class="active">Użytkownicy / Dane Użytkownika</li>
         </ol>
     </div><!--/.row-->
     <div class="row">

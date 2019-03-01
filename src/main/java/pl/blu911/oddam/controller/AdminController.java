@@ -108,6 +108,36 @@ public class AdminController {
         return "admin/users/user-view";
     }
 
+    @GetMapping("/users/edit/{id}")
+    public String editUser(@PathVariable long id, Model model) {
+        User userToEdit = userService.findByUserId(id);
+        model.addAttribute("user", userToEdit);
+        return "admin/users/user-edit";
+    }
+
+    @PostMapping("/users/edit/{id}")
+    public String editUserSuccess(@Valid User user, BindingResult result, @PathVariable long id) {
+        if (result.hasErrors()) {
+            return "admin/users/user-edit";
+        }
+        userService.updateUserByAdmin(user);
+        return "redirect:/admin/users";
+    }
+
+
+    @GetMapping("/users/delete/{id}")
+    public String removeUser(@PathVariable Long id, Model model) {
+        User userToDelete = userService.findByUserId(id);
+        model.addAttribute("user", userToDelete);
+        return "admin/users/user-delete";
+    }
+
+    @PostMapping("/users/delete/{id}")
+    public String removeUserSuccess(@PathVariable Long id) {
+        userService.deleteUserById(id);
+        return "redirect:/admin/users";
+    }
+
     //INSTITUTIONS MANAGEMENT ACTIONS
     @GetMapping("/institutions")
     public String adminInstitution() {

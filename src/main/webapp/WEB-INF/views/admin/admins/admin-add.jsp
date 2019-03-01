@@ -16,7 +16,7 @@
             <li><a href="<c:url value="/admin"/>">
                 <em class="fa fa-home"></em>
             </a></li>
-            <li class="active">Administratorzy</li>
+            <li class="active">Administratorzy / Dodaj Administratora</li>
         </ol>
     </div><!--/.row-->
     <div class="row">
@@ -28,42 +28,40 @@
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Dodaj Administratora</div>
+                <div class="panel-heading">Dodaj Administratora
+                    <a class="btn btn-primary pull-right" href="<c:url value="/admin/admins"/>" role="button">
+                        Powrót</a>
+                </div>
                 <div class="panel-body">
                     <form:form method="post"
                                modelAttribute="user" role="form">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Tytuł</label>
-                                <form:input path="title" class="form-control"/>
-                                <form:errors path="title" class="form-group has-error"/>
+                                <label>Imię</label>
+                                <form:input path="userFirstName" class="form-control"/>
+                                <form:errors path="userFirstName" class="form-group has-error"/>
                             </div>
                             <div class="form-group">
-                                <label>Minuty</label>
-                                <form:input path="minutes" class="form-control"/>
-                                <form:errors path="minutes" class="form-group has-error"/>
+                                <label>Nazwisko</label>
+                                <form:input path="userLastName" class="form-control"/>
+                                <form:errors path="userLastName" class="form-group has-error"/>
                             </div>
                             <div class="form-group">
-                                <label>Cena</label>
-                                <form:input path="price" class="form-control"/>
-                                <form:errors path="price" class="form-group has-error"/>
+                                <label>E-mail</label>
+                                <form:input path="email" class="form-control"/>
+                                <form:errors path="email" class="form-group has-error"/>
                             </div>
                             <div class="form-group">
-                                <label>Kategorie</label>
-                                <form:select path="category" class="form-control">
-                                    <form:options items="${categories}" itemLabel="name"/>
-                                </form:select>
+                                <label>Login</label>
+                                <form:input path="username" class="form-control"/>
+                                <form:errors path="username" class="form-group has-error"/>
                             </div>
-                        </div>
-                        <div class="col-md-6">
                             <div class="form-group">
-                                <label>Opis</label>
-                                <form:textarea path="description" class="form-control" rows="5"/>
-                                <form:errors path="description" class="form-group has-error"/>
+                                <label>Hasło</label>
+                                <form:input path="password" class="form-control"/>
+                                <form:errors path="password" class="form-group has-error"/>
                             </div>
-                            <div class="col-md-6">
-                                <button type="submit" class="btn btn-primary">Dodaj</button>
-                            </div>
+                            <button type="submit" class="btn btn-primary btn-success">Dodaj</button>
                         </div>
                     </form:form>
                 </div>

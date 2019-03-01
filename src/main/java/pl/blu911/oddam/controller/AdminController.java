@@ -4,10 +4,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.blu911.oddam.domain.CurrentUser;
 import pl.blu911.oddam.domain.User;
 import pl.blu911.oddam.service.impl.UserServiceImpl;
@@ -36,6 +33,8 @@ public class AdminController {
         return "/admin/admin-panel";
     }
 
+//ADMIN MANAGEMENT ACTIONS
+
     @GetMapping("/admins")
     public String adminAdmins(Model model) {
         List<User> adminList = userService.findAllByRole("ROLE_ADMIN");
@@ -53,21 +52,38 @@ public class AdminController {
         if (result.hasErrors()) {
             return "admin/admins/admin-add";
         }
-
+        userService.saveAdmin(user);
         return "redirect:/admin/admins";
     }
 
+    @GetMapping("/admins/view/{id}")
+    public String viewAdmin(@PathVariable long id, Model model) {
+        User userToView = userService.findByUserId(id);
+        model.addAttribute("user", userToView);
+        return "admin/admins/admin-view";
+    }
 
+    @GetMapping("/admins/edit/{id}")
+    public String editAdmin(@PathVariable long id, Model model) {
+        User userToEdit = userService.findByUserId(id);
+        model.addAttribute("user", userToEdit);
+        return "admin/admins/admin-edit";
+    }
+
+
+    //USER MANAGEMENT ACTIONS
     @GetMapping("/users")
     public String adminUsers() {
         return "/admin/admin-users";
     }
 
+    //INSTITUTIONS MANAGEMENT ACTIONS
     @GetMapping("/institutions")
     public String adminInstitution() {
         return "/admin/admin-institutions";
     }
 
+    //DONATIONS MANAGEMENT ACTIONS
     @GetMapping("/donations")
     public String admins() {
         return "/admin/admin-donations";

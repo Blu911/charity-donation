@@ -11,5 +11,7 @@ public interface UserService {
 
     void saveUser(User user);
 
+    void saveAdmin(User user);
+
     void updateUser(@AuthenticationPrincipal CurrentUser customUser, @Valid User user);
 }

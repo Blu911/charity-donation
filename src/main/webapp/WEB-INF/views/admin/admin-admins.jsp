@@ -35,6 +35,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Data utworzenia</th>
+                        <th scope="col">Login</th>
                         <th scope="col">Imię</th>
                         <th scope="col">Nazwisko</th>
                     </tr>
@@ -44,11 +45,18 @@
                         <tr>
                             <th scope="row">${loop.count}</th>
                             <td><javatime:format value="${admin.created}" style="MM"/></td>
+                            <td>${admin.username}</td>
                             <td>${admin.userFirstName}</td>
                             <td>${admin.userLastName}</td>
                             <td>
-                                <form method="post"><a
-                                        href="<c:url value="/admin/admins/view/${admin.id}"/>">Wyświetl</a></form>
+                                <form method="post">
+                                    <a class="btn pull-right"
+                                       href="<c:url value="/admin/admins/delete/${admin.id}"/>">Usuń</a>
+                                    <a class="btn pull-right"
+                                       href="<c:url value="/admin/admins/edit/${admin.id}"/>">Edytuj</a>
+                                    <a class="btn pull-right"
+                                       href="<c:url value="/admin/admins/view/${admin.id}"/>">Wyświetl</a>
+                                </form>
                             </td>
                         </tr>
                     </c:forEach>

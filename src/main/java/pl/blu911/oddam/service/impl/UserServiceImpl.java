@@ -12,6 +12,7 @@ import pl.blu911.oddam.service.UserService;
 import javax.validation.Valid;
 import java.util.Arrays;
 import java.util.HashSet;
+import java.util.List;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -25,6 +26,10 @@ public class UserServiceImpl implements UserService {
         this.passwordEncoder = passwordEncoder;
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
+    }
+
+    public List<User> findAllByRole(String name) {
+        return userRepository.findAllByRolesNameOrderByCreatedDesc(name);
     }
 
     @Override

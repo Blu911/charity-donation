@@ -92,10 +92,20 @@ public class AdminController {
         return "redirect:/admin/admins";
     }
 
-    //USER MANAGEMENT ACTIONS
+//USER MANAGEMENT ACTIONS
+
     @GetMapping("/users")
-    public String adminUsers() {
+    public String adminUsers(Model model) {
+        List<User> userList = userService.findAllByRole("ROLE_USER");
+        model.addAttribute("userList", userList);
         return "/admin/admin-users";
+    }
+
+    @GetMapping("/users/view/{id}")
+    public String viewUser(@PathVariable long id, Model model) {
+        User userToView = userService.findByUserId(id);
+        model.addAttribute("user", userToView);
+        return "admin/users/user-view";
     }
 
     //INSTITUTIONS MANAGEMENT ACTIONS

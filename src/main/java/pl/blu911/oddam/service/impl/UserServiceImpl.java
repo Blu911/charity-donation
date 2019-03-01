@@ -1,7 +1,9 @@
 package pl.blu911.oddam.service.impl;
 
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.blu911.oddam.domain.CurrentUser;
 import pl.blu911.oddam.domain.Role;
 import pl.blu911.oddam.domain.User;
@@ -60,14 +62,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(CurrentUser customUser, @Valid User user) {
+    public void updateUser(@AuthenticationPrincipal CurrentUser customUser, @Valid User user) {
         User userToUpdate = userRepository.getOne(customUser.getUser().getId());
         userToUpdate.setUserFirstName(user.getUserFirstName());
         userToUpdate.setUserLastName(user.getUserLastName());
         userToUpdate.setEmail(user.getEmail());
         userToUpdate.setPhoneNumber(user.getPhoneNumber());
         userToUpdate.setUsername(user.getUsername());
-        userToUpdate.setPassword(user.getPassword());
+        userToUpdate.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(userToUpdate);
     }
 
@@ -81,5 +83,9 @@ public class UserServiceImpl implements UserService {
         userToUpdate.setUsername(user.getUsername());
         userToUpdate.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(userToUpdate);
+    }
+
+    public void deleteUserById(Long id) {
+        userRepository.deleteById(id);
     }
 }

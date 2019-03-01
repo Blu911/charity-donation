@@ -33,6 +33,7 @@
                         <th scope="col">Login</th>
                         <th scope="col">Imię</th>
                         <th scope="col">Nazwisko</th>
+                        <th scope="col">Zablokowany</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -43,10 +44,21 @@
                             <td>${user.username}</td>
                             <td>${user.userFirstName}</td>
                             <td>${user.userLastName}</td>
+                            <c:if test="${user.enabled > 0}">
+                                <td>
+                                    Nie
+                                </td>
+                            </c:if>
+                            <c:if test="${user.enabled <= 0}">
+                                <td>
+                                    Tak
+                                </td>
+                            </c:if>
                             <td>
                                 <form method="post">
                                     <a class="btn pull-right"
                                        href="<c:url value="/admin/users/delete/${user.id}"/>">Usuń</a>
+
                                     <a class="btn pull-right"
                                        href="<c:url value="/admin/users/block/${user.id}"/>">Zablokuj</a>
                                     <a class="btn pull-right"

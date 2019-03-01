@@ -16,20 +16,19 @@
             <li><a href="<c:url value="/admin"/>">
                 <em class="fa fa-home"></em>
             </a></li>
-            <li class="active">Administratorzy / Dodaj Administratora</li>
+            <li class="active">Użytkownicy / Blokuj Użytkownika</li>
         </ol>
     </div><!--/.row-->
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Administratorzy</h1>
+            <h1 class="page-header">Użytkownicy</h1>
         </div>
     </div><!--/.row-->
-
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Dodaj Administratora
-                    <a class="btn btn-primary pull-right" href="<c:url value="/admin/admins"/>" role="button">
+                <div class="panel-heading">Dane Użytkownika
+                    <a class="btn btn-primary pull-right" href="<c:url value="/admin/users"/>" role="button">
                         Powrót</a>
                 </div>
                 <div class="panel-body">
@@ -37,37 +36,36 @@
                                modelAttribute="user" role="form">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Imię</label>
-                                <form:input path="userFirstName" class="form-control"/>
-                                <form:errors path="userFirstName" class="form-group has-error"/>
+                                <label class="col-md-3 control-label">Id</label>
+                                    ${user.id}
                             </div>
                             <div class="form-group">
-                                <label>Nazwisko</label>
-                                <form:input path="userLastName" class="form-control"/>
-                                <form:errors path="userLastName" class="form-group has-error"/>
+                                <label class="col-md-3 control-label">Login</label>
+                                    ${user.username}
                             </div>
                             <div class="form-group">
-                                <label>E-mail</label>
-                                <form:input path="email" class="form-control"/>
-                                <form:errors path="email" class="form-group has-error"/>
+                                <label class="col-md-3 control-label">Imię</label>
+                                    ${user.userFirstName}
                             </div>
                             <div class="form-group">
-                                <label>Login</label>
-                                <form:input path="username" class="form-control"/>
-                                <form:errors path="username" class="form-group has-error"/>
+                                <label class="col-md-3 control-label">Nazwisko</label>
+                                    ${user.userLastName}
                             </div>
                             <div class="form-group">
-                                <label>Hasło</label>
-                                <form:input path="password" class="form-control"/>
-                                <form:errors path="password" class="form-group has-error"/>
+                                <label class="col-md-3 control-label">E-mail</label>
+                                    ${user.email}
                             </div>
-                            <button type="submit" class="btn btn-primary btn-success">Dodaj</button>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Telefon</label>
+                                    ${user.phoneNumber}
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-danger">Zablokuj</button>
                         </div>
                     </form:form>
                 </div>
             </div>
-        </div><!-- /.panel-->
-    </div><!-- /.col-->
+        </div>
+    </div>
 </div>
 
 <jsp:include page="../components/footer.jsp"/>

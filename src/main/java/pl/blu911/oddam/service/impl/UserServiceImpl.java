@@ -85,6 +85,12 @@ public class UserServiceImpl implements UserService {
         userRepository.save(userToUpdate);
     }
 
+    public void blockUserById(Long id) {
+        User userToBlock = userRepository.getOne(id);
+        userToBlock.setEnabled(0);
+        userRepository.save(userToBlock);
+    }
+
     public void deleteUserById(Long id) {
         userRepository.deleteById(id);
     }

@@ -124,6 +124,18 @@ public class AdminController {
         return "redirect:/admin/users";
     }
 
+    @GetMapping("/users/block/{id}")
+    public String blockUser(@PathVariable long id, Model model) {
+        User userToView = userService.findByUserId(id);
+        model.addAttribute("user", userToView);
+        return "admin/users/user-block";
+    }
+
+    @PostMapping("/users/block/{id}")
+    public String blockUserSuccess(@PathVariable long id) {
+        userService.blockUserById(id);
+        return "redirect:/admin/users";
+    }
 
     @GetMapping("/users/delete/{id}")
     public String removeUser(@PathVariable Long id, Model model) {

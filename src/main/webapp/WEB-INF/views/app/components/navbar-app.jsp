@@ -10,14 +10,7 @@
                 <li><a href="#">Profil</a></li>
                 <li><a href="#">Ustawienia</a></li>
                 <li><a href="#">Moje zbiórki</a></li>
-                <li>
-                    <a>
-                        <form action="/logout" method="post">
-                            <input type="submit" value="Wyloguj">
-                            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-                        </form>
-                    </a>
-                </li>
+                <li><a href="<c:url value="/logout"/>">Wyloguj</a></li>
             </ul>
         </li>
     </ul>

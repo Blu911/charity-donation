@@ -18,6 +18,6 @@ public class Address {
     private int flatNumber;
     private String street;
     private String city;
-    private int zipCode;
+    private String zipCode;
 
 }

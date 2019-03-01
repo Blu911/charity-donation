@@ -15,15 +15,17 @@ import java.util.Set;
 @Entity
 @NoArgsConstructor
 @Table(name = "users")
-@ToString(exclude = {"userAddress", "userDonations"})
+@ToString(exclude = {"userAddress", "userDonations", "roles"})
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //    @NotBlank
-//    @Email
-//    @Column(nullable = false, unique = true)
-//    private String email;
+
+    @NotBlank
+    @Email
+    @Column(nullable = false, unique = true)
+    private String email;
+
     @NotBlank
     @Column(nullable = false, unique = true)
     private String username;

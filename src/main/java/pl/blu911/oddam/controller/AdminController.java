@@ -177,6 +177,13 @@ public class AdminController {
         return "redirect:/admin/institutions";
     }
 
+    @GetMapping("/institutions/view/{id}")
+    public String viewInstitution(@PathVariable long id, Model model) {
+        User userToView = userService.findByUserId(id);
+        model.addAttribute("user", userToView);
+        return "admin/institutions/institution-view";
+    }
+
     //DONATIONS MANAGEMENT ACTIONS
     @GetMapping("/donations")
     public String admins() {

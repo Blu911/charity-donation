@@ -16,19 +16,19 @@
             <li><a href="<c:url value="/admin"/>">
                 <em class="fa fa-home"></em>
             </a></li>
-            <li class="active">Administratorzy / Dane Administratora</li>
+            <li class="active">Instytucje / Dane Instytucji</li>
         </ol>
     </div><!--/.row-->
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">Administratorzy</h1>
+            <h1 class="page-header">Instytucje</h1>
         </div>
     </div><!--/.row-->
     <div class="row">
         <div class="col-lg-12">
             <div class="panel panel-default">
-                <div class="panel-heading">Dane Administratora
-                    <a class="btn btn-primary pull-right" href="<c:url value="/admin/admins"/>" role="button">
+                <div class="panel-heading">Dane Instytucji
+                    <a class="btn btn-primary pull-right" href="<c:url value="/admin/institutions"/>" role="button">
                         Powrót</a>
                 </div>
                 <div class="panel-body">
@@ -50,18 +50,12 @@
                             </div>
 
                             <div class="form-group">
-                                <label class="col-md-3 control-label">Imię</label>
+                                <label class="col-md-3 control-label">Nazwa</label>
                                 <div class="col-md-9">
-                                    ${user.userFirstName}
+                                    ${user.institutionName}
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label class="col-md-3 control-label">Nazwisko</label>
-                                <div class="col-md-9">
-                                    ${user.userLastName}
-                                </div>
-                            </div>
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Email</label>
                                 <div class="col-md-9">

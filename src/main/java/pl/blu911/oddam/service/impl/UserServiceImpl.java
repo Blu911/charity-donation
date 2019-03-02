@@ -44,19 +44,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void saveUser(User user) {
+    public void saveUser(User user, String role) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setEnabled(1);
-        Role userRole = roleRepository.findByName("ROLE_USER");
-        user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
-        userRepository.save(user);
-    }
-
-    @Override
-    public void saveAdmin(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setEnabled(1);
-        Role userRole = roleRepository.findByName("ROLE_ADMIN");
+        Role userRole = roleRepository.findByName(role);
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
     }
@@ -73,8 +64,7 @@ public class UserServiceImpl implements UserService {
         userRepository.save(userToUpdate);
     }
 
-    @Override
-    public void updateUserByAdmin(@Valid User user) {
+    public void updateUser(@Valid User user) {
         User userToUpdate = userRepository.getOne(user.getId());
         userToUpdate.setUserFirstName(user.getUserFirstName());
         userToUpdate.setUserLastName(user.getUserLastName());
@@ -85,9 +75,9 @@ public class UserServiceImpl implements UserService {
         userRepository.save(userToUpdate);
     }
 
-    public void blockUserById(Long id) {
+    public void lockAndUnlockUserById(Long id, int lock) {
         User userToBlock = userRepository.getOne(id);
-        userToBlock.setEnabled(0);
+        userToBlock.setEnabled(lock);
         userRepository.save(userToBlock);
     }
 

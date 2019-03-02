@@ -44,23 +44,32 @@
                             <td>${user.username}</td>
                             <td>${user.userFirstName}</td>
                             <td>${user.userLastName}</td>
-                            <c:if test="${user.enabled > 0}">
-                                <td>
-                                    Nie
-                                </td>
-                            </c:if>
-                            <c:if test="${user.enabled <= 0}">
-                                <td>
-                                    Tak
-                                </td>
-                            </c:if>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${user.enabled == 1}">
+                                        Nie
+                                    </c:when>
+                                    <c:otherwise>
+                                        Tak
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
                             <td>
                                 <form method="post">
                                     <a class="btn pull-right"
                                        href="<c:url value="/admin/users/delete/${user.id}"/>">Usuń</a>
 
                                     <a class="btn pull-right"
-                                       href="<c:url value="/admin/users/block/${user.id}"/>">Zablokuj</a>
+                                       href="<c:url value="/admin/users/block/${user.id}"/>">
+                                        <c:choose>
+                                            <c:when test="${user.enabled == 1}">
+                                                Zablokuj
+                                            </c:when>
+                                            <c:otherwise>
+                                                Odblokuj
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </a>
                                     <a class="btn pull-right"
                                        href="<c:url value="/admin/users/edit/${user.id}"/>">Edytuj</a>
                                     <a class="btn pull-right"

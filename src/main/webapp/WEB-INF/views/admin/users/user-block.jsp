@@ -59,7 +59,16 @@
                                 <label class="col-md-3 control-label">Telefon</label>
                                     ${user.phoneNumber}
                             </div>
-                            <button type="submit" class="btn btn-primary btn-danger">Zablokuj</button>
+                            <button type="submit" class="btn btn-primary btn-danger">
+                                <c:choose>
+                                    <c:when test="${user.enabled == 1}">
+                                        Zablokuj
+                                    </c:when>
+                                    <c:otherwise>
+                                        Odblokuj
+                                    </c:otherwise>
+                                </c:choose>
+                            </button>
                         </div>
                     </form:form>
                 </div>

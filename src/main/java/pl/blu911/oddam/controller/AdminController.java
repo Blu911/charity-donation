@@ -52,7 +52,7 @@ public class AdminController {
         if (result.hasErrors()) {
             return "admin/admins/admin-add";
         }
-        userService.saveAdmin(user);
+        userService.saveUser(user, "ROLE_ADMIN");
         return "redirect:/admin/admins";
     }
 
@@ -75,7 +75,7 @@ public class AdminController {
         if (result.hasErrors()) {
             return "admin/admins/admin-edit";
         }
-        userService.updateUserByAdmin(user);
+        userService.updateUser(user);
         return "redirect:/admin/admins";
     }
 
@@ -120,20 +120,25 @@ public class AdminController {
         if (result.hasErrors()) {
             return "admin/users/user-edit";
         }
-        userService.updateUserByAdmin(user);
+        userService.updateUser(user);
         return "redirect:/admin/users";
     }
 
     @GetMapping("/users/block/{id}")
-    public String blockUser(@PathVariable long id, Model model) {
+    public String lockUser(@PathVariable long id, Model model) {
         User userToView = userService.findByUserId(id);
         model.addAttribute("user", userToView);
         return "admin/users/user-block";
     }
 
     @PostMapping("/users/block/{id}")
-    public String blockUserSuccess(@PathVariable long id) {
-        userService.blockUserById(id);
+    public String lockUserSuccess(@PathVariable long id) {
+        User userToBlock = userService.findByUserId(id);
+        if (userToBlock.getEnabled() == 1) {
+            userService.lockAndUnlockUserById(id, 0);
+        } else {
+            userService.lockAndUnlockUserById(id, 1);
+        }
         return "redirect:/admin/users";
     }
 

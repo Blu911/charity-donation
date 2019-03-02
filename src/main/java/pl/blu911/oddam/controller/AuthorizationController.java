@@ -46,7 +46,7 @@ public class AuthorizationController {
         if (result.hasErrors()) {
             return "register";
         }
-        userServiceImpl.saveUser(user);
+        userServiceImpl.saveUser(user, "ROLE_USER");
         return "redirect:/login";
     }
 

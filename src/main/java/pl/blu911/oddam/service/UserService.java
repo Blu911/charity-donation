@@ -7,13 +7,11 @@ import pl.blu911.oddam.domain.User;
 import javax.validation.Valid;
 
 public interface UserService {
-    User findByUserUsername(String email);
+    User findByUserUsername(String username);
 
-    void saveUser(User user);
-
-    void saveAdmin(User user);
+    void saveUser(User user, String role);
 
     void updateUser(@AuthenticationPrincipal CurrentUser customUser, @Valid User user);
 
-    void updateUserByAdmin(@Valid User user);
+    void updateUser(@Valid User user);
 }

@@ -184,6 +184,22 @@ public class AdminController {
         return "admin/institutions/institution-view";
     }
 
+    @GetMapping("/institutions/edit/{id}")
+    public String editInstitution(@PathVariable long id, Model model) {
+        User userToEdit = userService.findByUserId(id);
+        model.addAttribute("user", userToEdit);
+        return "admin/institutions/institution-edit";
+    }
+
+    @PostMapping("/institutions/edit/{id}")
+    public String editInstitutionSuccess(@Valid User user, BindingResult result, @PathVariable long id) {
+        if (result.hasErrors()) {
+            return "admin/institutions/institution-edit";
+        }
+        userService.updateUser(user);
+        return "redirect:/admin/institutions";
+    }
+
     //DONATIONS MANAGEMENT ACTIONS
     @GetMapping("/donations")
     public String admins() {

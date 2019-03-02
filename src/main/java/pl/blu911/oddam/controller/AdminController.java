@@ -157,7 +157,9 @@ public class AdminController {
 
     //INSTITUTIONS MANAGEMENT ACTIONS
     @GetMapping("/institutions")
-    public String adminInstitution() {
+    public String adminInstitution(Model model) {
+        List<User> institutionList = userService.findAllByRole("ROLE_INSTITUTION");
+        model.addAttribute("institutionList", institutionList);
         return "/admin/admin-institutions";
     }
 

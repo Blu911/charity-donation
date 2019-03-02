@@ -163,6 +163,20 @@ public class AdminController {
         return "/admin/admin-institutions";
     }
 
+    @GetMapping("/institutions/add")
+    public String addInstitution(@ModelAttribute User user) {
+        return "admin/institutions/institution-add";
+    }
+
+    @PostMapping("/institutions/add")
+    public String addInstitutionSuccess(@Valid User user, BindingResult result) {
+        if (result.hasErrors()) {
+            return "admin/institutions/institution-add";
+        }
+        userService.saveUser(user, "ROLE_INSTITUTION");
+        return "redirect:/admin/institutions";
+    }
+
     //DONATIONS MANAGEMENT ACTIONS
     @GetMapping("/donations")
     public String admins() {

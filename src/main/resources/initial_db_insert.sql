@@ -37,13 +37,22 @@ VALUES ('1', 'admin', '$2a$10$s3g9QrbfZv8v3cx7viNJOu4V7gcsnrz5Hzm8OqjRXjLMak7Td.
        ('6', 'user3', '$2a$10$7zc7spg6w6U8.CKunvcsOe64CtUbo3vRH3TKbIr5sMQ8WNU68/61.', '1', 'user@third.pl', '888777666',
         'Julie', 'Bucket');
 
+# Institutions password = institution
+INSERT INTO `oddam`.`users` (`id`, `username`, `password`, `enabled`, `email`, `institution_name`, `phone_number`)
+VALUES ('100', 'institution', '$2a$10$abBHifNBp3Spqw/u.zkJguXzE9M2hOOXZ1H8531Dn1kHRgtu8Oyi6', '1',
+        'institution@main.pl', 'Dla Malucha', '888777666'),
+       ('101', 'institution2', '$2a$10$abBHifNBp3Spqw/u.zkJguXzE9M2hOOXZ1H8531Dn1kHRgtu8Oyi6', '1',
+        'institution@second.pl', 'Dla Dziadka', '123456789');
+
 INSERT INTO `oddam`.`users_role` (`users_id`, `role_id`)
 VALUES ('1', '3'),
        ('2', '1'),
        ('3', '3'),
        ('4', '3'),
        ('5', '1'),
-       ('6', '1');
+       ('6', '1'),
+       ('100', '2'),
+       ('101', '2');
 
 INSERT INTO `oddam`.users_user_address (user_id, user_address_id)
 VALUES ('1', '1'),

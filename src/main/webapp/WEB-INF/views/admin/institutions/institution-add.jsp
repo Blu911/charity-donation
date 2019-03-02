@@ -37,14 +37,9 @@
                                modelAttribute="user" role="form">
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label>Imię</label>
-                                <form:input path="userFirstName" class="form-control"/>
-                                <form:errors path="userFirstName" class="form-group has-error"/>
-                            </div>
-                            <div class="form-group">
-                                <label>Nazwisko</label>
-                                <form:input path="userLastName" class="form-control"/>
-                                <form:errors path="userLastName" class="form-group has-error"/>
+                                <label>Nazwa</label>
+                                <form:input path="institutionName" class="form-control"/>
+                                <form:errors path="institutionName" class="form-group has-error"/>
                             </div>
                             <div class="form-group">
                                 <label>E-mail</label>

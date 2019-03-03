@@ -20,7 +20,7 @@
         <li><a href="<c:url value="/admin/admins"/>"><em class="fa fa-user">&nbsp;</em> Administratorzy</a></li>
         <li><a href="<c:url value="/admin/users"/>"><em class="fa fa-group">&nbsp;</em> Użytkownicy</a></li>
         <li><a href="<c:url value="/admin/institutions"/>"><em class="fa fa-building">&nbsp;</em> Instytucje</a></li>
-        <li><a href="<c:url value="/admin/donations"/>"><em class="fa fa-gift">&nbsp;</em> Dary</a></li>
+        <li><a href="<c:url value="/admin/donations"/>"><em class="fa fa-gift">&nbsp;</em> Darowizny</a></li>
         <li>
             <form action="/logout" method="post">
                 <input class="fa fa-id-badge" type="submit" value="Wyloguj">

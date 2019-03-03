@@ -6,7 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.blu911.oddam.domain.CurrentUser;
+import pl.blu911.oddam.domain.Donation;
 import pl.blu911.oddam.domain.User;
+import pl.blu911.oddam.service.impl.DonationServiceImpl;
 import pl.blu911.oddam.service.impl.UserServiceImpl;
 
 import javax.validation.Valid;
@@ -17,9 +19,11 @@ import java.util.List;
 public class AdminController {
 
     private final UserServiceImpl userService;
+    private final DonationServiceImpl donationService;
 
-    public AdminController(UserServiceImpl userService) {
+    public AdminController(UserServiceImpl userService, DonationServiceImpl donationService) {
         this.userService = userService;
+        this.donationService = donationService;
     }
 
     @ModelAttribute("currentUser")
@@ -156,6 +160,7 @@ public class AdminController {
     }
 
     //INSTITUTIONS MANAGEMENT ACTIONS
+
     @GetMapping("/institutions")
     public String adminInstitution(Model model) {
         List<User> institutionList = userService.findAllByRole("ROLE_INSTITUTION");
@@ -215,7 +220,9 @@ public class AdminController {
 
     //DONATIONS MANAGEMENT ACTIONS
     @GetMapping("/donations")
-    public String admins() {
+    public String adminDonations(Model model) {
+        List<Donation> donationList = donationService.findAll();
+        model.addAttribute("donationList", donationList);
         return "/admin/admin-donations";
     }
 }

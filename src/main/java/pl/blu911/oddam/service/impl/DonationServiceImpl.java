@@ -23,6 +23,10 @@ public class DonationServiceImpl implements DonationService {
         return donationRepository.findAll();
     }
 
+    public Donation findByDonationId(Long id) {
+        return donationRepository.getOne(id);
+    }
+
     @Override
     public void saveDonation(Donation donation) {
         donationRepository.save(donation);

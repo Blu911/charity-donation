@@ -225,4 +225,11 @@ public class AdminController {
         model.addAttribute("donationList", donationList);
         return "/admin/admin-donations";
     }
+
+    @GetMapping("/donations/view/{id}")
+    public String viewDonation(@PathVariable long id, Model model) {
+        Donation donationToView = donationService.findByDonationId(id);
+        model.addAttribute("donation", donationToView);
+        return "admin/donations/donation-view";
+    }
 }

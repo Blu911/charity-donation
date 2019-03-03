@@ -200,6 +200,19 @@ public class AdminController {
         return "redirect:/admin/institutions";
     }
 
+    @GetMapping("/institutions/delete/{id}")
+    public String removeInstitution(@PathVariable Long id, Model model) {
+        User institutionToDelete = userService.findByUserId(id);
+        model.addAttribute("user", institutionToDelete);
+        return "admin/institutions/institution-delete";
+    }
+
+    @PostMapping("/institutions/delete/{id}")
+    public String removeInstitutionSuccess(@PathVariable Long id) {
+        userService.deleteUserById(id);
+        return "redirect:/admin/institutions";
+    }
+
     //DONATIONS MANAGEMENT ACTIONS
     @GetMapping("/donations")
     public String admins() {

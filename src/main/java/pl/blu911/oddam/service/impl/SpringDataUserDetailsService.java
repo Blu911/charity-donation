@@ -32,7 +32,7 @@ public class SpringDataUserDetailsService implements UserDetailsService {
         User user = userService.findByUserUsername(username);
 
         if (user == null) {
-            throw new UsernameNotFoundException(username);
+            throw new UsernameNotFoundException(username + "not found");
         } else if (user.getEnabled() == 0) {
             throw new DisabledException("Account disabled");
         }

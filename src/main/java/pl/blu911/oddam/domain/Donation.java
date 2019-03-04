@@ -8,6 +8,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 @Data
 @Entity
@@ -17,31 +18,24 @@ public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
-    private Category type;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name = "donations_type", joinColumns = @JoinColumn(name = "donations_id"),
+            inverseJoinColumns = @JoinColumn(name = "categories_id"))
+    private List<Category> whatToDonate;
 
-    private String forWho;
-
-
-    @NotNull
     private int quantity;
+
     @ManyToOne
     private User institutionDetails;
+
     @ManyToOne
     private User userDetails;
 
-    @NotBlank
-    private int pickUpHouseNumber;
-    private int pickUpFlatNumber;
-    @NotBlank
-    private String pickUpStreet;
-    @NotBlank
-    private String pickUpCity;
-    @NotBlank
-    private int pickUpZipCode;
-    @NotBlank
+    @ManyToOne
+    private Address pickUpAddress;
+
     private LocalDate pickUpDate;
-    @NotBlank
+
     private LocalTime pickUpTime;
 
     private int pickUpPhoneNumber;

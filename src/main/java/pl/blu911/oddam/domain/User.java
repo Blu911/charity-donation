@@ -3,7 +3,6 @@ package pl.blu911.oddam.domain;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
-import org.hibernate.validator.constraints.UniqueElements;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -16,21 +15,21 @@ import java.util.Set;
 @Entity
 @NoArgsConstructor
 @Table(name = "users")
-@ToString(exclude = {"userAddress", "userDonations", "roles"})
+@ToString(exclude = {"addresses", "donations", "roles"})
 public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
+    private LocalDateTime created;
     @NotBlank
     @Email
     @Column(nullable = false, unique = true)
     private String email;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     @NotBlank
     @Column(nullable = false, unique = true)
     private String username;
-
     @NotBlank
     private String password;
     private int enabled = 1;
@@ -38,25 +37,31 @@ public class User {
     @JoinTable(name = "users_role", joinColumns = @JoinColumn(name = "users_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
-
+    private int phoneNumber;
+    @ManyToMany
+    private List<Address> addresses;
+    @OneToMany
+    private List<Donation> donations;
+    //USER fields
     private String userFirstName;
-    private String userLastName;
+    //INSTITUTION fields
     private String institutionName;
+    private String userLastName;
+    private String institutionGoalAndMission;
     @ManyToOne
     private Category institutionType;
-    private int phoneNumber = 0;
-
-    @OneToMany
-    private List<Address> userAddress;
-    @OneToMany
-    private List<Donation> userDonations;
-
-    private LocalDateTime created;
+    @ManyToMany
+    @JoinTable(name = "institutions_helps_who", joinColumns = @JoinColumn(name = "users_id"),
+            inverseJoinColumns = @JoinColumn(name = "categories_id"))
+    private List<Category> institutionHelpsWho;
+    @ManyToMany
+    @JoinTable(name = "institutions_needs_what", joinColumns = @JoinColumn(name = "users_id"),
+            inverseJoinColumns = @JoinColumn(name = "categories_id"))
+    private List<Category> institutionNeedsWhat;
 
     @PrePersist
     public void prePersist() {
         created = LocalDateTime.now();
     }
-
 
 }

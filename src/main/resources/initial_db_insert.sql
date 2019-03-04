@@ -9,8 +9,8 @@ VALUES ('1', 'Typ instytucji'),
 # Typ instytucji
 INSERT INTO `oddam`.`categories` (`id`, `name`, `parent_id`)
 VALUES ('5', 'Fundacja', '1'),
-       ('6', 'Organizacja pozarządowa', '1'),
-       ('7', 'Lokalna zbiórka', '1');
+       ('6', 'Organizacja Pozarządowa', '1'),
+       ('7', 'Lokalna Zbiórka', '1');
 
 # Komu pomagamy
 INSERT INTO `oddam`.`categories` (`id`, `name`, `parent_id`)
@@ -157,16 +157,22 @@ VALUES ('100', '13'),
        ('102', '15'),
        ('102', '16');
 
-INSERT INTO `oddam`.donations (id, pick_up_comment, pick_up_date, pick_up_phone_number,
+INSERT INTO `oddam`.donations (id, created, pick_up_comment, pick_up_date, pick_up_phone_number,
                                pick_up_time, quantity, institution_details_id, pick_up_address_id,
                                user_details_id)
-VALUES ('1', 'Mieszkam na drugim piętrze. Zapraszam!', '2019-02-05', '123321123', '09:00:00', '2', '100', '1', '1'),
-       ('2', 'Będę czekać na Państwa ok 11:00', '2019-02-01', '111222333', '11:00:00', '4', '101', '2', '2'),
-       ('3', 'Mamy tego sporo ale mąż pomoże się zabrać', '2019-01-22', '567765432', '14:00:00', '2', '100', '3', '3'),
-       ('4', 'Czekam', '2019-01-05', '789098765', '17:00:00', '2', '101', '4', '4'),
-       ('5', 'Prosze wejść drugmi drzwiami po prawej', '2019-01-15', '123456789', '10:00:00', '2', '101', '5', '5'),
-       ('6', 'Proszę najpierw zadzwonić!', '2019-01-19', '654321678', '20:00:00', '2', '102', '6', '6'),
-       ('7', 'Trzeci lokal po prawej', '2019-02-02', '876876567', '08:00:00', '2', '102', '7', '7');
+VALUES ('1', '2019-02-02 07:00:00', 'Mieszkam na drugim piętrze. Zapraszam!', '2019-02-05', '123321123', '09:00:00',
+        '2', '100', '1', '8'),
+       ('2', '2019-01-12 17:00:00', 'Będę czekać na Państwa ok 11:00', '2019-02-01', '111222333', '11:00:00', '4',
+        '101', '2', '4'),
+       ('3', '2019-01-11 22:00:00', 'Mamy tego sporo ale mąż pomoże się zabrać', '2019-01-22', '567765432', '14:00:00',
+        '2', '100', '3', '7'),
+       ('4', '2019-02-04 09:00:00', 'Czekam', '2019-01-05', '789098765', '17:00:00', '2', '101', '4', '4'),
+       ('5', '2019-02-03 16:00:00', 'Prosze wejść drugmi drzwiami po prawej', '2019-01-15', '123456789', '10:00:00',
+        '2', '101', '5', '5'),
+       ('6', '2019-02-04 18:00:00', 'Proszę najpierw zadzwonić!', '2019-01-19', '654321678', '20:00:00', '2', '102',
+        '6', '6'),
+       ('7', '2019-02-03 21:00:00', 'Trzeci lokal po prawej', '2019-02-02', '876876567', '08:00:00', '2', '102', '7',
+        '7');
 
 INSERT INTO `oddam`.donations_type (donations_id, categories_id)
 VALUES ('1', '27'),

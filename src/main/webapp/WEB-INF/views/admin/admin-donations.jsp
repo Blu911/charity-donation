@@ -29,6 +29,8 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Data utworzenia</th>
+                        <th scope="col">Od kogo</th>
+                        <th scope="col">Dla kogo</th>
                         <th scope="col">Ilość worków</th>
                     </tr>
                     </thead>
@@ -36,7 +38,9 @@
                     <c:forEach items="${donationList}" var="donation" varStatus="loop">
                         <tr>
                             <th scope="row">${loop.count}</th>
-                            <td>${donation.pickUpCity}</td>
+                            <td><javatime:format value="${donation.created}" style="MM"/></td>
+                            <td>${donation.userDetails.username}</td>
+                            <td>${donation.institutionDetails.institutionType.name} ${donation.institutionDetails.institutionName}</td>
                             <td>${donation.quantity}</td>
                             <td>
                                 <form method="post">

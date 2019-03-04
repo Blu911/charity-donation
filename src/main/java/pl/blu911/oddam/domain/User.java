@@ -18,7 +18,6 @@ import java.util.Set;
 @ToString(exclude = {"addresses", "donations", "roles"})
 public class User {
 
-    private LocalDateTime created;
     @NotBlank
     @Email
     @Column(nullable = false, unique = true)
@@ -59,6 +58,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "categories_id"))
     private List<Category> institutionNeedsWhat;
 
+    private LocalDateTime created;
     @PrePersist
     public void prePersist() {
         created = LocalDateTime.now();

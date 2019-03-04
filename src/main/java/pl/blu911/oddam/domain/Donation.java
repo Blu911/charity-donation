@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 
@@ -41,4 +42,10 @@ public class Donation {
     private int pickUpPhoneNumber;
     private String pickUpComment;
 
+    private LocalDateTime created;
+
+    @PrePersist
+    public void prePersist() {
+        created = LocalDateTime.now();
+    }
 }

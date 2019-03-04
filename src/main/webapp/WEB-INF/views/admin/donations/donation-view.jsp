@@ -34,15 +34,57 @@
                 <div class="panel-body">
                     <form class="form-horizontal" action="" method="post">
                         <fieldset>
-
-                            <span> Dodano: <javatime:format value="${donation.created}" style="MM"/></span>
                             <div class="form-group">
-                                <label class="col-md-3 control-label">Id</label>
+                                <label class="col-md-2 control-label">Id</label>
                                 <div class="col-md-9">
                                     ${donation.id}
                                 </div>
                             </div>
-
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Od kogo</label>
+                                <div class="col-md-9">
+                                    ${donation.userDetails.username}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Dla kogo</label>
+                                <div class="col-md-9">
+                                    ${donation.institutionDetails.institutionType.name} ${donation.institutionDetails.institutionName}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Co przekazano</label>
+                                <div class="col-md-9">
+                                    <c:forEach items="${donation.whatToDonate}" var="gift" varStatus="loop">
+                                        <li>${gift.name}</li>
+                                    </c:forEach>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Ilość worków</label>
+                                <div class="col-md-9">
+                                    ${donation.quantity}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Adres dostawy</label>
+                                <div class="col-md-9">
+                                    <li>Nr mieszkania: ${donation.pickUpAddress.flatNumber}</li>
+                                    <li>Nr domu: ${donation.pickUpAddress.houseNumber}</li>
+                                    <li>Ulica: ${donation.pickUpAddress.street}</li>
+                                    <li>Miasto: ${donation.pickUpAddress.city}</li>
+                                    <li>Kod pocztowy: ${donation.pickUpAddress.zipCode}</li>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-2 control-label">Szczegóły dostawy</label>
+                                <div class="col-md-9">
+                                    <li>Data odbioru: ${donation.pickUpDate}</li>
+                                    <li>Czas odbioru: ${donation.pickUpTime}</li>
+                                    <li>Telefon kontaktowy: ${donation.pickUpPhoneNumber}</li>
+                                    <li>Komentarz dla kuriera: ${donation.pickUpComment}</li>
+                                </div>
+                            </div>
                         </fieldset>
                     </form>
                 </div>

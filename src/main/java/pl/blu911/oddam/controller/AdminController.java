@@ -9,9 +9,6 @@ import pl.blu911.oddam.domain.User;
 import pl.blu911.oddam.service.impl.DonationServiceImpl;
 import pl.blu911.oddam.service.impl.UserServiceImpl;
 
-import java.util.List;
-
-
 @Controller
 @RequestMapping("/admin")
 public class AdminController {

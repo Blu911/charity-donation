@@ -1,6 +1,8 @@
 package pl.blu911.oddam.service.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.DisabledException;
+import org.springframework.security.authentication.LockedException;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -26,10 +28,13 @@ public class SpringDataUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) {
 
+
         User user = userService.findByUserUsername(username);
 
         if (user == null) {
             throw new UsernameNotFoundException(username);
+        } else if (user.getEnabled() == 0) {
+            throw new DisabledException("Account disabled");
         }
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();
         for (Role role : user.getRoles()) {

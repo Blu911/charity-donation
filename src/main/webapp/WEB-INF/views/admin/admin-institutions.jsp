@@ -45,7 +45,7 @@
                             <th scope="row">${loop.count}</th>
                             <td><javatime:format value="${institution.created}" style="MM"/></td>
                             <td>${institution.institutionName}</td>
-                            <td>${institution.institutionType}</td>
+                            <td>${institution.institutionType.name}</td>
                             <td>
                                 <form method="post">
                                     <a class="btn pull-right"

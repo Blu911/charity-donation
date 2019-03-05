@@ -23,6 +23,10 @@ public class DonationServiceImpl implements DonationService {
         return donationRepository.findAll();
     }
 
+    public List<Donation> findAllByInstitutionId(long id) {
+        return donationRepository.findAllByInstitutionDetailsId(id);
+    }
+
     public Donation findByDonationId(Long id) {
         return donationRepository.getOne(id);
     }

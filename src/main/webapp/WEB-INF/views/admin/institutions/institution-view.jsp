@@ -55,6 +55,40 @@
                                     ${user.institutionName}
                                 </div>
                             </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Typ instytucji</label>
+                                <div class="col-md-9">
+                                    ${user.institutionType.name}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Cel i misja instytucji</label>
+                                <div class="col-md-9">
+                                    ${user.institutionGoalAndMission}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Instytucja pomaga</label>
+                                <div class="col-md-9">
+                                    <c:forEach items="${user.institutionHelpsWho}" var="who" varStatus="loop">
+                                        <li>${who.name}</li>
+                                    </c:forEach>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Instytucja potrzebuje</label>
+                                <div class="col-md-9">
+                                    <c:forEach items="${user.institutionNeedsWhat}" var="what" varStatus="loop">
+                                        <li>${what.name}</li>
+                                    </c:forEach>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Liczba otrzymanych darowizn</label>
+                                <div class="col-md-9">
+                                    ${nrOfDonations}
+                                </div>
+                            </div>
 
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Email</label>
@@ -62,11 +96,22 @@
                                     ${user.email}
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <label class="col-md-3 control-label">Telefon</label>
                                 <div class="col-md-9">
                                     ${user.phoneNumber}
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">Adres</label>
+                                <div class="col-md-9">
+                                    <c:forEach items="${user.addresses}" var="address" varStatus="loop">
+                                        <li>Nr mieszkania: ${address.flatNumber}</li>
+                                        <li>Nr domu: ${address.houseNumber}</li>
+                                        <li>Ulica: ${address.street}</li>
+                                        <li>Miasto: ${address.city}</li>
+                                        <li>Kod pocztowy: ${address.zipCode}</li>
+                                    </c:forEach>
                                 </div>
                             </div>
                         </fieldset>

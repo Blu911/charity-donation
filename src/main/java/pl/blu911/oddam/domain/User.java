@@ -43,9 +43,10 @@ public class User {
     private List<Donation> donations;
     //USER fields
     private String userFirstName;
+    private String userLastName;
+
     //INSTITUTION fields
     private String institutionName;
-    private String userLastName;
     private String institutionGoalAndMission;
     @ManyToOne
     private Category institutionType;

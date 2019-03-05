@@ -6,7 +6,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.blu911.oddam.domain.CurrentUser;
+import pl.blu911.oddam.domain.Donation;
 import pl.blu911.oddam.domain.User;
+import pl.blu911.oddam.service.impl.DonationServiceImpl;
 import pl.blu911.oddam.service.impl.UserServiceImpl;
 
 import javax.validation.Valid;
@@ -17,9 +19,11 @@ import java.util.List;
 public class InstitutionsController {
 
     private final UserServiceImpl userService;
+    private final DonationServiceImpl donationService;
 
-    public InstitutionsController(UserServiceImpl userService) {
+    public InstitutionsController(UserServiceImpl userService, DonationServiceImpl donationService) {
         this.userService = userService;
+        this.donationService = donationService;
     }
 
     @ModelAttribute("currentUser")
@@ -52,10 +56,14 @@ public class InstitutionsController {
         return "redirect:/admin/institutions";
     }
 
+
     @GetMapping("/institutions/view/{id}")
     public String viewInstitution(@PathVariable long id, Model model) {
         User userToView = userService.findByUserId(id);
         model.addAttribute("user", userToView);
+        int nrOfDonations = donationService.findAllByInstitutionId(id).size();
+        model.addAttribute("nrOfDonations", nrOfDonations);
+
         return "admin/institutions/institution-view";
     }
 

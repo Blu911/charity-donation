@@ -37,7 +37,7 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
     private int phoneNumber;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Address> addresses;
     @OneToMany
     private List<Donation> donations;

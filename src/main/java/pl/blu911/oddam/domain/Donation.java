@@ -19,7 +19,7 @@ public class Donation {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToMany(fetch = FetchType.EAGER)
+    @ManyToMany
     @JoinTable(name = "donations_type", joinColumns = @JoinColumn(name = "donations_id"),
             inverseJoinColumns = @JoinColumn(name = "categories_id"))
     private List<Category> whatToDonate;

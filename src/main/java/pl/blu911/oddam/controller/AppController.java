@@ -23,4 +23,9 @@ public class AppController {
     public String userPanel() {
         return "/app/app";
     }
+
+    @GetMapping("/profile")
+    public String userProfile() {
+        return "app/app-profile";
+    }
 }

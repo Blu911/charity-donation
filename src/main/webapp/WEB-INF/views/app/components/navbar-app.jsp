@@ -5,7 +5,7 @@
 <nav class="container container--70">
     <ul class="nav--actions">
         <li class="logged-user">
-            Witaj USER
+            Witaj ${currentUser.username}
             <ul class="dropdown">
                 <li><a href="#">Profil</a></li>
                 <li><a href="#">Ustawienia</a></li>

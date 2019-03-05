@@ -6,11 +6,6 @@
 </div>
 <script src="<c:url value="/resources/js/jquery-1.11.1.min.js"/>"></script>
 <script src="<c:url value="/resources/js/bootstrap.min.js"/>"></script>
-<script src="<c:url value="/resources/js/chart.min.js"/>"></script>
-<script src="<c:url value="/resources/js/chart-data.js"/>"></script>
-<script src="<c:url value="/resources/js/easypiechart.js"/>"></script>
-<script src="<c:url value="/resources/js/easypiechart-data.js"/>"></script>
-<script src="<c:url value="/resources/js/bootstrap-datepicker.js"/>"></script>
 <script src="<c:url value="/resources/js/custom.js"/>"></script>
 
 </body>

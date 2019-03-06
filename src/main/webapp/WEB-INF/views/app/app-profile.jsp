@@ -43,7 +43,7 @@
                         Kod pocztowy: ${address.zipCode}
                     </c:forEach>
                 </p>
-                <a href="#" class="btn btn--highlighted">Edytuj</a>
+                <a href="<c:url value="/app/profile/edit"/>" class="btn btn--highlighted">Edytuj</a>
             </div>
         </div>
     </section>

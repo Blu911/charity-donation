@@ -53,18 +53,20 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void updateUser(@AuthenticationPrincipal CurrentUser customUser, @Valid User user) {
-        User userToUpdate = userRepository.getOne(customUser.getUser().getId());
-        userToUpdate.setUserFirstName(user.getUserFirstName());
-        userToUpdate.setUserLastName(user.getUserLastName());
-        userToUpdate.setEmail(user.getEmail());
-        userToUpdate.setPhoneNumber(user.getPhoneNumber());
-        userToUpdate.setUsername(user.getUsername());
-        userToUpdate.setPassword(passwordEncoder.encode(user.getPassword()));
+    public void updateUser(CurrentUser currentUser, User newUser) {
+        User userToUpdate = userRepository.getOne(currentUser.getUser().getId());
+        userToUpdate.setUserFirstName(newUser.getUserFirstName());
+        userToUpdate.setUserLastName(newUser.getUserLastName());
+        userToUpdate.setEmail(newUser.getEmail());
+        userToUpdate.setPhoneNumber(newUser.getPhoneNumber());
+        userToUpdate.setUsername(newUser.getUsername());
+        if (!userToUpdate.getPassword().equals(newUser.getPassword())) {
+            userToUpdate.setPassword(passwordEncoder.encode(newUser.getPassword()));
+        }
         userRepository.save(userToUpdate);
     }
 
-    public void updateUser(@Valid User user) {
+    public void updateUser(User user) {
         User userToUpdate = userRepository.getOne(user.getId());
         userToUpdate.setInstitutionName(user.getInstitutionName());
         userToUpdate.setUserFirstName(user.getUserFirstName());

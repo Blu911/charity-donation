@@ -5,11 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+import pl.blu911.oddam.domain.Address;
 import pl.blu911.oddam.domain.CurrentUser;
 import pl.blu911.oddam.domain.User;
 import pl.blu911.oddam.service.impl.UserServiceImpl;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/app")
@@ -38,7 +40,10 @@ public class AppController {
     }
 
     @GetMapping("/profile/edit")
-    public String appEditProfile() {
+    public String appEditProfile(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
+        User user = userService.findByUserId(currentUser.getUser().getId());
+        List<Address> userAddresses = user.getAddresses();
+        model.addAttribute("userAddresses", userAddresses);
         return "app/app-profile-edit";
     }
 

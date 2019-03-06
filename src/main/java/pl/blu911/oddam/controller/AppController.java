@@ -1,6 +1,5 @@
 package pl.blu911.oddam.controller;
 
-import org.springframework.data.repository.query.Param;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,7 +23,7 @@ public class AppController {
 
     @ModelAttribute("currentUser")
     public void getCurrentUser(@AuthenticationPrincipal CurrentUser customUser, Model model) {
-        User currentUser = customUser.getUser();
+        User currentUser = userService.findByUserId(customUser.getUser().getId());
         model.addAttribute("currentUser", currentUser);
     }
 
@@ -39,9 +38,7 @@ public class AppController {
     }
 
     @GetMapping("/profile/edit")
-    public String appEditProfile(@AuthenticationPrincipal CurrentUser customUser, Model model) {
-        User currentUser = customUser.getUser();
-        model.addAttribute("user", currentUser);
+    public String appEditProfile() {
         return "app/app-profile-edit";
     }
 
@@ -50,8 +47,6 @@ public class AppController {
         if (result.hasErrors()) {
             return "app/app-profile-edit";
         }
-        System.out.println(user);
-        System.out.println(currentUser);
         userService.updateUser(currentUser, user);
         return "redirect:/app/profile";
     }

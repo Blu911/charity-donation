@@ -12,9 +12,9 @@
         <h2>Twój Profil</h2>
         <div>
             <form:form method="post"
-                       modelAttribute="user" role="form">
+                       modelAttribute="currentUser" role="form">
                 <div class="steps--item">
-                    <h3>Dołączono <javatime:format value="${user.created}" style="MM"/></h3>
+                    <h3>Dołączono <javatime:format value="${currentUser.created}" style="MM"/></h3>
 
                     <p>
                         <strong>Imię </strong>

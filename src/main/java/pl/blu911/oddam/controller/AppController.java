@@ -8,19 +8,22 @@ import org.springframework.web.bind.annotation.*;
 import pl.blu911.oddam.domain.Address;
 import pl.blu911.oddam.domain.CurrentUser;
 import pl.blu911.oddam.domain.User;
+import pl.blu911.oddam.service.impl.AddressServiceImpl;
 import pl.blu911.oddam.service.impl.UserServiceImpl;
 
 import javax.validation.Valid;
-import java.util.List;
+
 
 @Controller
 @RequestMapping("/app")
 public class AppController {
 
     private final UserServiceImpl userService;
+    private final AddressServiceImpl addressService;
 
-    public AppController(UserServiceImpl userService) {
+    public AppController(UserServiceImpl userService, AddressServiceImpl addressService) {
         this.userService = userService;
+        this.addressService = addressService;
     }
 
     @ModelAttribute("currentUser")
@@ -40,11 +43,8 @@ public class AppController {
     }
 
     @GetMapping("/profile/edit")
-    public String appEditProfile(@AuthenticationPrincipal CurrentUser currentUser, Model model) {
-        User user = userService.findByUserId(currentUser.getUser().getId());
-        List<Address> userAddresses = user.getAddresses();
-        model.addAttribute("userAddresses", userAddresses);
-        return "app/app-profile-edit";
+    public String appEditProfile() {
+        return "app/profile/profile-edit";
     }
 
     @PostMapping("/profile/edit")
@@ -56,4 +56,19 @@ public class AppController {
         return "redirect:/app/profile";
     }
 
+    @GetMapping("/profile/edit/{id}")
+    public String appEditAddress(@PathVariable long id, Model model) {
+        Address address = addressService.findById(id);
+        model.addAttribute("address", address);
+        return "app/profile/profile-edit-address";
+    }
+
+    @PostMapping("/profile/edit/{id}")
+    public String appEditAddressSuccess(@Valid Address address, BindingResult result, @PathVariable long id) {
+        if (result.hasErrors()) {
+            return "app/app-profile-edit-address";
+        }
+        addressService.updateAddress(address);
+        return "redirect:/app/profile";
+    }
 }

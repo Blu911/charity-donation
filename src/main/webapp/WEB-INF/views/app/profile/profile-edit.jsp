@@ -4,10 +4,10 @@
 <%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<jsp:include page="components/head.jsp"/>
+<jsp:include page="../components/head.jsp"/>
 <body>
 <header class="header--form-page">
-    <jsp:include page="components/navbar-app.jsp"/>
+    <jsp:include page="../components/navbar-app.jsp"/>
     <section class="steps" id="steps">
         <h2>Twój Profil</h2>
         <div>
@@ -50,7 +50,9 @@
                     </div>
                 </div>
             </form:form>
+            <a class="btn" href="<c:url value="/app/profile"/>" role="button">
+                Powrót</a>
         </div>
     </section>
 </header>
-<jsp:include page="components/footer.jsp"/>
+<jsp:include page="../components/footer.jsp"/>

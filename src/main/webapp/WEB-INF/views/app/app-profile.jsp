@@ -11,7 +11,7 @@
         <h2>Twój Profil</h2>
         <div>
             <div class="steps--item">
-                <h3>Dołączono <javatime:format value="${currentUser.created}" style="MM"/></h3>
+                <h3>Dane osobowe</h3>
 
                 <p>
                     <strong>Imię</strong>
@@ -33,17 +33,34 @@
                     <strong>Numer telefonu</strong>
                     <span> ${currentUser.phoneNumber}</span>
                 </p>
-                <p>
-                    <strong>Adres</strong>
-                    <c:forEach items="${currentUser.addresses}" var="address" varStatus="loop">
-                        Nr mieszkania: ${address.flatNumber},
-                        Nr domu: ${address.houseNumber},
-                        Ulica: ${address.street},
-                        Miasto: ${address.city},
-                        Kod pocztowy: ${address.zipCode}
-                    </c:forEach>
-                </p>
-                <a href="<c:url value="/app/profile/edit"/>" class="btn btn--highlighted">Edytuj</a>
+                <a href="<c:url value="/app/profile/edit"/>" class="btn btn--highlighted">Edytuj dane osobowe</a>
+
+                <c:forEach items="${currentUser.addresses}" var="address" varStatus="loop">
+                    <h3>Adres ${loop.count}</h3>
+                    <p>
+                        <strong>Nr mieszkania:</strong>
+                        <span> ${address.flatNumber}</span>
+                    </p>
+                    <p>
+                        <strong>Nr domu:</strong>
+                        <span> ${address.houseNumber}</span>
+                    </p>
+                    <p>
+                        <strong>Ulica:</strong>
+                        <span> ${address.street}</span>
+                    </p>
+                    <p>
+                        <strong>Miasto:</strong>
+                        <span> ${address.city}</span>
+                    </p>
+                    <p>
+                        <strong> Kod pocztowy:</strong>
+                        <span> ${address.zipCode}</span>
+                    </p>
+                    <a class="btn btn--highlighted" href="<c:url value="/app/profile/edit/${address.id}"/>"
+                       role="button">
+                        Edytuj adres</a>
+                </c:forEach>
             </div>
         </div>
     </section>

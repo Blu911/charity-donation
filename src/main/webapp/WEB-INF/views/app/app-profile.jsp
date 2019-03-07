@@ -34,7 +34,9 @@
                     <span> ${currentUser.phoneNumber}</span>
                 </p>
                 <a href="<c:url value="/app/profile/edit"/>" class="btn btn--highlighted">Edytuj dane osobowe</a>
-
+                <a class="btn btn--small" href="<c:url value="/app/profile/add"/>"
+                   role="button">
+                    Dodaj nowy adres</a>
                 <c:forEach items="${currentUser.addresses}" var="address" varStatus="loop">
                     <h3>Adres ${loop.count}</h3>
                     <p>

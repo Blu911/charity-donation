@@ -2,8 +2,11 @@ package pl.blu911.oddam.service.impl;
 
 import org.springframework.stereotype.Service;
 import pl.blu911.oddam.domain.Address;
+import pl.blu911.oddam.domain.User;
 import pl.blu911.oddam.repository.AddressRepository;
 import pl.blu911.oddam.service.AddressService;
+
+import java.util.List;
 
 @Service
 public class AddressServiceImpl implements AddressService {
@@ -19,19 +22,20 @@ public class AddressServiceImpl implements AddressService {
     }
 
     @Override
-    public void saveAddress(Address address) {
+    public void saveAddress(Address address, User currentUser) {
+        address.getUsers().add(currentUser);
         addressRepository.save(address);
     }
 
     @Override
-    public void updateAddress(Address address) {
+    public void updateAddress(Address address, User currentUser) {
         Address addressToUpdate = addressRepository.getOne(address.getId());
         addressToUpdate.setFlatNumber(address.getFlatNumber());
         addressToUpdate.setHouseNumber(address.getHouseNumber());
         addressToUpdate.setStreet(address.getStreet());
         addressToUpdate.setCity(address.getCity());
         addressToUpdate.setZipCode(address.getZipCode());
-        saveAddress(addressToUpdate);
+        saveAddress(addressToUpdate, currentUser);
     }
 
     public void deleteAddressById(Long id) {

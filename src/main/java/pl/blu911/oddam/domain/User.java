@@ -37,7 +37,8 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
     private int phoneNumber;
-    @ManyToMany(fetch = FetchType.EAGER)
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<Address> addresses;
     @OneToMany
     private List<Donation> donations;

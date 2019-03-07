@@ -126,7 +126,7 @@ VALUES ('1', '3'),
        ('101', '2'),
        ('102', '2');
 
-INSERT INTO `oddam`.users_addresses (`user_id`, `addresses_id`)
+INSERT INTO `oddam`.users_addresses (`users_id`, `addresses_id`)
 VALUES ('1', '1'),
        ('2', '2'),
        ('3', '3'),

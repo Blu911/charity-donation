@@ -58,25 +58,38 @@ public class ProfileController {
     }
 
     @PostMapping("/profile/edit/{id}")
-    public String appEditAddressSuccess(@Valid Address address, BindingResult result, @PathVariable long id) {
+    public String appEditAddressSuccess(@AuthenticationPrincipal CurrentUser currentUser, @Valid Address address, BindingResult result, @PathVariable long id) {
         if (result.hasErrors()) {
             return "app/app-profile-edit-address";
         }
-        addressService.updateAddress(address);
+        addressService.updateAddress(address, currentUser.getUser());
         return "redirect:/app/profile";
     }
 
     @GetMapping("/profile/delete/{id}")
-    public String removeAdmin(@PathVariable Long id, Model model) {
+    public String appRemoveAddress(@PathVariable Long id, Model model) {
         Address addressToDelete = addressService.findById(id);
         model.addAttribute("address", addressToDelete);
         return "app/profile/profile-delete-address";
     }
 
     @PostMapping("/profile/delete/{id}")
-    public String removeAdminSuccess(@PathVariable Long id) {
+    public String appRemoveAddressSuccess(@PathVariable Long id) {
         addressService.deleteAddressById(id);
+        return "redirect:/app/profile";
+    }
 
+    @GetMapping("/profile/add")
+    public String appAddAddress(@ModelAttribute Address address) {
+        return "app/profile/profile-add-address";
+    }
+
+    @PostMapping("/profile/add")
+    public String appAddAddressSuccess(@AuthenticationPrincipal CurrentUser currentUser, @Valid Address address, BindingResult result) {
+        if (result.hasErrors()) {
+            return "app/profile/profile-add-address";
+        }
+        addressService.saveAddress(address, currentUser.getUser());
         return "redirect:/app/profile";
     }
 }

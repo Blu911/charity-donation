@@ -65,4 +65,18 @@ public class ProfileController {
         addressService.updateAddress(address);
         return "redirect:/app/profile";
     }
+
+    @GetMapping("/profile/delete/{id}")
+    public String removeAdmin(@PathVariable Long id, Model model) {
+        Address addressToDelete = addressService.findById(id);
+        model.addAttribute("address", addressToDelete);
+        return "app/profile/profile-delete-address";
+    }
+
+    @PostMapping("/profile/delete/{id}")
+    public String removeAdminSuccess(@PathVariable Long id) {
+        addressService.deleteAddressById(id);
+
+        return "redirect:/app/profile";
+    }
 }

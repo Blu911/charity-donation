@@ -33,4 +33,8 @@ public class AddressServiceImpl implements AddressService {
         addressToUpdate.setZipCode(address.getZipCode());
         saveAddress(addressToUpdate);
     }
+
+    public void deleteAddressById(Long id) {
+        addressRepository.deleteById(id);
+    }
 }

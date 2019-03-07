@@ -57,9 +57,13 @@
                         <strong> Kod pocztowy:</strong>
                         <span> ${address.zipCode}</span>
                     </p>
-                    <a class="btn btn--highlighted" href="<c:url value="/app/profile/edit/${address.id}"/>"
+                    <span><a class="btn btn--small" href="<c:url value="/app/profile/edit/${address.id}"/>"
+                             role="button">
+                        Edytuj</a>
+                    <a class="btn btn--small" href="<c:url value="/app/profile/delete/${address.id}"/>"
                        role="button">
-                        Edytuj adres</a>
+                        Usuń</a>
+                        </span>
                 </c:forEach>
             </div>
         </div>

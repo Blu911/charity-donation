@@ -1,4 +1,4 @@
-package pl.blu911.oddam.controller.AdminControllers;
+package pl.blu911.oddam.controller.admin;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.blu911.oddam.domain.CurrentUser;
-import pl.blu911.oddam.domain.Donation;
 import pl.blu911.oddam.domain.User;
 import pl.blu911.oddam.service.impl.DonationServiceImpl;
 import pl.blu911.oddam.service.impl.UserServiceImpl;

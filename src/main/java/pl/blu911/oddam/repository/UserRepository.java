@@ -15,4 +15,5 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     List<User> findAllByRolesNameOrderByCreatedDesc(String name);
 
+    User findByEmail(String email);
 }

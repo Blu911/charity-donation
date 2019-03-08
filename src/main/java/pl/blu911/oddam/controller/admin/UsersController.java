@@ -1,4 +1,4 @@
-package pl.blu911.oddam.controller.AdminControllers;
+package pl.blu911.oddam.controller.admin;
 
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;

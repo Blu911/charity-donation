@@ -78,8 +78,14 @@ public class UserServiceImpl implements UserService {
         userRepository.save(userToUpdate);
     }
 
+    @Override
+    public User findByUserEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
     public void lockAndUnlockUserById(Long id, int lock) {
         User userToBlock = userRepository.getOne(id);
+//        userToBlock.setEnabled(userToBlock.getEnabled());
         userToBlock.setEnabled(lock);
         userRepository.save(userToBlock);
     }

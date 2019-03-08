@@ -14,4 +14,6 @@ public interface UserService {
     void updateUser(@AuthenticationPrincipal CurrentUser customUser, @Valid User user);
 
     void updateUser(@Valid User user);
+
+    User findByUserEmail(String email);
 }

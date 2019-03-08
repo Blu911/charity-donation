@@ -6,8 +6,6 @@ import pl.blu911.oddam.domain.User;
 import pl.blu911.oddam.repository.AddressRepository;
 import pl.blu911.oddam.service.AddressService;
 
-import java.util.List;
-
 @Service
 public class AddressServiceImpl implements AddressService {
     private final AddressRepository addressRepository;
@@ -23,8 +21,8 @@ public class AddressServiceImpl implements AddressService {
 
     @Override
     public void saveAddress(Address address, User currentUser) {
-        address.getUsers().add(currentUser);
-        addressRepository.save(address);
+        address.setUser(currentUser);
+        addressRepository.saveAndFlush(address);
     }
 
     @Override

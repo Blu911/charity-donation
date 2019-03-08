@@ -38,7 +38,7 @@ public class User {
     private Set<Role> roles;
     private int phoneNumber;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.PERSIST)
     private List<Address> addresses;
     @OneToMany
     private List<Donation> donations;

@@ -45,19 +45,19 @@ VALUES ('27', 'ubrania które nadają się do ponownego użycia', '4'),
        ('30', 'książki', '4'),
        ('31', 'inne', '4');
 
-INSERT INTO `oddam`.`addresses` (`id`, `city`, `flat_number`, `house_number`, `street`, `zip_code`)
-VALUES ('1', 'Gdańsk', '7', '17', 'Aleje Grunwaldzkie', '80-210'),
-       ('2', 'Warszawa', '', '10', 'Piastowska', '00-320'),
-       ('3', 'Wrocłąw', '2', '1', 'Bażantowa', '21-321'),
-       ('4', 'Kraków', '', '25', 'Kasztanowa', '07-070'),
-       ('5', 'Łódź', '1', '1', 'Stokłosy', '30-990'),
-       ('6', 'Poznań', '32', '10', 'Mysia', '56-123'),
-       ('7', 'Warszawa', '', '107', 'Jeleniogórska', '00-123'),
-       ('8', 'Gdańsk', '', '100', 'Aleja Jana Pawła II', '80-213'),
+INSERT INTO `oddam`.`addresses` (`id`, `city`, `flat_number`, `house_number`, `street`, `zip_code`, `user_id`)
+VALUES ('1', 'Gdańsk', '7', '17', 'Aleje Grunwaldzkie', '80-210', '1'),
+       ('2', 'Warszawa', '', '10', 'Piastowska', '00-320', '2'),
+       ('3', 'Wrocłąw', '2', '1', 'Bażantowa', '21-321', '3'),
+       ('4', 'Kraków', '', '25', 'Kasztanowa', '07-070', '4'),
+       ('5', 'Łódź', '1', '1', 'Stokłosy', '30-990', '5'),
+       ('6', 'Poznań', '32', '10', 'Mysia', '56-123', '6'),
+       ('7', 'Warszawa', '', '107', 'Jeleniogórska', '00-123', '7'),
+       ('8', 'Gdańsk', '', '100', 'Aleja Jana Pawła II', '80-213', '8'),
 
-       ('9', 'Poznań', '2', '120', 'Puszysta', '50-003'),
-       ('10', 'Kraków', '', '19', 'Sąsiedzka', '20-223'),
-       ('11', 'Łódź', '65', '122', 'Zwycięzców Monte Casino', '33-123');
+       ('9', 'Poznań', '2', '120', 'Puszysta', '50-003', '100'),
+       ('10', 'Kraków', '', '19', 'Sąsiedzka', '20-223', '101'),
+       ('11', 'Łódź', '65', '122', 'Zwycięzców Monte Casino', '33-123', '102');
 
 
 INSERT INTO `oddam`.`roles` (`role`)
@@ -125,19 +125,6 @@ VALUES ('1', '3'),
        ('100', '2'),
        ('101', '2'),
        ('102', '2');
-
-INSERT INTO `oddam`.users_addresses (`users_id`, `addresses_id`)
-VALUES ('1', '1'),
-       ('2', '2'),
-       ('3', '3'),
-       ('4', '4'),
-       ('5', '5'),
-       ('6', '6'),
-       ('7', '7'),
-       ('8', '8'),
-       ('100', '9'),
-       ('101', '10'),
-       ('102', '11');
 
 INSERT INTO `oddam`.institutions_helps_who (users_id, categories_id)
 VALUES ('100', '8'),

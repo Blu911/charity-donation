@@ -9,6 +9,7 @@ import pl.blu911.oddam.domain.Address;
 import pl.blu911.oddam.domain.CurrentUser;
 import pl.blu911.oddam.domain.User;
 import pl.blu911.oddam.service.impl.AddressServiceImpl;
+import pl.blu911.oddam.service.impl.CategoryServiceImpl;
 import pl.blu911.oddam.service.impl.UserServiceImpl;
 
 import javax.validation.Valid;
@@ -19,10 +20,12 @@ public class FormController {
 
     private final UserServiceImpl userService;
     private final AddressServiceImpl addressService;
+    private final CategoryServiceImpl categoryService;
 
-    public FormController(UserServiceImpl userService, AddressServiceImpl addressService) {
+    public FormController(UserServiceImpl userService, AddressServiceImpl addressService, CategoryServiceImpl categoryService) {
         this.userService = userService;
         this.addressService = addressService;
+        this.categoryService = categoryService;
     }
 
     @ModelAttribute("currentUser")
@@ -32,7 +35,9 @@ public class FormController {
     }
 
     @GetMapping("/form")
-    public String appProfile() {
+    public String appProfile(Model model) {
+
+
         return "app/app-form";
     }
 

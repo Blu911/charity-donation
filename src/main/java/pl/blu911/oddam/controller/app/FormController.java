@@ -5,14 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import pl.blu911.oddam.domain.Address;
-import pl.blu911.oddam.domain.CurrentUser;
-import pl.blu911.oddam.domain.User;
+import pl.blu911.oddam.domain.*;
 import pl.blu911.oddam.service.impl.AddressServiceImpl;
 import pl.blu911.oddam.service.impl.CategoryServiceImpl;
 import pl.blu911.oddam.service.impl.UserServiceImpl;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/app")
@@ -34,9 +33,13 @@ public class FormController {
         model.addAttribute("currentUser", currentUser);
     }
 
-    @GetMapping("/form")
-    public String appProfile(Model model) {
+    @ModelAttribute("categoryList")
+    public List<Category> categoryList() {
+        return categoryService.findByParentId(4l);
+    }
 
+    @GetMapping("/form")
+    public String appProfile(@ModelAttribute Donation donation) {
 
         return "app/app-form";
     }

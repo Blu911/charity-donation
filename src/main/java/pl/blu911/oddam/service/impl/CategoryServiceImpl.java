@@ -17,6 +17,6 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public List<Category> findByParentId(Long id) {
-        return categoryRepository.findAllByParent(id);
+        return categoryRepository.findAllByParentId(id);
     }
 }

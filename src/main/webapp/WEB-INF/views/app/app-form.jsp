@@ -71,21 +71,10 @@
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
-
                 <div class="form-group form-group--checkbox">
-
-
                     <form:checkboxes path="whatToDonate" items="${categoryList}"
                                      itemLabel="name" itemValue="id" cssClass="checkbox"/>
-
-                        <%--<input type="checkbox"--%>
-                        <%--name="products"--%>
-                        <%--value="clothes-to-use"/>--%>
-
-                        <%--<span class="description">ubrania, które nadają się do ponownego użycia</span>--%>
-
                 </div>
-
 
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn next-step">Dalej</button>

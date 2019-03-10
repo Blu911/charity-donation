@@ -88,7 +88,7 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <input type="number" name="bags" step="1" min="1"/>
+                        <form:input path="quantity" type="number" name="bags" step="1" min="1"/>
                     </label>
                 </div>
 
@@ -103,13 +103,9 @@
                 <h3>Lokalizacja:</h3>
 
                 <div class="form-group form-group--dropdown">
-                    <select name="localization">
-                        <option value="0">- wybierz -</option>
-                        <option value="warsaw">Warszawa</option>
-                        <option value="wroclaw">Wrocław</option>
-                        <option value="poznan">Poznań</option>
-                        <option value="gdansk">Gdańsk</option>
-                    </select>
+                    <form:select path="institutionDetails.id" name="localization">
+                        <form:options items="${addressList}"/>
+                    </form:select>
                 </div>
 
                 <div class="form-section">

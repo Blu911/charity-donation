@@ -11,6 +11,7 @@ import pl.blu911.oddam.service.impl.CategoryServiceImpl;
 import pl.blu911.oddam.service.impl.UserServiceImpl;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -36,6 +37,14 @@ public class FormController {
     @ModelAttribute("categoryList")
     public List<Category> categoryList() {
         return categoryService.findByParentId(4l);
+    }
+
+    @ModelAttribute("categoryList")
+    public List<Address> institutionList() {
+        List<Address> addressList = new ArrayList<>();
+
+        List<User> institutions = userService.findAllByRole("ROLE_INSTITUTION");
+        return addressList;
     }
 
     @GetMapping("/form")

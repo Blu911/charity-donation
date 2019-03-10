@@ -39,11 +39,17 @@ public class FormController {
         return categoryService.findByParentId(4l);
     }
 
-    @ModelAttribute("categoryList")
-    public List<Address> institutionList() {
+    @ModelAttribute("addressList")
+    public List<Address> institutionAddresses() {
         List<Address> addressList = new ArrayList<>();
 
         List<User> institutions = userService.findAllByRole("ROLE_INSTITUTION");
+
+        institutions.forEach(item -> {
+            addressList.addAll(item.getAddresses());
+        });
+        System.out.println(addressList.size());
+
         return addressList;
     }
 

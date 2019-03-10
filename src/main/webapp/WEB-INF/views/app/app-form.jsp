@@ -104,7 +104,7 @@
 
                 <div class="form-group form-group--dropdown">
                     <form:select path="institutionDetails.id" name="localization">
-                        <form:options items="${addressList}"/>
+                        <form:options items="${addressList}" itemLabel="city"/>
                     </form:select>
                 </div>
 

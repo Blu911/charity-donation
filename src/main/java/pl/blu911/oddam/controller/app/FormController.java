@@ -34,29 +34,16 @@ public class FormController {
         model.addAttribute("currentUser", currentUser);
     }
 
-//    @ModelAttribute("whatToDonate")
-//    public List<Category> categoryList() {
-//        return categoryService.findByParentId(4l);
-//    }
-
-//    @ModelAttribute("addressList")
-//    public List<Address> institutionAddresses() {
-//        List<Address> addressList = new ArrayList<>();
-//        List<User> institutions = userService.findAllByRole("ROLE_INSTITUTION");
-//        institutions.forEach(item -> addressList.addAll(item.getAddresses()));
-//
-//
-//        return addressList;
-//    }
-
     @GetMapping("/form")
     public String appProfile(@ModelAttribute Donation donation, Model model) {
         List<Category> whatToDonateList = categoryService.findByParentId(4l);
         model.addAttribute("whatToDonate", whatToDonateList);
 
+        List<User> institutionList = userService.findAllByRole("ROLE_INSTITUTION");
+        model.addAttribute("institutions", institutionList);
+
         List<Address> addressList = new ArrayList<>();
-        List<User> institutions = userService.findAllByRole("ROLE_INSTITUTION");
-        institutions.forEach(item -> addressList.addAll(item.getAddresses()));
+        institutionList.forEach(item -> addressList.addAll(item.getAddresses()));
         model.addAttribute("institutionAddresses", addressList);
 
         List<Category> helpsWhoList = categoryService.findByParentId(2l);

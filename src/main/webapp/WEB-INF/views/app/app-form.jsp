@@ -72,7 +72,7 @@
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
                 <div class="form-group form-group--checkbox">
-                    <form:checkboxes path="whatToDonate" items="${categoryList}"
+                    <form:checkboxes path="whatToDonate" items="${whatToDonate}"
                                      itemLabel="name" itemValue="id" cssClass="checkbox"/>
                 </div>
 
@@ -103,8 +103,8 @@
                 <h3>Lokalizacja:</h3>
 
                 <div class="form-group form-group--dropdown">
-                    <form:select path="institutionDetails.id" name="localization">
-                        <form:options items="${addressList}" itemLabel="city"/>
+                    <form:select path="institutionDetails.id">
+                        <form:options items="${institutionAddresses}" itemLabel="city" itemValue="id"/>
                     </form:select>
                 </div>
 

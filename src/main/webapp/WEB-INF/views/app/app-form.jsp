@@ -146,9 +146,12 @@
             <!-- STEP 4 -->
             <div data-step="4">
                 <h3>Wybierz organizacje, której chcesz pomóc:</h3>
-                <form:select path="institutionDetails" cssClass="form-group form-group--checkbox">
-                    <form:options items="${institutions}" itemLabel="institutionName" itemValue="id"/>
-                </form:select>
+                <form:radiobuttons path="institutionDetails" cssClass="form-group form-group--checkbox"
+                                   items="${institutions}" itemLabel="institutionName" itemValue="id"/>
+
+                    <%--<form:select path="institutionDetails" cssClass="form-group form-group--checkbox">--%>
+                    <%--<form:options items="${institutions}" itemLabel="institutionName" itemValue="id"/>--%>
+                    <%--</form:select>--%>
 
                 <div class="form-group form-group--checkbox">
                     <label>

@@ -16,6 +16,7 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/app")
+@SessionAttributes("donation")
 public class FormController {
 
     private final UserServiceImpl userService;
@@ -34,24 +35,38 @@ public class FormController {
         model.addAttribute("currentUser", currentUser);
     }
 
-    @GetMapping("/form")
-    public String appProfile(@ModelAttribute Donation donation, Model model) {
+    @GetMapping("/form/step1")
+    public String appFormStep1(Model model) {
+        Donation donation = new Donation();
+        model.addAttribute("donation", donation);
+
         List<Category> whatToDonateList = categoryService.findByParentId(4l);
         model.addAttribute("whatToDonate", whatToDonateList);
 
-        List<User> institutionList = userService.findAllByRole("ROLE_INSTITUTION");
-        model.addAttribute("institutions", institutionList);
+//        List<User> institutionList = userService.findAllByRole("ROLE_INSTITUTION");
+//        model.addAttribute("institutions", institutionList);
+//
+//        List<Address> addressList = new ArrayList<>();
+//        institutionList.forEach(item -> addressList.addAll(item.getAddresses()));
+//        model.addAttribute("institutionAddresses", addressList);
+//
+//        List<Category> helpsWhoList = categoryService.findByParentId(2l);
+//        model.addAttribute("helpsWho", helpsWhoList);
 
-        List<Address> addressList = new ArrayList<>();
-        institutionList.forEach(item -> addressList.addAll(item.getAddresses()));
-        model.addAttribute("institutionAddresses", addressList);
-
-        List<Category> helpsWhoList = categoryService.findByParentId(2l);
-        model.addAttribute("helpsWho", helpsWhoList);
-
-
-        return "app/app-form";
+        return "app/form/app-form-step1";
     }
 
+    @PostMapping("/form/step1")
+    public String appFormStep1(@ModelAttribute("donation") Donation donation, Model model) {
+
+        model.addAttribute("donation", donation);
+        return "redirect:/app/form/step2";
+    }
+
+    @GetMapping("/form/step2")
+    public String appFormStep2(@ModelAttribute("donation") Donation donation, Model model) {
+        model.addAttribute("donation", donation);
+        return "app/form/app-form-step2";
+    }
 
 }

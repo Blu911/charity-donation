@@ -36,7 +36,7 @@ public class FormController {
         model.addAttribute("currentUser", currentUser);
     }
 
-    @GetMapping("/form/step1")
+    @GetMapping("/form")
     public String appFormStep1(Model model) {
 
         List<Category> whatToDonateList = categoryService.findByParentId(4l);
@@ -52,10 +52,10 @@ public class FormController {
         List<Category> helpsWhoList = categoryService.findByParentId(2l);
         model.addAttribute("helpsWho", helpsWhoList);
 
-        return "app/form/app-form-step1";
+        return "app/form/form";
     }
 
-    @PostMapping("/form/step1")
+    @PostMapping("/form")
     public String appFormStep1(@RequestBody DonationDto donation) {
         System.out.println(donation.getQuantity());
 

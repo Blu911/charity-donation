@@ -3,6 +3,7 @@
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fmt" uri="http://sargue.net/jsptags/time" %>
 
 <jsp:include page="../components/head.jsp"/>
 <body>
@@ -244,7 +245,7 @@
                     <div class="form-section--column">
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Data <input type="date" name="${pickUpDate}"/> </label>
+                            <label> Data <input type="date" name="${pickUpDate}"/></label>
                         </div>
 
                         <div class="form-group form-group--inline">

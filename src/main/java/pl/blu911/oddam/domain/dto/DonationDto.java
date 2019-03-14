@@ -11,7 +11,7 @@ import java.time.LocalTime;
 import java.util.List;
 
 @Data
-@ToString(exclude = {"userDetails", "institutionDetails", "whatToDonate", "pickUpAddress"})
+//@ToString(exclude = {"userDetails", "institutionDetails", "whatToDonate", "pickUpAddress"})
 public class DonationDto {
 
     private List<Category> whatToDonate;

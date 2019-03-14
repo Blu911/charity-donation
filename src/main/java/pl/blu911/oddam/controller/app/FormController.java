@@ -59,7 +59,7 @@ public class FormController {
 
     @PostMapping("/form")
     public String appFormStep1(@ModelAttribute DonationDto donation) {
-        System.out.println(donation.getQuantity());
+        System.out.println(donation.toString());
 
         return "redirect:/app";
     }

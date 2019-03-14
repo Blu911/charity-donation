@@ -6,6 +6,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.blu911.oddam.domain.*;
+import pl.blu911.oddam.domain.dto.DonationDto;
 import pl.blu911.oddam.service.impl.AddressServiceImpl;
 import pl.blu911.oddam.service.impl.CategoryServiceImpl;
 import pl.blu911.oddam.service.impl.UserServiceImpl;
@@ -37,36 +38,28 @@ public class FormController {
 
     @GetMapping("/form/step1")
     public String appFormStep1(Model model) {
-        Donation donation = new Donation();
-        model.addAttribute("donation", donation);
 
         List<Category> whatToDonateList = categoryService.findByParentId(4l);
         model.addAttribute("whatToDonate", whatToDonateList);
 
-//        List<User> institutionList = userService.findAllByRole("ROLE_INSTITUTION");
-//        model.addAttribute("institutions", institutionList);
-//
-//        List<Address> addressList = new ArrayList<>();
-//        institutionList.forEach(item -> addressList.addAll(item.getAddresses()));
-//        model.addAttribute("institutionAddresses", addressList);
-//
-//        List<Category> helpsWhoList = categoryService.findByParentId(2l);
-//        model.addAttribute("helpsWho", helpsWhoList);
+        List<User> institutionList = userService.findAllByRole("ROLE_INSTITUTION");
+        model.addAttribute("institutions", institutionList);
+
+        List<Address> addressList = new ArrayList<>();
+        institutionList.forEach(item -> addressList.addAll(item.getAddresses()));
+        model.addAttribute("institutionAddresses", addressList);
+
+        List<Category> helpsWhoList = categoryService.findByParentId(2l);
+        model.addAttribute("helpsWho", helpsWhoList);
 
         return "app/form/app-form-step1";
     }
 
     @PostMapping("/form/step1")
-    public String appFormStep1(@ModelAttribute("donation") Donation donation, Model model) {
+    public String appFormStep1(@RequestBody DonationDto donation) {
+        System.out.println(donation.getQuantity());
 
-        model.addAttribute("donation", donation);
-        return "redirect:/app/form/step2";
-    }
-
-    @GetMapping("/form/step2")
-    public String appFormStep2(@ModelAttribute("donation") Donation donation, Model model) {
-        model.addAttribute("donation", donation);
-        return "app/form/app-form-step2";
+        return "redirect:/app";
     }
 
 }

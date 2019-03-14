@@ -75,8 +75,7 @@
                         <label>
                             <input
                                     type="checkbox"
-                                    name="whatToDonate"
-                                    value="${what}"
+                                    name="whatToDonate{${what}}"
                             />
                             <span class="checkbox"></span>
                             <span class="description"
@@ -181,7 +180,7 @@
                 <c:forEach items="${institutions}" var="institution">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <input type="radio" name="institutionDetails" value="${institution}"/>
+                            <input type="radio" name="institutionDetails{${institution}}"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
                   <div class="title">
@@ -245,7 +244,7 @@
                     <div class="form-section--column">
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Data <input type="date" name="pickUpDate"/> </label>
+                            <label> Data <input type="date" name="${pickUpDate}"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
@@ -315,7 +314,6 @@
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
                     <button type="submit" class="btn">Potwierdzam</button>
-                    <input type="submit" value="Zapisz"/>
                 </div>
             </div>
 

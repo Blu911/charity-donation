@@ -35,7 +35,7 @@ public class Donation {
 
     @ManyToOne
     private Address pickUpAddress;
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
 
     private LocalTime pickUpTime;

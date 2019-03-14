@@ -2,6 +2,7 @@ package pl.blu911.oddam.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -34,7 +35,7 @@ public class Donation {
 
     @ManyToOne
     private Address pickUpAddress;
-
+    @DateTimeFormat(pattern = "dd-MM-yyyy")
     private LocalDate pickUpDate;
 
     private LocalTime pickUpTime;

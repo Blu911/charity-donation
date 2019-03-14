@@ -38,6 +38,8 @@ public class FormController {
 
     @GetMapping("/form")
     public String appFormStep1(Model model) {
+        DonationDto donationDto = new DonationDto();
+        model.addAttribute("donation", donationDto);
 
         List<Category> whatToDonateList = categoryService.findByParentId(4l);
         model.addAttribute("whatToDonate", whatToDonateList);
@@ -56,7 +58,7 @@ public class FormController {
     }
 
     @PostMapping("/form")
-    public String appFormStep1(@RequestBody DonationDto donation) {
+    public String appFormStep1(@ModelAttribute DonationDto donation) {
         System.out.println(donation.getQuantity());
 
         return "redirect:/app";

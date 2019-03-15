@@ -219,22 +219,34 @@ document.addEventListener("DOMContentLoaded", function() {
      * Update form front-end
      * Show next or previous section etc.
      */
+
+
     updateForm() {
       this.$step.innerText = this.currentStep;
 
       // TODO: Validation
 
-      this.slides.forEach(slide => {
-        slide.classList.remove("active");
+      var x, text;
+
+      // Get the value of the input field with id="numb"
+      x = document.getElementById("whatToDonate").value;
+
+      // If x is Not a Number or less than one or greater than 10
+      if (x === null || x === "") {
+        text = "Input not valid";
+      } else {
+        this.slides.forEach(slide = > {
+          slide.classList.remove("active");
 
         if (slide.dataset.step == this.currentStep) {
           slide.classList.add("active");
         }
       });
 
-      this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 6;
-      this.$step.parentElement.hidden = this.currentStep >= 6;
-
+        this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 6;
+        this.$step.parentElement.hidden = this.currentStep >= 6;
+      }
+      document.getElementById("demo").innerHTML = text;
       // TODO: get data from inputs and show them in summary
     }
 
@@ -255,6 +267,20 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
 });
+
+function myFunction() {
+  var x, text;
+
+  // Get the value of the input field with id="numb"
+  x = document.getElementById("whatToDonate").value;
+
+  // If x is Not a Number or less than one or greater than 10
+  if (x === null || x === "") {
+    text = "Input not valid";
+  }
+  document.getElementById("demo").innerHTML = text;
+
+}
 
 /**
  * Go back - button

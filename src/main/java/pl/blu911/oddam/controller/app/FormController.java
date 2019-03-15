@@ -68,9 +68,7 @@ public class FormController {
 
 
     @GetMapping("/temp")
-    public String appFormTemp(Model model) {
-        DonationDto donationDto = new DonationDto();
-        model.addAttribute("donation", donationDto);
+    public String appFormTemp(@ModelAttribute DonationDto donation, Model model) {
 
         List<Category> whatToDonateList = categoryService.findByParentId(4l);
         model.addAttribute("whatToDonate", whatToDonateList);
@@ -88,11 +86,12 @@ public class FormController {
         return "app/form/temp";
     }
 
-    @PostMapping("/form")
-    public String appFormTemp2(@ModelAttribute DonationDto donation, @RequestParam String[] whatToDonate) {
+    @PostMapping("/temp")
+    public String appFormTemp2(@Valid DonationDto donation, BindingResult result) {
         System.out.println(donation.toString());
-        System.out.println(Arrays.toString(whatToDonate));
-
+        if (result.hasErrors()) {
+            return "app/form/temp";
+        }
         return "redirect:/app";
     }
 }

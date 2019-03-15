@@ -67,13 +67,16 @@
         <div class="form--steps-counter">Krok <span>1</span>/5</div>
 
         <form:form method="post"
-                   modelAttribute="donation">
+                   modelAttribute="donation" class="myForm">
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
                 <div class="form-group form-group--checkbox">
                     <form:checkboxes path="whatToDonate" items="${whatToDonate}"
-                                     itemLabel="name" itemValue="id" cssClass="checkbox"/>
+                                     itemLabel="name" itemValue="id" cssClass="checkbox" id="whatToDonate"/>
+                    <form:errors path="whatToDonate"/>
+                    <div class="form-group form-group--checkbox">
+                        <p id="demo"></p>
                 </div>
 
                 <div class="form-group form-group--buttons">
@@ -89,6 +92,7 @@
                     <label>
                         Liczba 60l worków:
                         <form:input path="quantity" type="number" name="bags" step="1" min="1"/>
+                        <form:errors path="quantity"/>
                     </label>
                 </div>
 
@@ -146,40 +150,40 @@
             <!-- STEP 4 -->
             <div data-step="3">
                 <h3>Wybierz organizacje, której chcesz pomóc:</h3>
-                <form:radiobuttons path="institutionDetails" cssClass="form-group form-group--checkbox"
+                <form:radiobuttons path="institutionDetails"
                                    items="${institutions}" itemLabel="institutionName" itemValue="id"/>
-
+                <form:errors path="institutionDetails"/>
                     <%--<form:select path="institutionDetails" cssClass="form-group form-group--checkbox">--%>
                     <%--<form:options items="${institutions}" itemLabel="institutionName" itemValue="id"/>--%>
                     <%--</form:select>--%>
 
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="radio" name="organization" value="old"/>
-                        <span class="checkbox radio"></span>
-                        <span class="description">
-                  <div class="title">Fundacja “Bez domu”</div>
-                  <div class="subtitle">
-                    Cel i misja: Pomoc dla osób nie posiadających miejsca
-                    zamieszkania
-                  </div>
-                </span>
-                    </label>
-                </div>
+                    <%--<div class="form-group form-group--checkbox">--%>
+                    <%--<label>--%>
+                    <%--<input type="radio" name="organization" value="old"/>--%>
+                    <%--<span class="checkbox radio"></span>--%>
+                    <%--<span class="description">--%>
+                    <%--<div class="title">Fundacja “Bez domu”</div>--%>
+                    <%--<div class="subtitle">--%>
+                    <%--Cel i misja: Pomoc dla osób nie posiadających miejsca--%>
+                    <%--zamieszkania--%>
+                    <%--</div>--%>
+                    <%--</span>--%>
+                    <%--</label>--%>
+                    <%--</div>--%>
 
-                <div class="form-group form-group--checkbox">
-                    <label>
-                        <input type="radio" name="organization" value="old"/>
-                        <span class="checkbox radio"></span>
-                        <span class="description">
-                  <div class="title">Fundacja “Dla dzieci"</div>
-                  <div class="subtitle">
-                    Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji
-                    życiowej.
-                  </div>
-                </span>
-                    </label>
-                </div>
+                    <%--<div class="form-group form-group--checkbox">--%>
+                    <%--<label>--%>
+                    <%--<input type="radio" name="organization" value="old"/>--%>
+                    <%--<span class="checkbox radio"></span>--%>
+                    <%--<span class="description">--%>
+                    <%--<div class="title">Fundacja “Dla dzieci"</div>--%>
+                    <%--<div class="subtitle">--%>
+                    <%--Cel i misja: Pomoc osobom znajdującym się w trudnej sytuacji--%>
+                    <%--życiowej.--%>
+                    <%--</div>--%>
+                    <%--</span>--%>
+                    <%--</label>--%>
+                    <%--</div>--%>
 
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
@@ -215,7 +219,7 @@
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Kod pocztowy <form:input path="pickUpAddress.postcode" type="text" name="postcode"/>
+                                Kod pocztowy <form:input path="pickUpAddress.zipCode" type="text" name="postcode"/>
                             </label>
                         </div>
 
@@ -239,7 +243,7 @@
                         <div class="form-group form-group--inline">
                             <label>
                                 Uwagi dla kuriera
-                                <form:textarea path="pickUpComment" name="more_info" rows="5"> </form:textarea>
+                                <form:textarea path="pickUpComment" name="more_info" rows="5"/>
                             </label>
                         </div>
                     </div>
@@ -247,6 +251,7 @@
                 <div class="form-group form-group--buttons">
                     <button type="button" class="btn prev-step">Wstecz</button>
                     <button type="button" class="btn next-step">Dalej</button>
+                    <button type="submit" class="btn">Potwierdzam</button>
                 </div>
             </div>
 

@@ -13,6 +13,7 @@ import pl.blu911.oddam.service.impl.UserServiceImpl;
 
 import javax.validation.Valid;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -58,10 +59,40 @@ public class FormController {
     }
 
     @PostMapping("/form")
-    public String appFormStep1(@ModelAttribute DonationDto donation) {
+    public String appFormStep1(@ModelAttribute DonationDto donation, @RequestParam String[] whatToDonate) {
         System.out.println(donation.toString());
+        System.out.println(Arrays.toString(whatToDonate));
 
         return "redirect:/app";
     }
 
+
+    @GetMapping("/temp")
+    public String appFormTemp(Model model) {
+        DonationDto donationDto = new DonationDto();
+        model.addAttribute("donation", donationDto);
+
+        List<Category> whatToDonateList = categoryService.findByParentId(4l);
+        model.addAttribute("whatToDonate", whatToDonateList);
+
+        List<User> institutionList = userService.findAllByRole("ROLE_INSTITUTION");
+        model.addAttribute("institutions", institutionList);
+
+        List<Address> addressList = new ArrayList<>();
+        institutionList.forEach(item -> addressList.addAll(item.getAddresses()));
+        model.addAttribute("institutionAddresses", addressList);
+
+        List<Category> helpsWhoList = categoryService.findByParentId(2l);
+        model.addAttribute("helpsWho", helpsWhoList);
+
+        return "app/form/temp";
+    }
+
+    @PostMapping("/form")
+    public String appFormTemp2(@ModelAttribute DonationDto donation, @RequestParam String[] whatToDonate) {
+        System.out.println(donation.toString());
+        System.out.println(Arrays.toString(whatToDonate));
+
+        return "redirect:/app";
+    }
 }

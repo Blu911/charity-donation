@@ -13,7 +13,7 @@
 
             <ul class="slogan--buttons">
                 <li><a href="<c:url value="/app/form"/>" class="btn btn--large">Oddaj rzeczy</a></li>
-                <li><a href="#" class="btn btn--large">Zorganizuj zbiórkę</a></li>
+                <li><a href="<c:url value="/app/temp"/>" class="btn btn--large">Oddaj rzeczy temp</a></li>
             </ul>
         </div>
     </div>

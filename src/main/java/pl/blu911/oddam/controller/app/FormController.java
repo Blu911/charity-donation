@@ -68,7 +68,10 @@ public class FormController {
 
 
     @GetMapping("/temp")
-    public String appFormTemp(@ModelAttribute DonationDto donation, Model model) {
+    public String appFormTemp(Model model) {
+        DonationDto donationDto = new DonationDto();
+        model.addAttribute("donation", donationDto);
+
 
         List<Category> whatToDonateList = categoryService.findByParentId(4l);
         model.addAttribute("whatToDonate", whatToDonateList);

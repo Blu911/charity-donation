@@ -21,4 +21,6 @@
         <li><a href="<c:url value="/app#help"/>" class="btn btn--without-border">Fundacje i organizacje</a></li>
         <li><a href="<c:url value="/app#contact"/>" class="btn btn--without-border">Kontakt</a></li>
     </ul>
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Powrót</button>
 </nav>

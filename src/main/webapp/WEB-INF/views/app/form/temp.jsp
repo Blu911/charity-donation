@@ -67,16 +67,14 @@
         <div class="form--steps-counter">Krok <span>1</span>/5</div>
 
         <form:form method="post"
-                   modelAttribute="donation" class="myForm">
+                   modelAttribute="donation">
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
-                <div class="form-group form-group--checkbox">
+                <div class="form-group form-group--checkbox ">
                     <form:checkboxes path="whatToDonate" items="${whatToDonate}"
-                                     itemLabel="name" itemValue="id" cssClass="checkbox" id="whatToDonate"/>
+                                     itemLabel="name" itemValue="id" cssClass="checkbox"/>
                     <form:errors path="whatToDonate"/>
-                    <div class="form-group form-group--checkbox">
-                        <p id="demo"></p>
                 </div>
 
                 <div class="form-group form-group--buttons">
@@ -91,7 +89,7 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <form:input path="quantity" type="number" name="bags" step="1" min="1"/>
+                        <form:input path="quantity" type="number" step="1" min="1" id="a"/>
                         <form:errors path="quantity"/>
                     </label>
                 </div>
@@ -200,33 +198,38 @@
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
                             <label> Numer mieszkania <form:input path="pickUpAddress.houseNumber" type="number"
-                                                                 name="houseNumber"/>
+                                                                 name="houseNumber" step="1" min="0"/>
+                                <form:errors path="pickUpAddress.houseNumber"/>
                             </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label> Numer domu <form:input path="pickUpAddress.flatNumber" type="number"
-                                                           name="flatNumber"/> </label>
+                                                           name="flatNumber" step="1" min="0"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label> Ulica <form:input path="pickUpAddress.street" type="text" name="address"/> </label>
+                            <form:errors path="pickUpAddress.street"/>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label> Miasto <form:input path="pickUpAddress.city" type="text" name="city"/> </label>
+                            <form:errors path="pickUpAddress.city"/>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
                                 Kod pocztowy <form:input path="pickUpAddress.zipCode" type="text" name="postcode"/>
                             </label>
+                            <form:errors path="pickUpAddress.zipCode"/>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
                                 Numer telefonu <form:input path="pickUpPhoneNumber" type="phone" name="phone"/>
                             </label>
+                            <form:errors path="pickUpPhoneNumber"/>
                         </div>
                     </div>
 

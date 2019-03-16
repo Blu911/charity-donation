@@ -18,7 +18,6 @@
         </div>
     </div>
 </header>
-<button onclick="topFunction()" id="myBtn" title="Go to top">Powrót</button>
 <section class="stats" id="stats">
     <div class="container container--85">
         <div class="stats--item">

@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import javax.transaction.Transactional;
+import javax.validation.constraints.NotEmpty;
 
 @Data
 @Entity
@@ -18,8 +19,11 @@ public class Address {
 
     private int houseNumber;
     private int flatNumber;
+    @NotEmpty
     private String street;
+    @NotEmpty
     private String city;
+    @NotEmpty
     private String zipCode;
 
     @ManyToOne

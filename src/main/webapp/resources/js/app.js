@@ -234,19 +234,17 @@ document.addEventListener("DOMContentLoaded", function() {
 
       // TODO: Validation
 
+        this.slides.forEach(slide = > {
+            slide.classList.remove("active");
 
-      this.slides.forEach(slide = > {
-        slide.classList.remove("active");
-
-      if (slide.dataset.step == this.currentStep) {
-        slide.classList.add("active");
-      }
+        if (slide.dataset.step == this.currentStep) {
+            slide.classList.add("active");
+        }
     })
-      ;
+        ;
 
-      this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 6;
-      this.$step.parentElement.hidden = this.currentStep >= 6;
-
+        this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 6;
+        this.$step.parentElement.hidden = this.currentStep >= 6;
       // TODO: get data from inputs and show them in summary
     }
 
@@ -268,6 +266,14 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
+function isEmpty() {
+    var data = document.getElementById("name").value;
+    if (data.length === 0) {
+        alert("Name is required");
+        return false;
+    }
+    return true;
+}
 /**
  * Go back - button
  */

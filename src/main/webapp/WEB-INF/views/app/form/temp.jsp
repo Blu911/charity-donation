@@ -67,14 +67,15 @@
         <div class="form--steps-counter">Krok <span>1</span>/5</div>
 
         <form:form method="post"
-                   modelAttribute="donation">
+                   modelAttribute="donation" class="myForm">
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
                 <div class="form-group form-group--checkbox ">
                     <form:checkboxes path="whatToDonate" items="${whatToDonate}"
-                                     itemLabel="name" itemValue="id" cssClass="checkbox"/>
+                                     itemLabel="name" itemValue="id" cssClass="checkbox" id="id1"/>
                     <form:errors path="whatToDonate"/>
+                    <p id="demo"></p>
                 </div>
 
                 <div class="form-group form-group--buttons">
@@ -83,13 +84,13 @@
             </div>
 
             <!-- STEP 2 -->
-            <div data-step="2">
+            <div data-step="2" class="quantity">
                 <h3>Podaj liczbę 60l worków, w które spakowałeś/aś rzeczy:</h3>
 
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <form:input path="quantity" type="number" step="1" min="1" id="a"/>
+                        <form:input path="quantity" type="number" step="1" min="1" id="quantity"/>
                         <form:errors path="quantity"/>
                     </label>
                 </div>

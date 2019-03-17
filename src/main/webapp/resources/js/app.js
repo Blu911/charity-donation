@@ -198,6 +198,7 @@ document.addEventListener("DOMContentLoaded", function() {
     /**
      * All events that are happening in form
      */
+
     events() {
       // Next step
       this.$next.forEach(btn => {
@@ -266,14 +267,6 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
-function isEmpty() {
-    var data = document.getElementById("name").value;
-    if (data.length === 0) {
-        alert("Name is required");
-        return false;
-    }
-    return true;
-}
 /**
  * Go back - button
  */

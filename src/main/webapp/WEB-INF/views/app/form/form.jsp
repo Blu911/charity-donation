@@ -66,8 +66,7 @@
 
     <div class="form--steps-container">
         <div class="form--steps-counter">Krok <span>1</span>/5</div>
-
-        <form:form method="post" modelAttribute="donation">
+        <form method="post" id="form1">
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
@@ -76,7 +75,7 @@
                         <label>
                             <input
                                     type="checkbox"
-                                    name="whatToDonate"
+                                    name="whatToDonate[0].id"
                                     value="${what.id}"
                             />
                             <span class="checkbox"></span>
@@ -326,7 +325,7 @@
                     informacje o odbiorze.
                 </h2>
             </div>
-        </form:form>
+        </form>
     </div>
 </section>
 

@@ -69,7 +69,7 @@
         <form:form method="post"
                    modelAttribute="donation" class="myForm">
             <!-- STEP 1: class .active is switching steps -->
-            <div data-step="1" class="active">
+            <div data-step="1" class="active step1">
                 <h3>Zaznacz co chcesz oddać:</h3>
                 <div class="form-group form-group--checkbox ">
                     <form:checkboxes path="whatToDonate" items="${whatToDonate}"

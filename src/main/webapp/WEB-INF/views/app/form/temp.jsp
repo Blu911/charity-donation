@@ -75,7 +75,6 @@
                     <form:checkboxes path="whatToDonate" items="${whatToDonate}"
                                      itemLabel="name" itemValue="id" cssClass="checkbox" id="id1"/>
                     <form:errors path="whatToDonate"/>
-                    <p id="demo"></p>
                 </div>
 
                 <div class="form-group form-group--buttons">

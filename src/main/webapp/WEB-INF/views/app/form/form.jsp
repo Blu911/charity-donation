@@ -77,6 +77,7 @@
                                     type="checkbox"
                                     name="whatToDonate[0].id"
                                     value="${what.id}"
+                                    required
                             />
                             <span class="checkbox"></span>
                             <span class="description"

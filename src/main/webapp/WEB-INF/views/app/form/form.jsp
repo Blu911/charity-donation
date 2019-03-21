@@ -99,7 +99,7 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <input type="number" name="quantity" step="1" min="1"/>
+                        <input type="number" name="quantity" step="1" min="1" required/>
                     </label>
                 </div>
 
@@ -182,7 +182,7 @@
                 <c:forEach items="${institutions}" var="institution">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <input type="radio" name="institutionDetails{${institution}}"/>
+                            <input type="radio" name="institutionDetails{${institution}}" required/>
                             <span class="checkbox radio"></span>
                             <span class="description">
                   <div class="title">

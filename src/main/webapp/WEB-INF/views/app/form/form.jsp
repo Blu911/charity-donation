@@ -219,26 +219,26 @@
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Numer domu <input type="number" name="pickUpAddress.flatNumber"/> </label>
+                            <label> Numer domu <input type="number" name="pickUpAddress.flatNumber" required/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Ulica <input type="text" name="pickUpAddress.street"/> </label>
+                            <label> Ulica <input type="text" name="pickUpAddress.street" required/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Miasto <input type="text" name="pickUpAddress.city"/> </label>
+                            <label> Miasto <input type="text" name="pickUpAddress.city" required/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Kod pocztowy <input type="text" name="pickUpAddress.zipCode"/>
+                                Kod pocztowy <input type="text" name="pickUpAddress.zipCode" required/>
                             </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Numer telefonu <input type="phone" name="pickUpPhoneNumber"/>
+                                Numer telefonu <input type="phone" name="pickUpPhoneNumber" required/>
                             </label>
                         </div>
                     </div>
@@ -246,11 +246,11 @@
                     <div class="form-section--column">
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Data <input type="date" name="${pickUpDate}"/></label>
+                            <label> Data <input type="date" name="${pickUpDate}" required/></label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Godzina <input type="time" name="pickUpTime"/> </label>
+                            <label> Godzina <input type="time" name="pickUpTime" required/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">

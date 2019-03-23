@@ -11,6 +11,7 @@ import pl.blu911.oddam.service.impl.AddressServiceImpl;
 import pl.blu911.oddam.service.impl.CategoryServiceImpl;
 import pl.blu911.oddam.service.impl.UserServiceImpl;
 
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -18,7 +19,6 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/app")
-@SessionAttributes("donation")
 public class FormController {
 
     private final UserServiceImpl userService;
@@ -100,9 +100,7 @@ public class FormController {
 
 
     @GetMapping("/formStep1")
-    public String appFormStepOne(Model model) {
-        DonationDto donationDto = new DonationDto();
-        model.addAttribute("donation", donationDto);
+    public String step1get(Model model) {
 
         List<Category> whatToDonateList = categoryService.findByParentId(4l);
         model.addAttribute("whatToDonate", whatToDonateList);
@@ -111,11 +109,14 @@ public class FormController {
     }
 
     @PostMapping("/formStep1")
-    public String appFormStepOneError(@Valid DonationDto donation, BindingResult result) {
-        System.out.println(donation.toString());
-        if (result.hasErrors()) {
-            return "app/form/formStep1";
+    public String step1post(HttpSession session, @RequestParam(required = false) int[] selectedItemIds) {
+        if (selectedItemIds == null) {
+            session.setAttribute("errorMessage", "Wybierz co najmniej jedną kategorię");
+            return "redirect:/formStep1";
         }
+        session.setAttribute("selectedItemIds", selectedItemIds);
+        session.removeAttribute("errorMessage");
         return "redirect:/app";
     }
 }
+

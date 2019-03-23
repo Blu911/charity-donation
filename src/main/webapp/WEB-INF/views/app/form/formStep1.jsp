@@ -3,6 +3,7 @@
          pageEncoding="UTF-8" %>
 <%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <jsp:include page="../components/head.jsp"/>
 <body>
@@ -45,45 +46,40 @@
                 Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy
                 wiedzieć komu najlepiej je przekazać.
             </p>
-            <p data-step="2">
-                Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy
-                wiedzieć komu najlepiej je przekazać.
-            </p>
-            <p data-step="3">
-                Jeśli wiesz komu chcesz pomóc, możesz wpisać nazwę tej organizacji w
-                wyszukiwarce. Możesz też filtrować organizacje po ich lokalizacji
-                bądź celu ich pomocy.
-            </p>
-            <p data-step="4">
-                Na podstawie Twoich kryteriów oraz rzeczy, które masz do oddania
-                wybraliśmy organizacje, którym możesz pomóc. Wybierz jedną, do
-                której trafi Twoja przesyłka.
-            </p>
-            <p data-step="5">Podaj adres oraz termin odbioru rzeczy.</p>
         </div>
     </div>
 
     <div class="form--steps-container">
         <div class="form--steps-counter">Krok <span>1</span>/5</div>
 
-        <form:form method="post"
-                   modelAttribute="donation">
-            <form:errors path="*" cssClass="errorblock" element="div"/>
-
-            <!-- STEP 1: class .active is switching steps -->
-            <div data-step="1" class="active step1">
+        <form action="/app/formStep1" method="post">
+            <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
-                <div class="form-group form-group--checkbox ">
-                    <form:checkboxes path="whatToDonate" items="${whatToDonate}"
-                                     itemLabel="name" itemValue="id" cssClass="checkbox"/>
-                    <form:errors path="whatToDonate" cssClass="error"/>
-                </div>
+
+                <c:forEach items="${whatToDonate}" var="item">
+                    <div class="form-group form-group--checkbox">
+                        <label>
+                            <input type="checkbox" name="selectedItemIds" value="${item.id}"
+                                    <c:forEach items="${sessionScope.selectedItemIds}" var="id">
+                                        <c:if test="${fn:contains(id, item.id)}">checked</c:if>
+                                    </c:forEach>
+                            />
+                            <span class="checkbox"></span>
+                            <span class="description">${item.name}</span>
+                        </label>
+                    </div>
+                </c:forEach>
+
+                <p class="error-message">
+                    ${sessionScope.errorMessage}
+                </p>
 
                 <div class="form-group form-group--buttons">
-                    <button type="submit" class="btn next-step">Dalej</button>
+                    <input type="submit" class="btn next-step" value="Dalej"/>
                 </div>
             </div>
-        </form:form>
+        </form>
+
     </div>
 </section>
 

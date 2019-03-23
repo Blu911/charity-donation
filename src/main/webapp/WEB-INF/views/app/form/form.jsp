@@ -66,7 +66,7 @@
 
     <div class="form--steps-container">
         <div class="form--steps-counter">Krok <span>1</span>/5</div>
-        <form method="post" id="form1">
+        <form method="post" id="myForm">
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
@@ -75,9 +75,9 @@
                         <label>
                             <input
                                     type="checkbox"
-                                    name="whatToDonate[0].id"
-                                    value="${what.id}"
-                                    required
+                                    name="whatToDonate[0]"
+                                    value="${what}"
+                                    class="required"
                             />
                             <span class="checkbox"></span>
                             <span class="description"
@@ -329,5 +329,6 @@
         </form>
     </div>
 </section>
+
 
 <jsp:include page="../components/footer.jsp"/>

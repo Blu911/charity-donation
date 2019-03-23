@@ -97,4 +97,25 @@ public class FormController {
         }
         return "redirect:/app";
     }
+
+
+    @GetMapping("/formStep1")
+    public String appFormStepOne(Model model) {
+        DonationDto donationDto = new DonationDto();
+        model.addAttribute("donation", donationDto);
+
+        List<Category> whatToDonateList = categoryService.findByParentId(4l);
+        model.addAttribute("whatToDonate", whatToDonateList);
+
+        return "app/form/formStep1";
+    }
+
+    @PostMapping("/formStep1")
+    public String appFormStepOneError(@Valid DonationDto donation, BindingResult result) {
+        System.out.println(donation.toString());
+        if (result.hasErrors()) {
+            return "app/form/formStep1";
+        }
+        return "redirect:/app";
+    }
 }

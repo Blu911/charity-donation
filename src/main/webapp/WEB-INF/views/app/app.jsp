@@ -14,6 +14,7 @@
             <ul class="slogan--buttons">
                 <li><a href="<c:url value="/app/form"/>" class="btn btn--large">Oddaj rzeczy</a></li>
                 <li><a href="<c:url value="/app/temp"/>" class="btn btn--large">Oddaj rzeczy temp</a></li>
+                <li><a href="<c:url value="/app/formStep1"/>" class="btn btn--large">Oddaj rzeczy step 1</a></li>
             </ul>
         </div>
     </div>

@@ -17,13 +17,13 @@ import java.util.List;
 public class DonationDto {
 
     private List<Category> whatToDonate;
-    @Min(1)
+
     private int quantity;
 
     private User institutionDetails;
 
     private User userDetails;
-    @NotEmpty
+
     private Address pickUpAddress;
 
     private String pickUpDate;

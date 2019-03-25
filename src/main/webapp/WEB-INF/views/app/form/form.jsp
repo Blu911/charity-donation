@@ -65,17 +65,16 @@
     </div>
 
     <div class="form--steps-container">
-        <div class="form--steps-counter">Krok <span>1</span>/4</div>
-        <form method="post" id="myForm">
+        <div class="form--steps-counter">Krok <span>1</span>/5</div>
+        <form:form method="post" modelAttribute="donation">
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
                 <h3>Zaznacz co chcesz oddać:</h3>
-                <c:forEach items="${whatToDonate}" var="what">
+                <c:forEach items="${whatToDonate}" var="what" varStatus="loop">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <input
-                                    type="checkbox"
-                                    name="whatToDonate[]"
+                            <form:checkbox
+                                    path="whatToDonate[${loop.index}]"
                                     value="${what}"
                                     class="whatToDonate"
 
@@ -183,7 +182,7 @@
                 <c:forEach items="${institutions}" var="institution">
                     <div class="form-group form-group--checkbox">
                         <label>
-                            <input type="radio" name="institutionDetails[]" value="${institution}" class="institution"/>
+                            <form:radiobutton path="institutionDetails" value="${institution}" class="institution"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
                   <div class="title">
@@ -216,7 +215,7 @@
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
                             <label> Numer mieszkania <input type="number" name="pickUpAddress.flatNumber" step="1"
-                                                            min="1" id="flatNumber"/>
+                                                            id="flatNumber"/>
                             </label>
                             <span class="error" id="errorFlatNumber"></span>
                         </div>
@@ -337,7 +336,7 @@
                     informacje o odbiorze.
                 </h2>
             </div>
-        </form>
+        </form:form>
     </div>
 </section>
 

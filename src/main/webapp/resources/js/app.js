@@ -314,9 +314,11 @@ document.addEventListener("DOMContentLoaded", function () {
                         errorFlatNumber.innerHTML = "Wartość nie może być mniejsza niż 1";
                         errorCounter++;
                     } else {
+                        flatNumber.value = null;
                         errorFlatNumber.innerHTML = "";
                     }
                 } else {
+                    flatNumber.value = null;
                     errorFlatNumber.innerHTML = "";
                 }
 

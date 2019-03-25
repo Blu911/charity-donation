@@ -3,7 +3,6 @@ package pl.blu911.oddam.controller.app;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.blu911.oddam.domain.*;
 import pl.blu911.oddam.domain.dto.DonationDto;
@@ -11,10 +10,8 @@ import pl.blu911.oddam.service.impl.AddressServiceImpl;
 import pl.blu911.oddam.service.impl.CategoryServiceImpl;
 import pl.blu911.oddam.service.impl.UserServiceImpl;
 
-import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Controller
@@ -39,8 +36,8 @@ public class FormController {
 
     @GetMapping("/form")
     public String appFormStep1(Model model) {
-        DonationDto donationDto = new DonationDto();
-        model.addAttribute("donation", donationDto);
+
+        model.addAttribute("donation", new DonationDto());
 
         List<Category> whatToDonateList = categoryService.findByParentId(4l);
         model.addAttribute("whatToDonate", whatToDonateList);
@@ -59,64 +56,63 @@ public class FormController {
     }
 
     @PostMapping("/form")
-    public String appFormStep1(@ModelAttribute DonationDto donation, @RequestParam String[] whatToDonate) {
-        System.out.println(donation.toString());
-        System.out.println(Arrays.toString(whatToDonate));
+    public String appFormStep1(@ModelAttribute DonationDto donationDto) {
+        System.out.println(donationDto.toString());
 
         return "redirect:/app";
     }
 
 
-    @GetMapping("/temp")
-    public String appFormTemp(Model model) {
-        DonationDto donationDto = new DonationDto();
-        model.addAttribute("donation", donationDto);
-
-
-        List<Category> whatToDonateList = categoryService.findByParentId(4l);
-        model.addAttribute("whatToDonate", whatToDonateList);
-
-        List<User> institutionList = userService.findAllByRole("ROLE_INSTITUTION");
-        model.addAttribute("institutions", institutionList);
-
-        List<Address> addressList = new ArrayList<>();
-        institutionList.forEach(item -> addressList.addAll(item.getAddresses()));
-        model.addAttribute("institutionAddresses", addressList);
-
-        List<Category> helpsWhoList = categoryService.findByParentId(2l);
-        model.addAttribute("helpsWho", helpsWhoList);
-
-        return "app/form/temp";
-    }
-
-    @PostMapping("/temp")
-    public String appFormTemp2(@Valid DonationDto donation, BindingResult result) {
-        System.out.println(donation.toString());
-        if (result.hasErrors()) {
-            return "app/form/temp";
-        }
-        return "redirect:/app";
-    }
-
-
-    @GetMapping("/formStep1")
-    public String step1get(Model model) {
-
-        List<Category> whatToDonateList = categoryService.findByParentId(4l);
-        model.addAttribute("whatToDonate", whatToDonateList);
-
-        return "app/form/formStep1";
-    }
-
-    @PostMapping("/formStep1")
-    public String step1post(HttpSession session, @RequestParam(required = false) int[] selectedItemIds) {
-        if (selectedItemIds == null) {
-            session.setAttribute("errorMessage", "Wybierz co najmniej jedną kategorię");
-            return "redirect:/formStep1";
-        }
-        session.setAttribute("selectedItemIds", selectedItemIds);
-        session.removeAttribute("errorMessage");
-        return "redirect:/app";
-    }
+//    @GetMapping("/temp")
+//    public String appFormTemp(Model model) {
+//        DonationDto donationDto = new DonationDto();
+//        model.addAttribute("donation", donationDto);
+//
+//
+//        List<Category> whatToDonateList = categoryService.findByParentId(4l);
+//        model.addAttribute("whatToDonate", whatToDonateList);
+//
+//        List<User> institutionList = userService.findAllByRole("ROLE_INSTITUTION");
+//        model.addAttribute("institutions", institutionList);
+//
+//        List<Address> addressList = new ArrayList<>();
+//        institutionList.forEach(item -> addressList.addAll(item.getAddresses()));
+//        model.addAttribute("institutionAddresses", addressList);
+//
+//        List<Category> helpsWhoList = categoryService.findByParentId(2l);
+//        model.addAttribute("helpsWho", helpsWhoList);
+//
+//        return "app/form/temp";
+//    }
+//
+//    @PostMapping("/temp")
+//    public String appFormTemp2(@Valid DonationDto donation, BindingResult result) {
+//        System.out.println(donation.toString());
+//        if (result.hasErrors()) {
+//            return "app/form/temp";
+//        }
+//        return "redirect:/app";
+//    }
+//
+//
+//    @GetMapping("/formStep1")
+//    public String step1get(Model model) {
+//
+//        List<Category> whatToDonateList = categoryService.findByParentId(4l);
+//        model.addAttribute("whatToDonate", whatToDonateList);
+//
+//        return "app/form/formStep1";
+//    }
+//
+//    @PostMapping("/formStep1")
+//    public String step1post(HttpSession session, @RequestParam(required = false) int[] selectedItemIds) {
+//        if (selectedItemIds == null) {
+//            session.setAttribute("errorMessage", "Wybierz co najmniej jedną kategorię");
+//            return "redirect:/formStep1";
+//        }
+//        session.setAttribute("selectedItemIds", selectedItemIds);
+//        session.removeAttribute("errorMessage");
+//        return "redirect:/app";
+//    }
 }
 

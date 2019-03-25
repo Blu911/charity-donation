@@ -17,8 +17,8 @@ public class Address {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int houseNumber;
-    private int flatNumber;
+    private Integer houseNumber;
+    private Integer flatNumber;
     @NotEmpty
     private String street;
     @NotEmpty

@@ -50,22 +50,22 @@
                 Uzupełnij szczegóły dotyczące Twoich rzeczy. Dzięki temu będziemy
                 wiedzieć komu najlepiej je przekazać.
             </p>
+            <%--<p data-step="3">--%>
+            <%--Jeśli wiesz komu chcesz pomóc, możesz wpisać nazwę tej organizacji w--%>
+            <%--wyszukiwarce. Możesz też filtrować organizacje po ich lokalizacji--%>
+            <%--bądź celu ich pomocy.--%>
+            <%--</p>--%>
             <p data-step="3">
-                Jeśli wiesz komu chcesz pomóc, możesz wpisać nazwę tej organizacji w
-                wyszukiwarce. Możesz też filtrować organizacje po ich lokalizacji
-                bądź celu ich pomocy.
-            </p>
-            <p data-step="4">
                 Na podstawie Twoich kryteriów oraz rzeczy, które masz do oddania
                 wybraliśmy organizacje, którym możesz pomóc. Wybierz jedną, do
                 której trafi Twoja przesyłka.
             </p>
-            <p data-step="5">Podaj adres oraz termin odbioru rzeczy.</p>
+            <p data-step="4">Podaj adres oraz termin odbioru rzeczy.</p>
         </div>
     </div>
 
     <div class="form--steps-container">
-        <div class="form--steps-counter">Krok <span>1</span>/5</div>
+        <div class="form--steps-counter">Krok <span>1</span>/4</div>
         <form method="post" id="myForm">
             <!-- STEP 1: class .active is switching steps -->
             <div data-step="1" class="active">
@@ -176,7 +176,7 @@
             <%--</div>--%>
             <%--</div>--%>
 
-            <!-- STEP 4 -->
+            <!-- STEP 3 -->
             <div data-step="3">
                 <h2>Wybierz organizacje, której chcesz pomóc:</h2>
                 <c:forEach items="${institutions}" var="institution">
@@ -205,40 +205,46 @@
                 </div>
             </div>
 
-            <!-- STEP 5 -->
+            <!-- STEP 4 -->
             <div data-step="4">
-                <h3>Podaj adres oraz termin odbioru rzecz przez kuriera:</h3>
+                <h3>Podaj adres oraz termin odbioru rzeczy przez kuriera:</h3>
 
                 <div class="form-section form-section--columns">
                     <div class="form-section--column">
 
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Numer mieszkania <input type="number" name="pickUpAddress.houseNumber"/>
+                            <label> Numer mieszkania <input type="number" name="pickUpAddress.flatNumber" step="1"
+                                                            min="1" id="flatNumber"/>
                             </label>
+                            <span class="error" id="errorFlatNumber"></span>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Numer domu <input type="number" name="pickUpAddress.flatNumber" required/> </label>
+                            <label> Numer domu <input type="number" name="pickUpAddress.houseNumber" step="1" min="1"
+                                                      id="houseNumber"/> </label>
+                            <span class="error" id="errorHouseNumber"></span>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Ulica <input type="text" name="pickUpAddress.street" required/> </label>
+                            <label> Ulica <input type="text" name="pickUpAddress.street" id="street"/> </label>
+                            <span class="error" id="errorStreet"></span>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Miasto <input type="text" name="pickUpAddress.city" required/> </label>
+                            <label> Miasto <input type="text" name="pickUpAddress.city" id="city"/> </label>
+                            <span class="error" id="errorCity"></span>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Kod pocztowy <input type="text" name="pickUpAddress.zipCode" required/>
+                                Kod pocztowy <input type="text" name="pickUpAddress.zipCode"/>
                             </label>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Numer telefonu <input type="phone" name="pickUpPhoneNumber" required/>
+                                Numer telefonu <input type="tel" name="pickUpPhoneNumber"/>
                             </label>
                         </div>
                     </div>
@@ -246,11 +252,11 @@
                     <div class="form-section--column">
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Data <input type="date" name="${pickUpDate}" required/></label>
+                            <label> Data <input type="date" name="${pickUpDate}"/></label>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Godzina <input type="time" name="pickUpTime" required/> </label>
+                            <label> Godzina <input type="time" name="pickUpTime"/> </label>
                         </div>
 
                         <div class="form-group form-group--inline">
@@ -267,7 +273,7 @@
                 </div>
             </div>
 
-            <!-- STEP 6 -->
+            <!-- STEP 5 -->
             <div data-step="5">
                 <h3>Podsumowanie Twojej darowizny</h3>
 
@@ -319,8 +325,8 @@
                 </div>
             </div>
 
-            <!-- STEP 7 -->
-            <div data-step="7">
+            <!-- STEP 6 -->
+            <div data-step="6">
                 <h2>
                     Dziękujemy za przesłanie formularza Na maila prześlemy wszelkie
                     informacje o odbiorze.

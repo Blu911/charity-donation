@@ -225,7 +225,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 this.currentStep++;
                 this.updateForm();
             }
-
         })
             ;
         })
@@ -247,6 +246,7 @@ document.addEventListener("DOMContentLoaded", function () {
         )
             ;
         }
+
         /**
          * Validate form front-end
          */
@@ -287,9 +287,54 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (countChecked > 0) {
                     return true;
                 } else {
-                    alert("Zaznacz jedną z opcji");
+                    alert("Zaznacz jedną z organizacji");
                     return false;
                 }
+            } else if (this.currentStep === 4) {
+                var houseNumber = document.getElementById("houseNumber").value;
+                var flatNumber = document.getElementById("flatNumber").value;
+                var street = document.getElementById("street").value;
+                var city = document.getElementById("city").value;
+
+                var errorCounter = 0;
+
+                if (houseNumber === "") {
+                    document.getElementById('errorHouseNumber').innerHTML = "Pole nie może być puste";
+                    errorCounter++;
+                } else if (houseNumber <= 0) {
+                    document.getElementById('errorHouseNumber').innerHTML = "Wartość nie może być mniejsza niż 1";
+                    errorCounter++;
+                } else {
+                    document.getElementById('errorHouseNumber').innerHTML = "";
+                }
+
+                if (flatNumber !== "") {
+                    if (flatNumber <= 0) {
+                        document.getElementById('errorFlatNumber').innerHTML = "Wartość nie może być mniejsza niż 1";
+                        errorCounter++;
+                    } else {
+                        document.getElementById('errorFlatNumber').innerHTML = "";
+                    }
+                } else {
+                    document.getElementById('errorFlatNumber').innerHTML = "";
+                }
+
+                if (street === "") {
+                    document.getElementById('errorStreet').innerHTML = "Pole nie może być puste";
+                    errorCounter++;
+                } else {
+                    document.getElementById('errorStreet').innerHTML = "";
+                }
+
+                if (city === "") {
+                    document.getElementById('errorCity').innerHTML = "Pole nie może być puste";
+                    errorCounter++;
+                } else {
+                    document.getElementById('errorCity').innerHTML = "";
+                }
+
+                return errorCounter <= 0;
+
             }
         }
 

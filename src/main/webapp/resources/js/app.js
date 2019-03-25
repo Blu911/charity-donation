@@ -348,6 +348,34 @@ document.addEventListener("DOMContentLoaded", function () {
                     errorZipCode.innerHTML = "";
                 }
 
+
+                var tel = document.getElementById("tel");
+                var errorTel = document.getElementById('errorTel');
+                if (!tel.value.match(/^(?:\(?\?)?(?:[-\.\(\)\s]*(\d)){9}\)?$/)) {
+                    errorTel.innerHTML = "Pole musi zawierać liczby w formacie XXX-XXX-XXX";
+                    errorCounter++;
+                } else {
+                    errorTel.innerHTML = "";
+                }
+
+                var date = document.getElementById("date");
+                var errorDate = document.getElementById('errorDate');
+                if (!date.value) {
+                    errorDate.innerHTML = "Wybierz datę";
+                    errorCounter++;
+                } else {
+                    errorDate.innerHTML = "";
+                }
+
+                var time = document.getElementById("time");
+                var errorTime = document.getElementById('errorTime');
+                if (!time.value) {
+                    errorTime.innerHTML = "Wybierz godzinę";
+                    errorCounter++;
+                } else {
+                    errorTime.innerHTML = "";
+                }
+
                 return errorCounter <= 0;
 
             }

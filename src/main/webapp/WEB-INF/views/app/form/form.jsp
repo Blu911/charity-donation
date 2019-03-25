@@ -246,19 +246,22 @@
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Numer telefonu <input type="tel" name="pickUpPhoneNumber"/>
+                                Numer telefonu <input type="tel" name="pickUpPhoneNumber" id="tel"/>
                             </label>
+                            <span class="error" id="errorTel"></span>
                         </div>
                     </div>
 
                     <div class="form-section--column">
                         <h4>Termin odbioru</h4>
                         <div class="form-group form-group--inline">
-                            <label> Data <input type="date" name="${pickUpDate}"/></label>
+                            <label> Data <input type="date" name="pickUpDate" id="date"/></label>
+                            <span class="error" id="errorDate"></span>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Godzina <input type="time" name="pickUpTime"/> </label>
+                            <label> Godzina <input type="time" name="pickUpTime" id="time"/> </label>
+                            <span class="error" id="errorTime"></span>
                         </div>
 
                         <div class="form-group form-group--inline">

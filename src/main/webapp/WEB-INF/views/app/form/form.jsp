@@ -75,9 +75,10 @@
                         <label>
                             <input
                                     type="checkbox"
-                                    name="whatToDonate[0]"
+                                    name="whatToDonate[]"
                                     value="${what}"
                                     class="whatToDonate"
+
                             />
                             <span class="checkbox"></span>
                             <span class="description"
@@ -238,8 +239,9 @@
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Kod pocztowy <input type="text" name="pickUpAddress.zipCode"/>
+                                Kod pocztowy <input type="text" name="pickUpAddress.zipCode" id="zipCode"/>
                             </label>
+                            <span class="error" id="errorZipCode"></span>
                         </div>
 
                         <div class="form-group form-group--inline">

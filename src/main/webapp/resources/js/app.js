@@ -267,6 +267,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     alert("Zaznacz co najmniej jedną z opcji");
                     return false;
                 }
+
             } else if (this.currentStep === 2) {
                 // Form Second Step
                 var quantityElement = document.getElementById("bagQuantity");
@@ -276,7 +277,9 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else {
                     return true;
                 }
+
             } else if (this.currentStep === 3) {
+                // Form Third Step
                 var radioElements = document.getElementsByClassName("institution");
                 var countChecked = 0;
                 for (var i = 0; i < radioElements.length; i++) {
@@ -290,47 +293,59 @@ document.addEventListener("DOMContentLoaded", function () {
                     alert("Zaznacz jedną z organizacji");
                     return false;
                 }
-            } else if (this.currentStep === 4) {
-                var houseNumber = document.getElementById("houseNumber").value;
-                var flatNumber = document.getElementById("flatNumber").value;
-                var street = document.getElementById("street").value;
-                var city = document.getElementById("city").value;
 
+            } else if (this.currentStep === 4) {
+                // Form Fourth Step
                 var errorCounter = 0;
 
-                if (houseNumber === "") {
-                    document.getElementById('errorHouseNumber').innerHTML = "Pole nie może być puste";
-                    errorCounter++;
-                } else if (houseNumber <= 0) {
-                    document.getElementById('errorHouseNumber').innerHTML = "Wartość nie może być mniejsza niż 1";
+                var houseNumber = document.getElementById("houseNumber");
+                var errorHouseNumber = document.getElementById('errorHouseNumber');
+                if (!houseNumber.value.match(/^\d+$/)) {
+                    errorHouseNumber.innerHTML = "Wartość nie może być mniejsza niż 1";
                     errorCounter++;
                 } else {
-                    document.getElementById('errorHouseNumber').innerHTML = "";
+                    errorHouseNumber.innerHTML = "";
                 }
 
-                if (flatNumber !== "") {
-                    if (flatNumber <= 0) {
-                        document.getElementById('errorFlatNumber').innerHTML = "Wartość nie może być mniejsza niż 1";
+                var flatNumber = document.getElementById("flatNumber");
+                var errorFlatNumber = document.getElementById('errorFlatNumber');
+                if (flatNumber.value !== "") {
+                    if (!flatNumber.value.match(/^\d+$/)) {
+                        errorFlatNumber.innerHTML = "Wartość nie może być mniejsza niż 1";
                         errorCounter++;
                     } else {
-                        document.getElementById('errorFlatNumber').innerHTML = "";
+                        errorFlatNumber.innerHTML = "";
                     }
                 } else {
-                    document.getElementById('errorFlatNumber').innerHTML = "";
+                    errorFlatNumber.innerHTML = "";
                 }
 
-                if (street === "") {
-                    document.getElementById('errorStreet').innerHTML = "Pole nie może być puste";
+                var street = document.getElementById("street");
+                var errorStreet = document.getElementById('errorStreet');
+                if (!street.value.match(/^[a-zA-Z\u0080-\u024F\s\/\-\)\(\`\.\"\']+$/)) {
+                    errorStreet.innerHTML = "Nazwa ulicy jest nie poprawna";
                     errorCounter++;
                 } else {
-                    document.getElementById('errorStreet').innerHTML = "";
+                    errorStreet.innerHTML = "";
                 }
 
-                if (city === "") {
-                    document.getElementById('errorCity').innerHTML = "Pole nie może być puste";
+
+                var city = document.getElementById("city");
+                var errorCity = document.getElementById('errorCity');
+                if (!city.value.match(/^[a-zA-Z\u0080-\u024F\s\/\-\)\(\`\.\"\']+$/)) {
+                    errorCity.innerHTML = "Nazwa miasta jest nie poprawna";
                     errorCounter++;
                 } else {
-                    document.getElementById('errorCity').innerHTML = "";
+                    errorCity.innerHTML = "";
+                }
+
+                var zipCode = document.getElementById("zipCode");
+                var errorZipCode = document.getElementById('errorZipCode');
+                if (!zipCode.value.match(/^[\d]{2}-[\d]{3}$/)) {
+                    errorZipCode.innerHTML = "Pole musi zawierać liczby w formacie XX-XXX";
+                    errorCounter++;
+                } else {
+                    errorZipCode.innerHTML = "";
                 }
 
                 return errorCounter <= 0;

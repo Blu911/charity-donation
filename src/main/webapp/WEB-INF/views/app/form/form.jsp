@@ -77,6 +77,7 @@
                                     path="whatToDonate[${loop.index}]"
                                     value="${what}"
                                     class="whatToDonate"
+                                    id="${what.name}"
 
                             />
                             <span class="checkbox"></span>
@@ -288,7 +289,7 @@
                             <li>
                                 <span class="icon icon-bag"></span>
                                 <span class="summary--text"
-                                >4 worki ubrań w dobrym stanie dla dzieci</span
+                                ><span id="numberOfBags"></span> worki <span id="what"></span></span
                                 >
                             </li>
 

@@ -401,6 +401,33 @@ document.addEventListener("DOMContentLoaded", function () {
             this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 6;
             this.$step.parentElement.hidden = this.currentStep >= 6;
             // TODO: get data from inputs and show them in summary
+
+            if (this.currentStep === 5) {
+                var checkboxElements = document.getElementsByClassName("whatToDonate");
+                var quantityElement = document.getElementById("bagQuantity");
+                var radioElements = document.getElementsByClassName("institution");
+
+                var houseNumber = document.getElementById("houseNumber");
+                var flatNumber = document.getElementById("flatNumber");
+                var street = document.getElementById("street");
+                var city = document.getElementById("city");
+                var zipCode = document.getElementById("zipCode");
+                var tel = document.getElementById("tel");
+                var date = document.getElementById("date");
+                var time = document.getElementById("time");
+
+                var numberOfBags = document.getElementById('numberOfBags');
+                numberOfBags.innerHTML = quantityElement.value + " ";
+
+                var what = document.getElementById('what');
+                for (var i = 0; i < checkboxElements.length; i++) {
+                    if (checkboxElements[i].checked) {
+                        what.innerHTML += checkboxElements[i].id + " + ";
+                    }
+                }
+
+
+            }
         }
 
         /**

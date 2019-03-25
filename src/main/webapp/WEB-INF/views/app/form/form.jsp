@@ -77,7 +77,6 @@
                                     type="checkbox"
                                     name="whatToDonate[0]"
                                     value="${what}"
-                                    required
                                     class="whatToDonate"
                             />
                             <span class="checkbox"></span>
@@ -100,7 +99,7 @@
                 <div class="form-group form-group--inline">
                     <label>
                         Liczba 60l worków:
-                        <input type="number" name="quantity" step="1" min="1" required/>
+                        <input type="number" name="quantity" step="1" min="1" id="bagQuantity"/>
                     </label>
                 </div>
 

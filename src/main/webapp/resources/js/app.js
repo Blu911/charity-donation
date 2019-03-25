@@ -247,29 +247,43 @@ document.addEventListener("DOMContentLoaded", function () {
         )
             ;
         }
+        /**
+         * Validate form front-end
+         */
+        validate() {
+
+            if (this.currentStep === 1) {
+                // Form First Step
+                var checkboxElements = document.getElementsByClassName("whatToDonate");
+                var countChecked = 0;
+                for (var i = 0; i < checkboxElements.length; i++) {
+                    if (checkboxElements[i].checked) {
+                        countChecked++
+                    }
+                }
+                if (countChecked > 0) {
+                    return true;
+                } else {
+                    alert("Zaznacz co najmniej jedną z opcji");
+                    return false;
+                }
+            } else if (this.currentStep === 2) {
+                // Form Second Step
+                var quantityElement = document.getElementById("bagQuantity");
+                if (quantityElement.value <= 0) {
+                    alert("Minimalna ilośc worków to 1");
+                    return false;
+                } else {
+                    return true;
+                }
+            }
+        }
 
         /**
          * Update form front-end
          * Show next or previous section etc.
          */
-        validate() {
-            var inputElements = document.getElementsByClassName("whatToDonate");
-            var countChecked = 0;
-            for (var i = 0; i < inputElements.length; i++) {
-                if (inputElements[i].checked) {
-                    countChecked++
-                }
-            }
-            if (countChecked > 0) {
-                return true;
-            } else {
-                alert("Zaznacz co najmniej jedną z opcji");
-                return false;
-            }
-        }
-
         updateForm() {
-
             this.$step.innerText = this.currentStep;
             this.slides.forEach(slide = > {
                 slide.classList.remove("active");

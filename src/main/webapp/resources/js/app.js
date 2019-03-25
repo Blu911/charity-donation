@@ -221,8 +221,11 @@ document.addEventListener("DOMContentLoaded", function () {
             this.$next.forEach(btn = > {
                 btn.addEventListener("click", e = > {
                     e.preventDefault();
-            this.currentStep++;
-            this.updateForm();
+            if (this.validate()) {
+                this.currentStep++;
+                this.updateForm();
+            }
+
         })
             ;
         })
@@ -249,27 +252,36 @@ document.addEventListener("DOMContentLoaded", function () {
          * Update form front-end
          * Show next or previous section etc.
          */
-        updateForm() {
-            // TODO: Validation
-
-            const whatToDonate = document.getElementById('whatToDonate');
-
-            if (!whatToDonate.checked) {
-                alert("Zaznacz checkboksa!");
-            } else {
-                this.$step.innerText = this.currentStep;
-                this.slides.forEach(slide = > {
-                    slide.classList.remove("active");
-
-                if (slide.dataset.step == this.currentStep) {
-                    slide.classList.add("active");
+        validate() {
+            var inputElements = document.getElementsByClassName("whatToDonate");
+            var countChecked = 0;
+            for (var i = 0; i < inputElements.length; i++) {
+                if (inputElements[i].checked) {
+                    countChecked++
                 }
-            })
-                ;
-
-                this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 6;
-                this.$step.parentElement.hidden = this.currentStep >= 6;
             }
+            if (countChecked > 0) {
+                return true;
+            } else {
+                alert("Zaznacz co najmniej jedną z opcji");
+                return false;
+            }
+        }
+
+        updateForm() {
+
+            this.$step.innerText = this.currentStep;
+            this.slides.forEach(slide = > {
+                slide.classList.remove("active");
+
+            if (slide.dataset.step == this.currentStep) {
+                slide.classList.add("active");
+            }
+        })
+            ;
+
+            this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 6;
+            this.$step.parentElement.hidden = this.currentStep >= 6;
             // TODO: get data from inputs and show them in summary
         }
 

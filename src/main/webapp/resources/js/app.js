@@ -276,6 +276,20 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else {
                     return true;
                 }
+            } else if (this.currentStep === 3) {
+                var radioElements = document.getElementsByClassName("institution");
+                var countChecked = 0;
+                for (var i = 0; i < radioElements.length; i++) {
+                    if (radioElements[i].checked) {
+                        countChecked++
+                    }
+                }
+                if (countChecked > 0) {
+                    return true;
+                } else {
+                    alert("Zaznacz jedną z opcji");
+                    return false;
+                }
             }
         }
 

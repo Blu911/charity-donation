@@ -314,11 +314,9 @@ document.addEventListener("DOMContentLoaded", function () {
                         errorFlatNumber.innerHTML = "Wartość nie może być mniejsza niż 1";
                         errorCounter++;
                     } else {
-                        flatNumber.value = null;
                         errorFlatNumber.innerHTML = "";
                     }
                 } else {
-                    flatNumber.value = null;
                     errorFlatNumber.innerHTML = "";
                 }
 
@@ -441,6 +439,36 @@ document.addEventListener("DOMContentLoaded", function () {
                         }
                     }
                 }
+
+                var institutionType = document.getElementById('institutionType');
+                var institutionName = document.getElementById('institutionName');
+                var institutionCity = document.getElementById('institutionCity');
+                for (var i = 0; i < radioElements.length; i++) {
+                    if (radioElements[i].checked) {
+                        institutionType.innerHTML = document.getElementById('institutionTypeRadio' + i).innerHTML;
+                        institutionName.innerHTML = document.getElementById('institutionNameRadio' + i).innerHTML;
+                        institutionCity.innerHTML = document.getElementById('institutionAddressRadio' + i).innerHTML;
+                    }
+                }
+
+
+                var summaryStreet = document.getElementById('summaryStreet');
+                var summaryHouse = document.getElementById('summaryHouse');
+                var summaryFlat = document.getElementById('summaryFlat');
+
+                summaryStreet.innerHTML = street.value;
+                summaryHouse.innerHTML = houseNumber.value;
+                if (flatNumber.value.match(/^\d+$/)) {
+                    summaryFlat.innerHTML = "/" + flatNumber.value;
+                }
+
+                var summaryCity = document.getElementById('summaryCity');
+                var summaryZipCode = document.getElementById('summaryZipCode');
+                var summaryTel = document.getElementById('summaryTel');
+
+                summaryCity.innerHTML = city.value;
+                summaryZipCode.innerHTML = zipCode.value;
+                summaryTel.innerHTML = tel.value;
 
             }
         }

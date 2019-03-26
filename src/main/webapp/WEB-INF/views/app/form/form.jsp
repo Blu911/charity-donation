@@ -180,17 +180,17 @@
             <!-- STEP 3 -->
             <div data-step="3">
                 <h2>Wybierz organizacje, której chcesz pomóc:</h2>
-                <c:forEach items="${institutions}" var="institution">
+                <c:forEach items="${institutions}" var="institution" varStatus="loop">
                     <div class="form-group form-group--checkbox">
                         <label>
                             <form:radiobutton path="institutionDetails" value="${institution}" class="institution"/>
                             <span class="checkbox radio"></span>
                             <span class="description">
                   <div class="title">
-                          ${institution.institutionType.name}
-                          "${institution.institutionName}" -
+                          <span id="institutionTypeRadio${loop.index}">${institution.institutionType.name}</span>
+                          <span id="institutionNameRadio${loop.index}">"${institution.institutionName}"</span> -
                         <c:forEach items="${institution.addresses}" var="address">
-                            ${address.city}
+                            <span id="institutionAddressRadio${loop.index}">${address.city}</span>
                         </c:forEach>
                   </div>
                   <div class="subtitle">
@@ -296,7 +296,8 @@
                             <li>
                                 <span class="icon icon-hand"></span>
                                 <span class="summary--text"
-                                >Dla fundacji "Mam marzenie" w Warszawie</span
+                                >Dla <span id="institutionType"></span> <span id="institutionName"></span> w <span
+                                        id="institutionCity"></span></span
                                 >
                             </li>
                         </ul>
@@ -306,10 +307,11 @@
                         <div class="form-section--column">
                             <h4>Adres odbioru:</h4>
                             <ul>
-                                <li>Prosta 51</li>
-                                <li>Warszawa</li>
-                                <li>99-098</li>
-                                <li>123 456 789</li>
+                                <li><span id="summaryStreet"></span> <span id="summaryHouse"> </span><span
+                                        id="summaryFlat"></span></li>
+                                <li><span id="summaryCity"></span></li>
+                                <li><span id="summaryZipCode"></span></li>
+                                <li><span id="summaryTel"></span></li>
                             </ul>
                         </div>
 

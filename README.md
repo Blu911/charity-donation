@@ -15,11 +15,16 @@ The aim of the project is to create a place where everyone can give unnecessary 
 * Lombok
 
 ### Few sreenshots from the app
+Main page
 ![Main_page](screens/Oddam.png)
+
+User donation form
+![User_page_form1](screens/Oddam_user_form1.png)
+![User_page_form2](screens/Oddam_user_form2.png)
+![User_page_form3](screens/Oddam_user_form3.png)
+
+Admin panel
 ![Admin_panel_users_view](screens/Oddam_admin_users.png)
 ![Admin_panel_institutions_view](screens/Oddam_admin_institutions.png)
 ![Admin_panel_gifts_view](screens/Oddam_admin_gifts.png)
 ![Admin_panel_gift_detail_view](screens/Oddam_admin_gift_details.png)
-![User_page_form1](screens/Oddam_user_form1.png)
-![User_page_form2](screens/Oddam_user_form2.png)
-![User_page_form3](screens/Oddam_user_form3.png)

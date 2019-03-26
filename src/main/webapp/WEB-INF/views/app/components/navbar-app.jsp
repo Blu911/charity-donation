@@ -8,8 +8,7 @@
             Witaj ${currentUser.username}
             <ul class="dropdown">
                 <li><a href="<c:url value="/app/profile"/>">Profil</a></li>
-                <li><a href="#">Ustawienia</a></li>
-                <li><a href="#">Moje zbiórki</a></li>
+                <li><a href="#">Moje dary</a></li>
                 <li><a href="<c:url value="/logout"/>">Wyloguj</a></li>
             </ul>
         </li>

@@ -417,15 +417,30 @@ document.addEventListener("DOMContentLoaded", function () {
                 var time = document.getElementById("time");
 
                 var numberOfBags = document.getElementById('numberOfBags');
-                numberOfBags.innerHTML = quantityElement.value + " ";
+                if (quantityElement.value < 2) {
+                    numberOfBags.innerHTML = quantityElement.value + " worek ";
+                } else if (quantityElement.value < 5) {
+                    numberOfBags.innerHTML = quantityElement.value + " worki ";
+                } else {
+                    numberOfBags.innerHTML = quantityElement.value + " worków ";
+                }
 
                 var what = document.getElementById('what');
                 for (var i = 0; i < checkboxElements.length; i++) {
                     if (checkboxElements[i].checked) {
-                        what.innerHTML += checkboxElements[i].id + " + ";
+                        if (checkboxElements[i].id === "27") {
+                            what.innerHTML += "ubrań które nadają się do ponownego użycia ";
+                        } else if (checkboxElements[i].id === "28") {
+                            what.innerHTML += "ubrań, do wyrzucenia ";
+                        } else if (checkboxElements[i].id === "29") {
+                            what.innerHTML += "zabawek ";
+                        } else if (checkboxElements[i].id === "30") {
+                            what.innerHTML += "książek ";
+                        } else if (checkboxElements[i].id === "31") {
+                            what.innerHTML += "innych rzeczy ";
+                        }
                     }
                 }
-
 
             }
         }
@@ -445,6 +460,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const form = document.querySelector(".form--steps");
     if (form !== null) {
         new FormSteps(form);
+
     }
 
 });

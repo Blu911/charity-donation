@@ -76,11 +76,11 @@
                             <form:checkbox
                                     path="whatToDonate[${loop.index}]"
                                     value="${what}"
-                                    class="whatToDonate"
-                                    id="${what.name}"
+                                    class="whatToDonate checkbox"
+                                    id="${what.id}"
 
                             />
-                            <span class="checkbox"></span>
+                                <%--<span class="checkbox"></span>--%>
                             <span class="description"
                             >${what.name}</span
                             >
@@ -289,7 +289,7 @@
                             <li>
                                 <span class="icon icon-bag"></span>
                                 <span class="summary--text"
-                                ><span id="numberOfBags"></span> worki <span id="what"></span></span
+                                ><span id="numberOfBags"></span><span id="what"></span></span
                                 >
                             </li>
 

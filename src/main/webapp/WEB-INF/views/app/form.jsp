@@ -5,10 +5,10 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="fmt" uri="http://sargue.net/jsptags/time" %>
 
-<jsp:include page="../components/head.jsp"/>
+<jsp:include page="components/head.jsp"/>
 <body>
 <header class="header--form-page">
-    <jsp:include page="../components/navbar-app.jsp"/>
+    <jsp:include page="components/navbar-app.jsp"/>
 
     <div class="slogan container container--90">
         <div class="slogan--item">
@@ -344,4 +344,4 @@
 </section>
 
 
-<jsp:include page="../components/footer.jsp"/>
+<jsp:include page="components/footer.jsp"/>

@@ -6,7 +6,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.blu911.oddam.domain.*;
 import pl.blu911.oddam.domain.dto.DonationDto;
-import pl.blu911.oddam.service.impl.AddressServiceImpl;
 import pl.blu911.oddam.service.impl.CategoryServiceImpl;
 import pl.blu911.oddam.service.impl.UserServiceImpl;
 
@@ -47,8 +46,10 @@ public class FormController {
         institutionList.forEach(item -> addressList.addAll(item.getAddresses()));
         model.addAttribute("institutionAddresses", addressList);
 
-        return "app/form/form";
+        return "app/form";
     }
+
+    //TODO: save donation to DB together with current user details
 
     @PostMapping("/form")
     public String appFormStep1(@ModelAttribute DonationDto donationDto) {

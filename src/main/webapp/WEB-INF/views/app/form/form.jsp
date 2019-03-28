@@ -267,7 +267,7 @@
                         <div class="form-group form-group--inline">
                             <label>
                                 Uwagi dla kuriera
-                                <textarea name="pickUpComment" rows="5"></textarea>
+                                <textarea name="pickUpComment" rows="5" id="comment"></textarea>
                             </label>
                         </div>
                     </div>
@@ -307,7 +307,7 @@
                         <div class="form-section--column">
                             <h4>Adres odbioru:</h4>
                             <ul>
-                                <li><span id="summaryStreet"></span> <span id="summaryHouse"> </span><span
+                                <li><span id="summaryStreet"></span> <span id="summaryHouse"></span><span
                                         id="summaryFlat"></span></li>
                                 <li><span id="summaryCity"></span></li>
                                 <li><span id="summaryZipCode"></span></li>
@@ -318,9 +318,9 @@
                         <div class="form-section--column">
                             <h4>Termin odbioru:</h4>
                             <ul>
-                                <li>13/12/2018</li>
-                                <li>15:40</li>
-                                <li>Brak uwag</li>
+                                <li><span id="summaryDate"></span></li>
+                                <li><span id="summaryTime"></span></li>
+                                <li><span id="summaryComment"></span></li>
                             </ul>
                         </div>
                     </div>

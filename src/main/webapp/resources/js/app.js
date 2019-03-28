@@ -398,8 +398,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
             this.$stepInstructions[0].parentElement.parentElement.hidden = this.currentStep >= 6;
             this.$step.parentElement.hidden = this.currentStep >= 6;
-            // TODO: get data from inputs and show them in summary
 
+            // get data from inputs and show them in summary
             if (this.currentStep === 5) {
                 var checkboxElements = document.getElementsByClassName("whatToDonate");
                 var quantityElement = document.getElementById("bagQuantity");
@@ -413,6 +413,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 var tel = document.getElementById("tel");
                 var date = document.getElementById("date");
                 var time = document.getElementById("time");
+                var comment = document.getElementById("comment");
 
                 var numberOfBags = document.getElementById('numberOfBags');
                 if (quantityElement.value < 2) {
@@ -456,10 +457,12 @@ document.addEventListener("DOMContentLoaded", function () {
                 var summaryHouse = document.getElementById('summaryHouse');
                 var summaryFlat = document.getElementById('summaryFlat');
 
-                summaryStreet.innerHTML = street.value;
+                summaryStreet.innerHTML = street.value + "&nbsp;";
                 summaryHouse.innerHTML = houseNumber.value;
                 if (flatNumber.value.match(/^\d+$/)) {
                     summaryFlat.innerHTML = "/" + flatNumber.value;
+                } else {
+                    summaryFlat.innerHTML = "";
                 }
 
                 var summaryCity = document.getElementById('summaryCity');
@@ -469,6 +472,19 @@ document.addEventListener("DOMContentLoaded", function () {
                 summaryCity.innerHTML = city.value;
                 summaryZipCode.innerHTML = zipCode.value;
                 summaryTel.innerHTML = tel.value;
+
+                var summaryDate = document.getElementById('summaryDate');
+                var summaryTime = document.getElementById('summaryTime');
+                var summaryComment = document.getElementById('summaryComment');
+
+                summaryDate.innerHTML = date.value;
+                summaryTime.innerHTML = time.value;
+
+                if (comment.value !== "" && comment.value) {
+                    summaryComment.innerHTML = comment.value;
+                } else {
+                    summaryComment.innerHTML = "Brak uwag";
+                }
 
             }
         }

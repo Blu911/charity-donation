@@ -19,12 +19,10 @@ import java.util.List;
 public class FormController {
 
     private final UserServiceImpl userService;
-    private final AddressServiceImpl addressService;
     private final CategoryServiceImpl categoryService;
 
-    public FormController(UserServiceImpl userService, AddressServiceImpl addressService, CategoryServiceImpl categoryService) {
+    public FormController(UserServiceImpl userService, CategoryServiceImpl categoryService) {
         this.userService = userService;
-        this.addressService = addressService;
         this.categoryService = categoryService;
     }
 
@@ -39,18 +37,15 @@ public class FormController {
 
         model.addAttribute("donation", new DonationDto());
 
-        List<Category> whatToDonateList = categoryService.findByParentId(4l);
-        model.addAttribute("whatToDonate", whatToDonateList);
+        model.addAttribute("helpsWho", categoryService.findByParentId(2l));
+        model.addAttribute("whatToDonate", categoryService.findByParentId(4l));
 
         List<User> institutionList = userService.findAllByRole("ROLE_INSTITUTION");
-        model.addAttribute("institutions", institutionList);
+        model.addAttribute("institutions", userService.findAllByRole("ROLE_INSTITUTION"));
 
         List<Address> addressList = new ArrayList<>();
         institutionList.forEach(item -> addressList.addAll(item.getAddresses()));
         model.addAttribute("institutionAddresses", addressList);
-
-        List<Category> helpsWhoList = categoryService.findByParentId(2l);
-        model.addAttribute("helpsWho", helpsWhoList);
 
         return "app/form/form";
     }

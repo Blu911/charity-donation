@@ -311,7 +311,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 var errorFlatNumber = document.getElementById('errorFlatNumber');
                 if (flatNumber.value !== "") {
                     if (!flatNumber.value.match(/^\d+$/)) {
-                        errorFlatNumber.innerHTML = "Wartość nie może być mniejsza niż 1";
+                        errorFlatNumber.innerHTML = "Numer budynku jest niepoprawny";
                         errorCounter++;
                     } else {
                         errorFlatNumber.innerHTML = "";
@@ -323,7 +323,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 var street = document.getElementById("street");
                 var errorStreet = document.getElementById('errorStreet');
                 if (!street.value.match(/^[a-zA-Z\u0080-\u024F\s\/\-\)\(\`\.\"\']+$/)) {
-                    errorStreet.innerHTML = "Nazwa ulicy jest nie poprawna";
+                    errorStreet.innerHTML = "Nazwa ulicy jest niepoprawna";
                     errorCounter++;
                 } else {
                     errorStreet.innerHTML = "";
@@ -333,7 +333,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 var city = document.getElementById("city");
                 var errorCity = document.getElementById('errorCity');
                 if (!city.value.match(/^[a-zA-Z\u0080-\u024F\s\/\-\)\(\`\.\"\']+$/)) {
-                    errorCity.innerHTML = "Nazwa miasta jest nie poprawna";
+                    errorCity.innerHTML = "Nazwa miasta jest niepoprawna";
                     errorCounter++;
                 } else {
                     errorCity.innerHTML = "";
@@ -401,9 +401,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
             // get data from inputs and show them in summary
             if (this.currentStep === 5) {
-                var checkboxElements = document.getElementsByClassName("whatToDonate");
-                var quantityElement = document.getElementById("bagQuantity");
-                var radioElements = document.getElementsByClassName("institution");
+
 
                 var houseNumber = document.getElementById("houseNumber");
                 var flatNumber = document.getElementById("flatNumber");
@@ -415,6 +413,8 @@ document.addEventListener("DOMContentLoaded", function () {
                 var time = document.getElementById("time");
                 var comment = document.getElementById("comment");
 
+                //SUMMARY: Quantity of bags
+                var quantityElement = document.getElementById("bagQuantity");
                 var numberOfBags = document.getElementById('numberOfBags');
                 if (quantityElement.value < 2) {
                     numberOfBags.innerHTML = quantityElement.value + " worek ";
@@ -424,23 +424,63 @@ document.addEventListener("DOMContentLoaded", function () {
                     numberOfBags.innerHTML = quantityElement.value + " worków ";
                 }
 
+                //SUMMARY: Donated items
+                var checkboxElements = document.getElementsByClassName("whatToDonate");
                 var what = document.getElementById('what');
+                var listOfChecked = [];
                 for (var i = 0; i < checkboxElements.length; i++) {
                     if (checkboxElements[i].checked) {
-                        if (checkboxElements[i].id === "27") {
-                            what.innerHTML += "ubrań które nadają się do ponownego użycia ";
-                        } else if (checkboxElements[i].id === "28") {
-                            what.innerHTML += "ubrań, do wyrzucenia ";
-                        } else if (checkboxElements[i].id === "29") {
-                            what.innerHTML += "zabawek ";
-                        } else if (checkboxElements[i].id === "30") {
-                            what.innerHTML += "książek ";
-                        } else if (checkboxElements[i].id === "31") {
-                            what.innerHTML += "innych rzeczy ";
-                        }
+                        listOfChecked.push(checkboxElements[i]);
                     }
                 }
 
+                if (listOfChecked.length === 1) {
+                    if (listOfChecked[0].id === "27") {
+                        what.innerHTML = "ubrań które nadają się do ponownego użycia.";
+                    } else if (listOfChecked[0].id === "28") {
+                        what.innerHTML = "ubrań do wyrzucenia.";
+                    } else if (listOfChecked[0].id === "29") {
+                        what.innerHTML = "zabawek.";
+                    } else if (listOfChecked[0].id === "30") {
+                        what.innerHTML = "książek.";
+                    } else if (listOfChecked[0].id === "31") {
+                        what.innerHTML = "innych rzeczy.";
+                    }
+                } else {
+                    var allItems = "";
+                    for (var i = 0; i < listOfChecked.length - 1; i++) {
+                        if (listOfChecked[i].id === "27") {
+                            allItems += "ubrań które nadają się do ponownego użycia, ";
+                        } else if (listOfChecked[i].id === "28") {
+                            allItems += "ubrań do wyrzucenia, ";
+                        } else if (listOfChecked[i].id === "29") {
+                            allItems += "zabawek, ";
+                        } else if (listOfChecked[i].id === "30") {
+                            allItems += "książek, ";
+                        } else if (listOfChecked[i].id === "31") {
+                            allItems += "innych rzeczy, ";
+                        }
+                    }
+
+                    var lastItemId = listOfChecked[listOfChecked.length - 1].id;
+                    if (lastItemId === "27") {
+                        allItems += "ubrań które nadają się do ponownego użycia.";
+                    } else if (lastItemId === "28") {
+                        allItems += "ubrań do wyrzucenia.";
+                    } else if (lastItemId === "29") {
+                        allItems += "zabawek.";
+                    } else if (lastItemId === "30") {
+                        allItems += "książek.";
+                    } else if (lastItemId === "31") {
+                        allItems += "innych rzeczy.";
+                    }
+
+                    what.innerHTML = allItems;
+
+                }
+
+                //SUMMARY: Institution details
+                var radioElements = document.getElementsByClassName("institution");
                 var institutionType = document.getElementById('institutionType');
                 var institutionName = document.getElementById('institutionName');
                 var institutionCity = document.getElementById('institutionCity');
@@ -452,7 +492,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     }
                 }
 
-
+                //SUMMARY: Pick up Address details
                 var summaryStreet = document.getElementById('summaryStreet');
                 var summaryHouse = document.getElementById('summaryHouse');
                 var summaryFlat = document.getElementById('summaryFlat');
@@ -473,13 +513,13 @@ document.addEventListener("DOMContentLoaded", function () {
                 summaryZipCode.innerHTML = zipCode.value;
                 summaryTel.innerHTML = tel.value;
 
+                //SUMMARY: Pick up Date & Time details
                 var summaryDate = document.getElementById('summaryDate');
                 var summaryTime = document.getElementById('summaryTime');
                 var summaryComment = document.getElementById('summaryComment');
 
                 summaryDate.innerHTML = date.value;
                 summaryTime.innerHTML = time.value;
-
                 if (comment.value !== "" && comment.value) {
                     summaryComment.innerHTML = comment.value;
                 } else {

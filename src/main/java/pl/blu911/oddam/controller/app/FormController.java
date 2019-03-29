@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import pl.blu911.oddam.domain.*;
 import pl.blu911.oddam.domain.dto.DonationDto;
 import pl.blu911.oddam.service.impl.CategoryServiceImpl;
+import pl.blu911.oddam.service.impl.DonationServiceImpl;
 import pl.blu911.oddam.service.impl.UserServiceImpl;
 
 
@@ -19,10 +20,12 @@ public class FormController {
 
     private final UserServiceImpl userService;
     private final CategoryServiceImpl categoryService;
+    private final DonationServiceImpl donationService;
 
-    public FormController(UserServiceImpl userService, CategoryServiceImpl categoryService) {
+    public FormController(UserServiceImpl userService, CategoryServiceImpl categoryService, DonationServiceImpl donationService) {
         this.userService = userService;
         this.categoryService = categoryService;
+        this.donationService = donationService;
     }
 
     @ModelAttribute("currentUser")
@@ -52,8 +55,10 @@ public class FormController {
     //TODO: save donation to DB together with current user details
 
     @PostMapping("/form")
-    public String appFormStep1(@ModelAttribute DonationDto donationDto) {
+    public String appFormStep1(@ModelAttribute DonationDto donationDto, @AuthenticationPrincipal CurrentUser customUser) {
         System.out.println(donationDto.toString());
+        User user = userService.findByUserId(customUser.getUser().getId());
+        donationService.saveDonationFromDto(donationDto, user);
 
         return "redirect:/app";
     }

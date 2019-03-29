@@ -52,11 +52,9 @@ public class FormController {
         return "app/form";
     }
 
-    //TODO: save donation to DB together with current user details
-
     @PostMapping("/form")
     public String appFormStep1(@ModelAttribute DonationDto donationDto, @AuthenticationPrincipal CurrentUser customUser) {
-        System.out.println(donationDto.toString());
+
         User user = userService.findByUserId(customUser.getUser().getId());
         donationService.saveDonationFromDto(donationDto, user);
 

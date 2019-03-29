@@ -8,7 +8,6 @@ import pl.blu911.oddam.domain.User;
 import java.util.List;
 
 @Data
-//@ToString(exclude = {"userDetails", "institutionDetails", "whatToDonate", "pickUpAddress"})
 public class DonationDto {
 
     private List<Category> whatToDonate;
@@ -16,8 +15,6 @@ public class DonationDto {
     private int quantity;
 
     private User institutionDetails;
-
-    private User userDetails;
 
     private Address pickUpAddress;
 

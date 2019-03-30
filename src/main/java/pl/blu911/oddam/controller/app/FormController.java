@@ -54,10 +54,8 @@ public class FormController {
 
     @PostMapping("/form")
     public String appFormStep1(@ModelAttribute DonationDto donationDto, @AuthenticationPrincipal CurrentUser customUser) {
-
         User user = userService.findByUserId(customUser.getUser().getId());
         donationService.saveDonationFromDto(donationDto, user);
-
         return "redirect:/app";
     }
 

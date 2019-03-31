@@ -6,6 +6,9 @@ import pl.blu911.oddam.domain.User;
 import pl.blu911.oddam.repository.AddressRepository;
 import pl.blu911.oddam.service.AddressService;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class AddressServiceImpl implements AddressService {
     private final AddressRepository addressRepository;
@@ -38,5 +41,11 @@ public class AddressServiceImpl implements AddressService {
 
     public void deleteAddressById(Long id) {
         addressRepository.deleteById(id);
+    }
+
+    public List<Address> getInstitutionsAdresses(List<User> institutionList) {
+        List<Address> addressList = new ArrayList<>();
+        institutionList.forEach(item -> addressList.addAll(item.getAddresses()));
+        return addressList;
     }
 }

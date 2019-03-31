@@ -6,12 +6,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.blu911.oddam.domain.*;
 import pl.blu911.oddam.domain.dto.DonationDto;
+import pl.blu911.oddam.service.impl.AddressServiceImpl;
 import pl.blu911.oddam.service.impl.CategoryServiceImpl;
 import pl.blu911.oddam.service.impl.DonationServiceImpl;
 import pl.blu911.oddam.service.impl.UserServiceImpl;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -21,11 +20,13 @@ public class FormController {
     private final UserServiceImpl userService;
     private final CategoryServiceImpl categoryService;
     private final DonationServiceImpl donationService;
+    private final AddressServiceImpl addressService;
 
-    public FormController(UserServiceImpl userService, CategoryServiceImpl categoryService, DonationServiceImpl donationService) {
+    public FormController(UserServiceImpl userService, CategoryServiceImpl categoryService, DonationServiceImpl donationService, AddressServiceImpl addressService) {
         this.userService = userService;
         this.categoryService = categoryService;
         this.donationService = donationService;
+        this.addressService = addressService;
     }
 
     @ModelAttribute("currentUser")
@@ -45,9 +46,8 @@ public class FormController {
         List<User> institutionList = userService.findAllByRole("ROLE_INSTITUTION");
         model.addAttribute("institutions", userService.findAllByRole("ROLE_INSTITUTION"));
 
-        List<Address> addressList = new ArrayList<>();
-        institutionList.forEach(item -> addressList.addAll(item.getAddresses()));
-        model.addAttribute("institutionAddresses", addressList);
+        List<Address> institutionsAdresses = addressService.getInstitutionsAdresses(institutionList);
+        model.addAttribute("institutionAddresses", institutionsAdresses);
 
         return "app/form";
     }

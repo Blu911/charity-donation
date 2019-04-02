@@ -11,4 +11,7 @@ import java.util.List;
 public interface DonationRepository extends JpaRepository<Donation, Long> {
     @Query("select u from Donation u where u.institutionDetails.id = ?1")
     List<Donation> findAllByInstitutionDetailsId(long id);
+
+    @Query("select u from Donation u where u.userDetails.id = ?1 order by created")
+    List<Donation> findAllByUserDetailsId(long id);
 }

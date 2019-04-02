@@ -32,6 +32,10 @@ public class DonationServiceImpl implements DonationService {
         return donationRepository.findAllByInstitutionDetailsId(id);
     }
 
+    public List<Donation> findAllByUserId(long id) {
+        return donationRepository.findAllByUserDetailsId(id);
+    }
+
     public Donation findByDonationId(Long id) {
         return donationRepository.getOne(id);
     }

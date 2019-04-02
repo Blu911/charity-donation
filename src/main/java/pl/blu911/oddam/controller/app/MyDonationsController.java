@@ -24,6 +24,7 @@ public class MyDonationsController {
     @GetMapping("/donations")
     public String myDonations(Model model, @AuthenticationPrincipal CurrentUser customUser) {
         List<Donation> donations = donationService.findAllByUserId(customUser.getUser().getId());
+        System.out.println(donations.toString());
         model.addAttribute("donations", donations);
         return "/app/app-my-donations";
     }

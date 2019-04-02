@@ -1,44 +1,34 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
+<%@ taglib uri="http://sargue.net/jsptags/time" prefix="javatime" %>
 <jsp:include page="components/head.jsp"/>
-<header class="header--main-page">
+<header class="header--form-page">
     <jsp:include page="components/navbar-app.jsp"/>
-    <div class="slogan container container--90" id="start">
-        <div class="slogan--item">
-            <h1>
-                Zacznij pomagać!<br/>
-                Oddaj niechciane rzeczy w zaufane ręce
-            </h1>
 
-            <ul class="slogan--buttons">
-                <li><a href="<c:url value="/app/form"/>" class="btn btn--large">Oddaj rzeczy</a></li>
+    <section class="help">
+        <h2>Moje dary</h2>
+        <div class="help--slides active">
+            <p>Komu pomogłeś? Poniżej znajdziesz listę. Dziękujemy!</p>
+            <ul class="help--slides-items">
+                <c:forEach items="${donations}" var="donation">
+                    <li>
+                        <div class="col">
+                            <div class="title"><javatime:format value="${donation.created}" style="MM"/></div>
+                            <div class="subtitle">${donation.institutionDetails.institutionType.name} ${donation.institutionDetails.institutionName}</div>
+                            <div class="subtitle">Ilość oddanych worków: ${donation.quantity} </div>
+                        </div>
+
+                        <div class="col">
+                            <div class="text">szczegóły</div>
+                        </div>
+                    </li>
+                </c:forEach>
             </ul>
         </div>
-    </div>
+    </section>
 </header>
 
-<footer>
-    <div class="contact" id="contact">
-        <h2>Skontaktuj się z nami</h2>
-        <h3>Formularz kontaktowy</h3>
-        <form class="form--contact">
-            <div class="form-group form-group--50"><input type="text" name="name" placeholder="Imię"/></div>
-            <div class="form-group form-group--50"><input type="text" name="surname" placeholder="Nazwisko"/></div>
-
-            <div class="form-group"><textarea name="message" placeholder="Wiadomość" rows="1"></textarea></div>
-
-            <button class="btn" type="submit">Wyślij</button>
-        </form>
-    </div>
-    <div class="bottom-line">
-        <span class="bottom-line--copy">Copyright &copy; 2018</span>
-        <div class="bottom-line--icons">
-            <a href="#" class="btn btn--small"><img src="<c:url value="/resources/images/icon-facebook.svg"/>"/></a>
-            <a href="#" class="btn btn--small"><img src="<c:url value="/resources/images/icon-instagram.svg"/>"/></a>
-        </div>
-    </div>
-</footer>
 <script src="<c:url value="/resources/js/app.js"/>"></script>
 </body>
 </html>

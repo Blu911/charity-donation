@@ -24,4 +24,6 @@
         <li><a href="<c:url value="/help"/>" class="btn btn--without-border">Fundacje i organizacje</a></li>
         <li><a href="<c:url value="/contact"/>" class="btn btn--without-border">Kontakt</a></li>
     </ul>
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">Powrót</button>
 </nav>

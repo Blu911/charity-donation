@@ -10,21 +10,40 @@
         <h2>Moje dary</h2>
         <div class="help--slides active">
             <p>Komu pomogłeś? Poniżej znajdziesz listę. Dziękujemy!</p>
-            <ul class="help--slides-items">
-                <c:forEach items="${donations}" var="donation">
-                    <li>
-                        <div class="col">
-                            <div class="title"><javatime:format value="${donation.created}" style="MM"/></div>
-                            <div class="subtitle">${donation.institutionDetails.institutionType.name} ${donation.institutionDetails.institutionName}</div>
-                            <div class="subtitle">Ilość oddanych worków: ${donation.quantity} </div>
-                        </div>
-
-                        <div class="col">
-                            <div class="text">szczegóły</div>
-                        </div>
-                    </li>
-                </c:forEach>
-            </ul>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Data utworzenia</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Data odebrania</th>
+                            <th scope="col">Nazwa instytucji</th>
+                            <th scope="col">Ilość worków</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <c:forEach items="${donations}" var="donation" varStatus="loop">
+                            <tr>
+                                <th scope="row">${loop.count}</th>
+                                <td><javatime:format value="${donation.created}" style="MM"/></td>
+                                <td></td>
+                                <td></td>
+                                <td>${donation.institutionDetails.institutionType.name} ${donation.institutionDetails.institutionName}</td>
+                                <td>${donation.quantity}</td>
+                                <td>
+                                    <form method="post">
+                                        <a class="btn btn--small pull-right"
+                                           href="<c:url value="/app/donations/view/${donation.id}"/>">Szczegóły</a>
+                                    </form>
+                                </td>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </section>
 </header>

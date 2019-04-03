@@ -8,7 +8,7 @@
 <header class="header--form-page">
     <jsp:include page="components/navbar-app.jsp"/>
     <section class="steps" id="steps">
-        <h2>Twój Profil</h2>
+        <h2>Profil</h2>
         <div>
             <div class="steps--item">
                 <h3>Dane osobowe</h3>

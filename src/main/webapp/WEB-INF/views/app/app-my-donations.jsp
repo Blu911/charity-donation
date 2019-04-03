@@ -5,11 +5,10 @@
 <jsp:include page="components/head.jsp"/>
 <header class="header--form-page">
     <jsp:include page="components/navbar-app.jsp"/>
-
-    <section class="help">
+    <section class="steps">
         <h2>Moje dary</h2>
         <div class="help--slides active">
-            <p>Komu pomogłeś? Poniżej znajdziesz listę. Dziękujemy!</p>
+            <p>Komu pomogłeś? Poniżej znajdziesz listę instytucji, które otrzymały od Ciebie darowiznę. Dziękujemy!</p>
             <div class="panel panel-default">
                 <div class="panel-body">
                     <table class="table">

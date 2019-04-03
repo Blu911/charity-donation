@@ -4,9 +4,12 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.blu911.oddam.domain.CurrentUser;
 import pl.blu911.oddam.domain.Donation;
+import pl.blu911.oddam.domain.User;
+import pl.blu911.oddam.service.DonationService;
 import pl.blu911.oddam.service.impl.DonationServiceImpl;
 
 import java.util.List;
@@ -27,6 +30,13 @@ public class MyDonationsController {
         System.out.println(donations.toString());
         model.addAttribute("donations", donations);
         return "/app/app-my-donations";
+    }
+
+    @GetMapping("/donations/view/{id}")
+    public String viewDonation(@PathVariable long id, Model model) {
+        Donation donation = donationService.findByDonationId(id);
+        model.addAttribute("donation", donation);
+        return "/app/donations/donation-view";
     }
 
 }

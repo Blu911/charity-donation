@@ -27,8 +27,13 @@
                             <tr>
                                 <th scope="row">${loop.count}</th>
                                 <td><javatime:format value="${donation.created}" style="MM"/></td>
-                                <td></td>
-                                <td></td>
+                                <td>
+                                    <c:choose>
+                                        <c:when test="${donation.deliveryStatus}">Dostarczono</c:when>
+                                        <c:otherwise>Niedostarczono</c:otherwise>
+                                    </c:choose>
+                                </td>
+                                <td>${donation.deliveryDate}</td>
                                 <td>${donation.institutionDetails.institutionType.name} ${donation.institutionDetails.institutionName}</td>
                                 <td>${donation.quantity}</td>
                                 <td>

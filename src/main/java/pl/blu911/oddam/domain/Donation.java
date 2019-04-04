@@ -45,12 +45,12 @@ public class Donation {
 
     private LocalDateTime created;
 
-    private LocalDateTime deliveryDate;
-
-    private Boolean deliveryStatus = false;
-
     @PrePersist
     public void prePersist() {
         created = LocalDateTime.now();
     }
+
+    private LocalDateTime deliveryDate;
+
+    private Boolean deliveryStatus = false;
 }

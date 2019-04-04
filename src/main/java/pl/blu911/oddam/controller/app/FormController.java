@@ -14,7 +14,7 @@ import pl.blu911.oddam.service.impl.UserServiceImpl;
 import java.util.List;
 
 @Controller
-@RequestMapping("/app")
+@RequestMapping("/app/form")
 public class FormController {
 
     private final UserServiceImpl userService;
@@ -35,7 +35,7 @@ public class FormController {
         model.addAttribute("currentUser", currentUser);
     }
 
-    @GetMapping("/form")
+    @GetMapping("")
     public String appFormStep1(Model model) {
 
         model.addAttribute("donation", new DonationDto());
@@ -52,7 +52,7 @@ public class FormController {
         return "app/form";
     }
 
-    @PostMapping("/form")
+    @PostMapping("")
     public String appFormStep1(@ModelAttribute DonationDto donationDto, @AuthenticationPrincipal CurrentUser customUser) {
         User user = userService.findByUserId(customUser.getUser().getId());
         donationService.saveDonationFromDto(donationDto, user);

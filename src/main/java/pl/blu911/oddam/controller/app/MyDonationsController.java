@@ -13,7 +13,7 @@ import pl.blu911.oddam.service.impl.UserServiceImpl;
 import java.util.List;
 
 @Controller
-@RequestMapping("/app")
+@RequestMapping("/app/donations")
 public class MyDonationsController {
 
     private final DonationServiceImpl donationService;
@@ -30,25 +30,23 @@ public class MyDonationsController {
         model.addAttribute("currentUser", currentUser);
     }
 
-    @GetMapping("/donations")
+    @GetMapping("")
     public String myDonations(Model model, @AuthenticationPrincipal CurrentUser customUser) {
         List<Donation> donations = donationService.findAllByUserId(customUser.getUser().getId());
-        System.out.println(donations.toString());
         model.addAttribute("donations", donations);
         return "/app/app-my-donations";
     }
 
-    @GetMapping("/donations/view/{id}")
+    @GetMapping("/view/{id}")
     public String viewDonation(@PathVariable long id, Model model) {
         Donation donation = donationService.findByDonationId(id);
         model.addAttribute("donation", donation);
         return "/app/donations/donation-view";
     }
 
-    @GetMapping("/donations/confirm/{id}")
+    @GetMapping("/confirm/{id}")
     public String confirmDonation(@PathVariable long id) {
         donationService.confirmDonationCollection(id);
         return "redirect:/app/donations";
     }
-
 }

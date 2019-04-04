@@ -14,7 +14,7 @@ import pl.blu911.oddam.service.impl.UserServiceImpl;
 import javax.validation.Valid;
 
 @Controller
-@RequestMapping("/app")
+@RequestMapping("/app/profile")
 public class ProfileController {
 
     private final UserServiceImpl userService;
@@ -31,17 +31,17 @@ public class ProfileController {
         model.addAttribute("currentUser", currentUser);
     }
 
-    @GetMapping("/profile")
+    @GetMapping("")
     public String appProfile() {
         return "app/app-profile";
     }
 
-    @GetMapping("/profile/edit")
+    @GetMapping("/edit")
     public String appEditProfile() {
         return "app/profile/profile-edit";
     }
 
-    @PostMapping("/profile/edit")
+    @PostMapping("/edit")
     public String appEditProfileSuccess(@AuthenticationPrincipal CurrentUser currentUser, @Valid User user, BindingResult result) {
         if (result.hasErrors()) {
             return "app/app-profile-edit";
@@ -50,14 +50,14 @@ public class ProfileController {
         return "redirect:/app/profile";
     }
 
-    @GetMapping("/profile/edit/{id}")
+    @GetMapping("/edit/{id}")
     public String appEditAddress(@PathVariable long id, Model model) {
         Address address = addressService.findById(id);
         model.addAttribute("address", address);
         return "app/profile/profile-edit-address";
     }
 
-    @PostMapping("/profile/edit/{id}")
+    @PostMapping("/edit/{id}")
     public String appEditAddressSuccess(@AuthenticationPrincipal CurrentUser currentUser, @Valid Address address, BindingResult result, @PathVariable long id) {
         if (result.hasErrors()) {
             return "app/app-profile-edit-address";
@@ -66,25 +66,25 @@ public class ProfileController {
         return "redirect:/app/profile";
     }
 
-    @GetMapping("/profile/delete/{id}")
+    @GetMapping("/delete/{id}")
     public String appRemoveAddress(@PathVariable Long id, Model model) {
         Address addressToDelete = addressService.findById(id);
         model.addAttribute("address", addressToDelete);
         return "app/profile/profile-delete-address";
     }
 
-    @PostMapping("/profile/delete/{id}")
+    @PostMapping("/delete/{id}")
     public String appRemoveAddressSuccess(@PathVariable Long id) {
         addressService.deleteAddressById(id);
         return "redirect:/app/profile";
     }
 
-    @GetMapping("/profile/add")
+    @GetMapping("/add")
     public String appAddAddress(@ModelAttribute Address address) {
         return "app/profile/profile-add-address";
     }
 
-    @PostMapping("/profile/add")
+    @PostMapping("/add")
     public String appAddAddressSuccess(@AuthenticationPrincipal CurrentUser currentUser, @Valid Address address, BindingResult result) {
         if (result.hasErrors()) {
             return "app/profile/profile-add-address";

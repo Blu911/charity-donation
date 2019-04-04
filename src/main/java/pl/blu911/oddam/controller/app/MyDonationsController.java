@@ -3,10 +3,7 @@ package pl.blu911.oddam.controller.app;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import pl.blu911.oddam.domain.CurrentUser;
 import pl.blu911.oddam.domain.Donation;
 import pl.blu911.oddam.domain.User;
@@ -46,6 +43,12 @@ public class MyDonationsController {
         Donation donation = donationService.findByDonationId(id);
         model.addAttribute("donation", donation);
         return "/app/donations/donation-view";
+    }
+
+    @GetMapping("/donations/confirm/{id}")
+    public String confirmDonation(@PathVariable long id) {
+        donationService.confirmDonationCollection(id);
+        return "redirect:/app/donations";
     }
 
 }

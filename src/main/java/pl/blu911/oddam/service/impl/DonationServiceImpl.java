@@ -69,4 +69,10 @@ public class DonationServiceImpl implements DonationService {
         donationRepository.save(donation);
     }
 
+    public void confirmDonationCollection(long id) {
+        Donation donation = donationRepository.getOne(id);
+        donation.setDeliveryStatus(true);
+        donation.setDeliveryDate(LocalDateTime.now());
+        donationRepository.save(donation);
+    }
 }

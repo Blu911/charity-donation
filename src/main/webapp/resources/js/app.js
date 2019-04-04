@@ -150,7 +150,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 this.current.innerText = target.innerText;
             }
         })
-            ;
+            ;F
         }
     }
 

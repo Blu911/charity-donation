@@ -29,11 +29,11 @@
                                 <td><javatime:format value="${donation.created}" style="MM"/></td>
                                 <td>
                                     <c:choose>
-                                        <c:when test="${donation.deliveryStatus}">Dostarczono</c:when>
-                                        <c:otherwise>Niedostarczono</c:otherwise>
+                                        <c:when test="${donation.deliveryStatus}">Odebrano</c:when>
+                                        <c:otherwise>Nieodebrano</c:otherwise>
                                     </c:choose>
                                 </td>
-                                <td>${donation.deliveryDate}</td>
+                                <td><javatime:format value="${donation.deliveryDate}" style="MM"/></td>
                                 <td>${donation.institutionDetails.institutionType.name} ${donation.institutionDetails.institutionName}</td>
                                 <td>${donation.quantity}</td>
                                 <td>

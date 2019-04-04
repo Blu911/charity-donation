@@ -29,9 +29,13 @@
                 <strong>Data odebrania</strong>
                 <span> ${currentUser.phoneNumber}</span>
             </p>
-            <a class="btn btn--highlighted" href="<c:url value="/app/donations/confirm/${donation.id}"/>" role="button">Potwierdź
-                odbiór</a>
-
+            <c:choose>
+                <c:when test="${not donation.deliveryStatus}">
+                    <a class="btn btn--highlighted" href="<c:url value="/app/donations/confirm/${donation.id}"/>"
+                       role="button">Potwierdź
+                        odbiór</a>
+                </c:when>
+            </c:choose>
             <a class="btn" href="<c:url value="/app/donations"/>" role="button">
                 Powrót</a>
         </div>

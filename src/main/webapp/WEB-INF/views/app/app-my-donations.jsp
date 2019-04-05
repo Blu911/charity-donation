@@ -37,10 +37,8 @@
                                 <td>${donation.institutionDetails.institutionType.name} ${donation.institutionDetails.institutionName}</td>
                                 <td>${donation.quantity}</td>
                                 <td>
-                                    <form method="post">
                                         <a class="btn btn--small pull-right"
                                            href="<c:url value="/app/donations/view/${donation.id}"/>">Szczegóły</a>
-                                    </form>
                                 </td>
                             </tr>
                         </c:forEach>

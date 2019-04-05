@@ -9,26 +9,47 @@
         <div class="steps--item">
             <h3>Darowizna</h3>
 
-            <p>
-                <strong>Data utworzenia</strong>
-                <span> <javatime:format value="${donation.created}" style="MM"/></span>
-            </p>
-            <p>
-                <strong>Nazwa instytucji</strong>
-                <span> ${donation.institutionDetails.institutionType.name} ${donation.institutionDetails.institutionName}</span>
-            </p>
-            <p>
-                <strong>Ilość worków</strong>
-                <span> ${donation.quantity}</span>
-            </p>
-            <p>
-                <strong>Status</strong>
-                <span> ${currentUser.email}</span>
-            </p>
-            <p>
-                <strong>Data odebrania</strong>
-                <span> ${currentUser.phoneNumber}</span>
-            </p>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>Data utworzenia</th>
+                            <td><javatime:format value="${donation.created}" style="MM"/></td>
+                        </tr>
+                        <tr>
+                            <th>Nazwa instytucji</th>
+                            <td>${donation.institutionDetails.institutionType.name} ${donation.institutionDetails.institutionName}</td>
+                        </tr>
+                        <tr>
+                            <th>Ilość worków</th>
+                            <td>${donation.quantity}</td>
+                        </tr>
+                        <tr>
+                            <th>Ilość worków</th>
+                            <td>${donation.quantity}</td>
+                        </tr>
+                        <tr>
+                            <th>Ilość worków</th>
+                            <td>${donation.quantity}</td>
+                        </tr>
+                        <tr>
+                            <th>Status</th>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${donation.deliveryStatus}">Odebrano</c:when>
+                                    <c:otherwise>Nieodebrano</c:otherwise>
+                                </c:choose>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>Data odebrania</th>
+                            <td><javatime:format value="${donation.deliveryDate}" style="MM"/></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
             <c:choose>
                 <c:when test="${not donation.deliveryStatus}">
                     <a class="btn btn--highlighted" href="<c:url value="/app/donations/confirm/${donation.id}"/>"

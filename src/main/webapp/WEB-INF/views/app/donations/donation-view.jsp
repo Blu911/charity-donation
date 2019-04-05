@@ -18,20 +18,47 @@
                             <td><javatime:format value="${donation.created}" style="MM"/></td>
                         </tr>
                         <tr>
-                            <th>Nazwa instytucji</th>
-                            <td>${donation.institutionDetails.institutionType.name} ${donation.institutionDetails.institutionName}</td>
+                            <th>Co oddajesz</th>
+                            <td>
+                                <c:forEach items="${donation.whatToDonate}" var="whatToDonate">
+                                    ${whatToDonate.name}
+                                </c:forEach>
+                            </td>
                         </tr>
                         <tr>
                             <th>Ilość worków</th>
                             <td>${donation.quantity}</td>
                         </tr>
                         <tr>
-                            <th>Ilość worków</th>
-                            <td>${donation.quantity}</td>
+                            <th>Nazwa obdarowanej instytucji</th>
+                            <td>${donation.institutionDetails.institutionType.name}
+                                "${donation.institutionDetails.institutionName}"
+                            </td>
                         </tr>
                         <tr>
-                            <th>Ilość worków</th>
-                            <td>${donation.quantity}</td>
+                            <th>Adres obdarowanej instytucji</th>
+                            <td>${donation.institutionDetails.addresses[0].street} ${donation.institutionDetails.addresses[0].houseNumber}, ${donation.institutionDetails.addresses[0].zipCode} ${donation.institutionDetails.addresses[0].city}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <h3>Szczegóły przesyłki</h3>
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>Adres odbioru</th>
+                            <td>${donation.pickUpAddress.street} ${donation.pickUpAddress.houseNumber}, ${donation.pickUpAddress.zipCode} ${donation.pickUpAddress.city}</td>
+                        </tr>
+                        <tr>
+                            <th>Termin odbioru</th>
+                            <td>${donation.pickUpDate} ${donation.pickUpTime}</td>
+                        </tr>
+                        <tr>
+                            <th>Telefon kontaktowy</th>
+                            <td>${donation.pickUpPhoneNumber}</td>
+                        </tr>
+                        <tr>
+                            <th>Komentarz dla kuriera</th>
+                            <td>${donation.pickUpComment}</td>
                         </tr>
                         <tr>
                             <th>Status</th>

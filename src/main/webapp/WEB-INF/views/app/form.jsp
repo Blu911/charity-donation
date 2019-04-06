@@ -216,37 +216,43 @@
                         <h4>Adres odbioru</h4>
                         <div class="form-group form-group--inline">
                             <label> Numer mieszkania <input type="number" name="pickUpAddress.flatNumber" step="1"
-                                                            id="flatNumber"/>
+                                                            id="flatNumber"
+                                                            value="${currentUser.addresses[0].flatNumber}"/>
                             </label>
                             <span class="error" id="errorFlatNumber"></span>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label> Numer domu <input type="number" name="pickUpAddress.houseNumber" step="1" min="1"
-                                                      id="houseNumber"/> </label>
+                                                      id="houseNumber" value="${currentUser.addresses[0].houseNumber}"/>
+                            </label>
                             <span class="error" id="errorHouseNumber"></span>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Ulica <input type="text" name="pickUpAddress.street" id="street"/> </label>
+                            <label> Ulica <input type="text" name="pickUpAddress.street" id="street"
+                                                 value="${currentUser.addresses[0].street}"/> </label>
                             <span class="error" id="errorStreet"></span>
                         </div>
 
                         <div class="form-group form-group--inline">
-                            <label> Miasto <input type="text" name="pickUpAddress.city" id="city"/> </label>
+                            <label> Miasto <input type="text" name="pickUpAddress.city" id="city"
+                                                  value="${currentUser.addresses[0].city}"/> </label>
                             <span class="error" id="errorCity"></span>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Kod pocztowy <input type="text" name="pickUpAddress.zipCode" id="zipCode"/>
+                                Kod pocztowy <input type="text" name="pickUpAddress.zipCode" id="zipCode"
+                                                    value="${currentUser.addresses[0].zipCode}"/>
                             </label>
                             <span class="error" id="errorZipCode"></span>
                         </div>
 
                         <div class="form-group form-group--inline">
                             <label>
-                                Numer telefonu <input type="tel" name="pickUpPhoneNumber" id="tel"/>
+                                Numer telefonu <input type="tel" name="pickUpPhoneNumber" id="tel"
+                                                      value="${currentUser.phoneNumber}"/>
                             </label>
                             <span class="error" id="errorTel"></span>
                         </div>

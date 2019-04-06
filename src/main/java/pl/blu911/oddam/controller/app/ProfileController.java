@@ -44,7 +44,7 @@ public class ProfileController {
     @PostMapping("/edit")
     public String appEditProfileSuccess(@AuthenticationPrincipal CurrentUser currentUser, @Valid User user, BindingResult result) {
         if (result.hasErrors()) {
-            return "app/app-profile-edit";
+            return "app/profile/profile-edit";
         }
         userService.updateUser(currentUser, user);
         return "redirect:/app/profile";

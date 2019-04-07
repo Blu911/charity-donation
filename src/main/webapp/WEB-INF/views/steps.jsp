@@ -36,4 +36,6 @@
 
     <a href="<c:url value="/register"/>" class="btn btn--large">Załóż konto</a>
 </section>
-<jsp:include page="components/footer.jsp"/>
+<script src="<c:url value="/resources/js/app.js"/>"></script>
+</body>
+</html>

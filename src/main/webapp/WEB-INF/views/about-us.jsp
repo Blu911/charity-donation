@@ -18,4 +18,6 @@
     <div class="about-us--image"><img src="<c:url value="/resources/images/about-us.jpg"/>" alt="People in circle"/>
     </div>
 </section>
-<jsp:include page="components/footer.jsp"/>
+<script src="<c:url value="/resources/js/app.js"/>"></script>
+</body>
+</html>

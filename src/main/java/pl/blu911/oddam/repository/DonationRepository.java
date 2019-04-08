@@ -12,6 +12,6 @@ public interface DonationRepository extends JpaRepository<Donation, Long> {
     @Query("select u from Donation u where u.institutionDetails.id = ?1")
     List<Donation> findAllByInstitutionDetailsId(long id);
 
-    @Query("select u from Donation u where u.userDetails.id = ?1 order by created desc")
+    @Query("select u from Donation u where u.userDetails.id = ?1 order by created desc, deliveryStatus, deliveryDate")
     List<Donation> findAllByUserDetailsId(long id);
 }

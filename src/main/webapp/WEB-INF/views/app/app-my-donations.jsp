@@ -11,13 +11,13 @@
             <p>Komu pomogłeś? Poniżej znajdziesz listę instytucji, które otrzymały od Ciebie darowiznę. Dziękujemy!</p>
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <table class="table">
+                    <table class="table" id="myDonationsTable">
                         <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Data utworzenia</th>
-                            <th scope="col">Status</th>
-                            <th scope="col">Data odebrania</th>
+                            <th scope="col" onclick="sortTable(0)">Data utworzenia <i class="arrow down"></i></th>
+                            <th scope="col" onclick="sortTable(1)">Status <i class="arrow down"></i></th>
+                            <th scope="col" onclick="sortTable(2)">Data odebrania <i class="arrow down"></i></th>
                             <th scope="col">Nazwa instytucji</th>
                             <th scope="col">Ilość worków</th>
                         </tr>

@@ -436,15 +436,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
                 if (listOfChecked.length === 1) {
                     if (listOfChecked[0].id === "27") {
-                        what.innerHTML = "ubrań które nadają się do ponownego użycia.";
+                        what.innerHTML = "ubrań które nadają się do ponownego użycia";
                     } else if (listOfChecked[0].id === "28") {
-                        what.innerHTML = "ubrań do wyrzucenia.";
+                        what.innerHTML = "ubrań do wyrzucenia";
                     } else if (listOfChecked[0].id === "29") {
-                        what.innerHTML = "zabawek.";
+                        what.innerHTML = "zabawek";
                     } else if (listOfChecked[0].id === "30") {
-                        what.innerHTML = "książek.";
+                        what.innerHTML = "książek";
                     } else if (listOfChecked[0].id === "31") {
-                        what.innerHTML = "innych rzeczy.";
+                        what.innerHTML = "innych rzeczy";
                     }
                 } else {
                     var allItems = "";
@@ -464,15 +464,15 @@ document.addEventListener("DOMContentLoaded", function () {
 
                     var lastItemId = listOfChecked[listOfChecked.length - 1].id;
                     if (lastItemId === "27") {
-                        allItems += "ubrań które nadają się do ponownego użycia.";
+                        allItems += "ubrań które nadają się do ponownego użycia";
                     } else if (lastItemId === "28") {
-                        allItems += "ubrań do wyrzucenia.";
+                        allItems += "ubrań do wyrzucenia";
                     } else if (lastItemId === "29") {
-                        allItems += "zabawek.";
+                        allItems += "zabawek";
                     } else if (lastItemId === "30") {
-                        allItems += "książek.";
+                        allItems += "książek";
                     } else if (lastItemId === "31") {
-                        allItems += "innych rzeczy.";
+                        allItems += "innych rzeczy";
                     }
 
                     what.innerHTML = allItems;

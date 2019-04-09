@@ -9,6 +9,8 @@ import pl.blu911.oddam.domain.User;
 import pl.blu911.oddam.service.impl.DonationServiceImpl;
 import pl.blu911.oddam.service.impl.UserServiceImpl;
 
+import java.util.Map;
+
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
@@ -29,14 +31,12 @@ public class AdminController {
 
     @GetMapping("")
     public String adminPanel(Model model) {
-        int adminCount = userService.findAllByRole("ROLE_ADMIN").size();
-        int userCount = userService.findAllByRole("ROLE_USER").size();
-        int institutionCount = userService.findAllByRole("ROLE_INSTITUTION").size();
-        int donationCount = donationService.findAll().size();
-        model.addAttribute("adminCount", adminCount);
-        model.addAttribute("userCount", userCount);
-        model.addAttribute("institutionCount", institutionCount);
-        model.addAttribute("donationCount", donationCount);
+        Map<String, Integer> countAllRolesMap = userService.countAllRoles();
+
+        model.addAttribute("adminCount", countAllRolesMap.get("admins"));
+        model.addAttribute("userCount", countAllRolesMap.get("users"));
+        model.addAttribute("institutionCount", countAllRolesMap.get("institutions"));
+        model.addAttribute("donationCount", donationService.findAll().size());
 
         return "/admin/admin-panel";
     }

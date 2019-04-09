@@ -1,9 +1,8 @@
 package pl.blu911.oddam.service.impl;
 
-import org.springframework.security.core.annotation.AuthenticationPrincipal;
+
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 import pl.blu911.oddam.domain.CurrentUser;
 import pl.blu911.oddam.domain.Role;
 import pl.blu911.oddam.domain.User;
@@ -11,10 +10,7 @@ import pl.blu911.oddam.repository.RoleRepository;
 import pl.blu911.oddam.repository.UserRepository;
 import pl.blu911.oddam.service.UserService;
 
-import javax.validation.Valid;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.List;
+import java.util.*;
 
 @Service
 public class UserServiceImpl implements UserService {
@@ -32,6 +28,16 @@ public class UserServiceImpl implements UserService {
 
     public List<User> findAllByRole(String name) {
         return userRepository.findAllByRolesNameOrderByCreatedDesc(name);
+    }
+
+    public Map<String, Integer> countAllRoles() {
+        Map<String, Integer> numberOfUsersMap = new HashMap<>();
+
+        numberOfUsersMap.put("admins", userRepository.countAllByRolesName("ROLE_ADMIN"));
+        numberOfUsersMap.put("users", userRepository.countAllByRolesName("ROLE_USER"));
+        numberOfUsersMap.put("institutions", userRepository.countAllByRolesName("ROLE_INSTITUTION"));
+
+        return numberOfUsersMap;
     }
 
     public User findByUserId(Long id) {

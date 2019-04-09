@@ -1,9 +1,7 @@
 package pl.blu911.oddam.repository;
 
-import org.hibernate.sql.Update;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 import pl.blu911.oddam.domain.User;
 
@@ -16,4 +14,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> findAllByRolesNameOrderByCreatedDesc(String name);
 
     User findByEmail(String email);
+
+    Integer countAllByRolesName(String name);
 }

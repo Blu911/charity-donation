@@ -17,36 +17,41 @@
                     <h3>Adres</h3>
                     <div class="form-group">
                         <p class="form-section--columns form-section">
-                            <strong>Nr mieszkania </strong>
+                            <label>Nr mieszkania <form:errors path="flatNumber"/></label>
+                        </p>
+                        <p>
                             <form:input path="flatNumber"/>
-                            <form:errors path="flatNumber"/>
                         </p>
                         <p class="form-section--columns form-section">
-                            <strong>Nr domu </strong>
+                            <label>Nr domu <form:errors path="houseNumber"/></label>
+                        </p>
+                        <p>
                             <form:input path="houseNumber"/>
-                            <form:errors path="houseNumber"/>
                         </p>
                         <p class="form-section--columns">
-                            <strong>Ulica </strong>
+                            <label>Ulica <form:errors path="street"/></label>
+                        </p>
+                        <p>
                             <form:input path="street"/>
-                            <form:errors path="street"/>
                         </p>
                         <p class="form-section--columns">
-                            <strong>Miasto </strong>
+                            <label>Miasto <form:errors path="city"/></label>
+                        </p>
+                        <p>
                             <form:input path="city"/>
-                            <form:errors path="city"/>
                         </p>
                         <p class="form-section--columns">
-                            <strong>Kod pocztowy </strong>
+                            <label>Kod pocztowy <form:errors path="zipCode"/></label>
+                        </p>
+                        <p>
                             <form:input path="zipCode"/>
-                            <form:errors path="zipCode"/>
                         </p>
                         <button type="submit" class="btn btn-primary btn-warning">Edytuj</button>
+                        <a class="btn" href="<c:url value="/app/profile"/>" role="button">
+                            Powrót</a>
                     </div>
                 </div>
             </form:form>
-            <a class="btn" href="<c:url value="/app/profile"/>" role="button">
-                Powrót</a>
         </div>
     </section>
 </header>

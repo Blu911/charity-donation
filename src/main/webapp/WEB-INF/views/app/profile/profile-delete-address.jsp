@@ -13,34 +13,42 @@
             <form:form method="post"
                        modelAttribute="address" role="form" cssClass="steps--item">
             <div class="steps--item">
-                <h3>Adres</h3>
-                <p>
-                    <strong>Nr mieszkania:</strong>
-                    <span> ${address.flatNumber}</span>
-                </p>
-                <p>
-                    <strong>Nr domu:</strong>
-                    <span> ${address.houseNumber}</span>
-                </p>
-                <p>
-                    <strong>Ulica:</strong>
-                    <span> ${address.street}</span>
-                </p>
-                <p>
-                    <strong>Miasto:</strong>
-                    <span> ${address.city}</span>
-                </p>
-                <p>
-                    <strong> Kod pocztowy:</strong>
-                    <span> ${address.zipCode}</span>
-                </p>
-                <button type="submit" class="btn btn--highlighted" role="button">
-                    Usuń adres
-                </button>
-                </form:form>
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3>Adres ${loop.count}</h3>
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <th>Nr mieszkania</th>
+                                <td>${address.flatNumber}</td>
+                            </tr>
+                            <tr>
+                                <th>Nr domu</th>
+                                <td>${address.houseNumber}</td>
+                            </tr>
+                            <tr>
+                                <th>Ulica</th>
+                                <td>${address.street}</td>
+                            </tr>
+                            <tr>
+                                <th>Miasto</th>
+                                <td>${address.city}</td>
+                            </tr>
+                            <tr>
+                                <th>Kod pocztowy</th>
+                                <td>${address.zipCode}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <button type="submit" class="btn" role="button">
+                            Usuń adres
+                        </button>
+                        <a class="btn" href="<c:url value="/app/profile"/>" role="button">
+                            Powrót</a>
+                        </form:form>
+                    </div>
+                </div>
             </div>
-            <a class="btn" href="<c:url value="/app/profile"/>" role="button">
-                Powrót</a>
         </div>
     </section>
 </header>

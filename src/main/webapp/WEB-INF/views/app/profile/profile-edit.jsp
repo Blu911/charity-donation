@@ -17,41 +17,47 @@
                     <h3>Dołączono <javatime:format value="${currentUser.created}" style="MM"/></h3>
                     <div class="form-group">
                         <p class="form-section--columns form-section">
-                            <strong>Imię </strong>
+                            <label>Imię <form:errors path="userFirstName"/></label>
+                        </p>
+                        <p>
                             <form:input path="userFirstName"/>
-                            <form:errors path="userFirstName"/>
                         </p>
                         <p class="form-section--columns form-section">
-                            <strong>Nazwisko </strong>
+                            <label>Nazwisko <form:errors path="userLastName"/></label>
+                        </p>
+                        <p>
                             <form:input path="userLastName"/>
-                            <form:errors path="userLastName"/>
                         </p>
                         <p class="form-section--columns">
-                            <strong>E-mail </strong>
+                            <label>E-mail <form:errors path="email"/></label>
+                        </p>
+                        <p>
                             <form:input path="email"/>
-                            <form:errors path="email"/>
                         </p>
                         <p class="form-section--columns">
-                            <strong>Telefon </strong>
+                            <label>Telefon <form:errors path="phoneNumber"/></label>
+                        </p>
+                        <p>
                             <form:input path="phoneNumber"/>
-                            <form:errors path="phoneNumber"/>
                         </p>
                         <p class="form-section--columns">
-                            <strong>Login </strong>
+                            <label>Login <form:errors path="username"/></label>
+                        </p>
+                        <p>
                             <form:input path="username"/>
-                            <form:errors path="username"/>
                         </p>
                         <p class="form-section--columns">
-                            <strong>Hasło </strong>
+                            <label>Hasło <form:errors path="password"/></label>
+                        </p>
+                        <p>
                             <form:input path="password" type="password"/>
-                            <form:errors path="password"/>
                         </p>
                         <button type="submit" class="btn btn-primary btn-warning">Edytuj</button>
+                        <a class="btn" href="<c:url value="/app/profile"/>" role="button">
+                            Powrót</a>
                     </div>
                 </div>
             </form:form>
-            <a class="btn" href="<c:url value="/app/profile"/>" role="button">
-                Powrót</a>
         </div>
     </section>
 </header>

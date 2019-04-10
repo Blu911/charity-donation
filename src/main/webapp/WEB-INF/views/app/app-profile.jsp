@@ -47,23 +47,23 @@
                         <table class="table">
                             <tbody>
                             <tr>
-                                <th>Nr mieszkania:</th>
+                                <th>Nr mieszkania</th>
                                 <td>${address.flatNumber}</td>
                             </tr>
                             <tr>
-                                <th>Nr domu:</th>
+                                <th>Nr domu</th>
                                 <td>${address.houseNumber}</td>
                             </tr>
                             <tr>
-                                <th>Ulica:</th>
+                                <th>Ulica</th>
                                 <td>${address.street}</td>
                             </tr>
                             <tr>
-                                <th>Miasto:</th>
+                                <th>Miasto</th>
                                 <td>${address.city}</td>
                             </tr>
                             <tr>
-                                <th>Kod pocztowy:</th>
+                                <th>Kod pocztowy</th>
                                 <td>${address.zipCode}</td>
                             </tr>
                             </tbody>

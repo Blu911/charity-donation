@@ -15,6 +15,7 @@
             </h1>
 
             <ul class="slogan--buttons">
+                <li><a href="<c:url value="/login"/>" class="btn btn--large">Zaloguj się</a></li>
                 <li><a href="<c:url value="/register"/>" class="btn btn--large">Załóż konto</a></li>
             </ul>
         </div>

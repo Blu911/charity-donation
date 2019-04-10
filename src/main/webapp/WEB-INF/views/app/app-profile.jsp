@@ -7,68 +7,77 @@
 <body>
 <header class="header--form-page">
     <jsp:include page="components/navbar-app.jsp"/>
-    <section class="steps" id="steps">
-        <h2>Profil</h2>
-        <div>
-            <div class="steps--item">
-                <h3>Dane osobowe</h3>
+    <section class="steps">
+        <div class="steps--item">
+            <h3>Dane osobowe</h3>
 
-                <p>
-                    <strong>Imię</strong>
-                    <span> ${currentUser.userFirstName}</span>
-                </p>
-                <p>
-                    <strong>Nazwisko</strong>
-                    <span> ${currentUser.userLastName}</span>
-                </p>
-                <p>
-                    <strong>Login</strong>
-                    <span> ${currentUser.username}</span>
-                </p>
-                <p>
-                    <strong>Email</strong>
-                    <span> ${currentUser.email}</span>
-                </p>
-                <p>
-                    <strong>Numer telefonu</strong>
-                    <span> ${currentUser.phoneNumber}</span>
-                </p>
-                <a href="<c:url value="/app/profile/edit"/>" class="btn btn--highlighted">Edytuj dane osobowe</a>
-                <a class="btn btn--small" href="<c:url value="/app/profile/add"/>"
-                   role="button">
-                    Dodaj nowy adres</a>
-                <c:forEach items="${currentUser.addresses}" var="address" varStatus="loop">
-                    <h3>Adres ${loop.count}</h3>
-                    <p>
-                        <strong>Nr mieszkania:</strong>
-                        <span> ${address.flatNumber}</span>
-                    </p>
-                    <p>
-                        <strong>Nr domu:</strong>
-                        <span> ${address.houseNumber}</span>
-                    </p>
-                    <p>
-                        <strong>Ulica:</strong>
-                        <span> ${address.street}</span>
-                    </p>
-                    <p>
-                        <strong>Miasto:</strong>
-                        <span> ${address.city}</span>
-                    </p>
-                    <p>
-                        <strong> Kod pocztowy:</strong>
-                        <span> ${address.zipCode}</span>
-                    </p>
-                    <span><a class="btn btn--small" href="<c:url value="/app/profile/edit/${address.id}"/>"
-                             role="button">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <table class="table">
+                        <tbody>
+                        <tr>
+                            <th>Imię</th>
+                            <td>${currentUser.userFirstName}</td>
+                        </tr>
+                        <tr>
+                            <th>Nazwisko</th>
+                            <td>${currentUser.userLastName}</td>
+                        </tr>
+                        <tr>
+                            <th>Login</th>
+                            <td>${currentUser.username}</td>
+                        </tr>
+                        <tr>
+                            <th>Email</th>
+                            <td>${currentUser.email}</td>
+                        </tr>
+                        <tr>
+                            <th>Numer telefonu</th>
+                            <td>${currentUser.phoneNumber}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <a href="<c:url value="/app/profile/edit"/>" class="btn btn--small">Edytuj dane osobowe</a>
+                    </br>
+                    <a class="btn btn--small" href="<c:url value="/app/profile/add"/>"
+                       role="button">Dodaj nowy adres</a>
+
+                    <c:forEach items="${currentUser.addresses}" var="address" varStatus="loop">
+                        <h3>Adres ${loop.count}</h3>
+                        <table class="table">
+                            <tbody>
+                            <tr>
+                                <th>Nr mieszkania:</th>
+                                <td>${address.flatNumber}</td>
+                            </tr>
+                            <tr>
+                                <th>Nr domu:</th>
+                                <td>${address.houseNumber}</td>
+                            </tr>
+                            <tr>
+                                <th>Ulica:</th>
+                                <td>${address.street}</td>
+                            </tr>
+                            <tr>
+                                <th>Miasto:</th>
+                                <td>${address.city}</td>
+                            </tr>
+                            <tr>
+                                <th>Kod pocztowy:</th>
+                                <td>${address.zipCode}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <span><a class="btn btn--small" href="<c:url value="/app/profile/edit/${address.id}"/>"
+                                 role="button">
                         Edytuj</a>
                     <a class="btn btn--small" href="<c:url value="/app/profile/delete/${address.id}"/>"
                        role="button">
                         Usuń</a>
                         </span>
-                </c:forEach>
+                    </c:forEach>
+                </div>
             </div>
-        </div>
     </section>
 </header>
 <jsp:include page="components/footer.jsp"/>

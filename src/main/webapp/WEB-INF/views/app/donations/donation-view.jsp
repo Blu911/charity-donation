@@ -37,7 +37,15 @@
                         </tr>
                         <tr>
                             <th>Adres obdarowanej instytucji</th>
-                            <td>${donation.institutionDetails.addresses[0].street} ${donation.institutionDetails.addresses[0].houseNumber}, ${donation.institutionDetails.addresses[0].zipCode} ${donation.institutionDetails.addresses[0].city}</td>
+                            <td>${donation.institutionDetails.addresses[0].street}
+                                ${donation.institutionDetails.addresses[0].houseNumber}
+                                <c:choose>
+                                <c:when test="${empty donation.institutionDetails.addresses[0].flatNumber or donation.institutionDetails.addresses[0].flatNumber eq 0}">, </c:when>
+                                <c:otherwise>/${donation.institutionDetails.addresses[0].flatNumber}, </c:otherwise>
+                            </c:choose>
+                                ${donation.institutionDetails.addresses[0].zipCode}
+                                ${donation.institutionDetails.addresses[0].city}
+                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -46,7 +54,14 @@
                         <tbody>
                         <tr>
                             <th>Adres odbioru</th>
-                            <td>${donation.pickUpAddress.street} ${donation.pickUpAddress.houseNumber}, ${donation.pickUpAddress.zipCode} ${donation.pickUpAddress.city}</td>
+                            <td>${donation.pickUpAddress.street}
+                                ${donation.pickUpAddress.houseNumber}
+                                <c:choose>
+                                <c:when test="${empty donation.pickUpAddress.flatNumber or donation.pickUpAddress.flatNumber eq 0}">, </c:when>
+                                <c:otherwise>/${donation.pickUpAddress.flatNumber}, </c:otherwise>
+                            </c:choose>
+                                ${donation.pickUpAddress.zipCode}
+                                ${donation.pickUpAddress.city}</td>
                         </tr>
                         <tr>
                             <th>Termin odbioru</th>
@@ -58,7 +73,12 @@
                         </tr>
                         <tr>
                             <th>Komentarz dla kuriera</th>
-                            <td>${donation.pickUpComment}</td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${empty donation.pickUpComment}">Brak komentarza</c:when>
+                                    <c:otherwise>${donation.pickUpComment}</c:otherwise>
+                                </c:choose>
+                            </td>
                         </tr>
                         <tr>
                             <th>Status</th>

@@ -1,3 +1,6 @@
+## INFO
+Projekt w fazie rozwoju/ project in development.
+
 ## PL "Oddam w dobre ręce" aplikacja webowa
 Celem projektu jest stworzenie miejsca, w którym każdy może przekazać niepotrzebne rzeczy zaufanym instytucjom.
 
@@ -8,11 +11,10 @@ The aim of the project is to create a place where everyone can give unnecessary 
 * Spring Boot
 * Spring MVC
 * Spring Form
-* Spring Validation
 * Spring Security
+* Hibernate
 * JSP
 * JavaScript
-* Lombok
 
 ### Few sreenshots from the app
 **Main page**

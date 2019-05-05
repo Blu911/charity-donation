@@ -29,8 +29,8 @@ public class SpringDataUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) {
 
 
-//        User user = userService.findByUserEmail(username);
-        User user = userService.findByUserUsername(username);
+        User user = userService.findByUserEmail(username);
+//        User user = userService.findByUserUsername(username);
 
         if (user == null) {
             throw new UsernameNotFoundException(username + "not found");

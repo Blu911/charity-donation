@@ -46,7 +46,7 @@
                             <td>${user.userLastName}</td>
                             <td>
                                 <c:choose>
-                                    <c:when test="${user.enabled == 1}">
+                                    <c:when test="${user.enabled}">
                                         Nie
                                     </c:when>
                                     <c:otherwise>
@@ -62,7 +62,7 @@
                                     <a class="btn pull-right"
                                        href="<c:url value="/admin/users/block/${user.id}"/>">
                                         <c:choose>
-                                            <c:when test="${user.enabled == 1}">
+                                            <c:when test="${user.enabled}">
                                                 Zablokuj
                                             </c:when>
                                             <c:otherwise>

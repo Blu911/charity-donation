@@ -34,7 +34,7 @@ public class SpringDataUserDetailsService implements UserDetailsService {
 
         if (user == null) {
             throw new UsernameNotFoundException(username + "not found");
-        } else if (user.getEnabled() == 0) {
+        } else if (!user.isEnabled()) {
             throw new DisabledException("Account disabled");
         }
         Set<GrantedAuthority> grantedAuthorities = new HashSet<>();

@@ -70,10 +70,10 @@ public class UsersController {
     @PostMapping("/users/block/{id}")
     public String lockUserSuccess(@PathVariable long id) {
         User userToBlock = userService.findByUserId(id);
-        if (userToBlock.getEnabled() == 1) {
-            userService.lockAndUnlockUserById(id, 0);
+        if (userToBlock.isEnabled()) {
+            userService.lockAndUnlockUserById(id, false);
         } else {
-            userService.lockAndUnlockUserById(id, 1);
+            userService.lockAndUnlockUserById(id, true);
         }
         return "redirect:/admin/users";
     }

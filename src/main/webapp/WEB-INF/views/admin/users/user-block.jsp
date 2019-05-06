@@ -61,7 +61,7 @@
                             </div>
                             <button type="submit" class="btn btn-primary btn-danger">
                                 <c:choose>
-                                    <c:when test="${user.enabled == 1}">
+                                    <c:when test="${user.enabled}">
                                         Zablokuj
                                     </c:when>
                                     <c:otherwise>

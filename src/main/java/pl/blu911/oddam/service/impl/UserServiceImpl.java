@@ -52,7 +52,6 @@ public class UserServiceImpl implements UserService {
     @Override
     public void saveUser(User user, String role) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setEnabled(1);
         Role userRole = roleRepository.findByName(role);
         user.setRoles(new HashSet<Role>(Arrays.asList(userRole)));
         userRepository.save(user);
@@ -89,7 +88,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.findByEmail(email);
     }
 
-    public void lockAndUnlockUserById(Long id, int lock) {
+    public void lockAndUnlockUserById(Long id, boolean lock) {
         User userToBlock = userRepository.getOne(id);
 //        userToBlock.setEnabled(userToBlock.getEnabled());
         userToBlock.setEnabled(lock);

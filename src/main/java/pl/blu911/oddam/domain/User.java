@@ -13,10 +13,12 @@ import java.util.Set;
 
 @Data
 @Entity
-@NoArgsConstructor
 @Table(name = "users")
 @ToString(exclude = {"addresses", "donations", "roles"})
 public class User {
+
+    @Column(name = "enabled")
+    private boolean enabled;
 
     @NotBlank
     @Email
@@ -31,7 +33,12 @@ public class User {
     private String username;
     @NotBlank
     private String password;
-    private int enabled = 1;
+
+    public User() {
+        super();
+        this.enabled = false;
+    }
+
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_role", joinColumns = @JoinColumn(name = "users_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))

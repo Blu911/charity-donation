@@ -1,7 +1,6 @@
 package pl.blu911.oddam.domain;
 
 import lombok.Data;
-import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.*;
@@ -16,28 +15,29 @@ import java.util.Set;
 @Table(name = "users")
 @ToString(exclude = {"addresses", "donations", "roles"})
 public class User {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(name = "enabled")
     private boolean enabled;
+
+    public User() {
+        super();
+        this.enabled = false;
+    }
 
     @NotBlank
     @Email
     @Column(nullable = false, unique = true)
     private String email;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
     @NotBlank
     @Column(nullable = false, unique = true)
     private String username;
+
     @NotBlank
     private String password;
-
-    public User() {
-        super();
-        this.enabled = false;
-    }
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "users_role", joinColumns = @JoinColumn(name = "users_id"),

@@ -1,12 +1,15 @@
 package pl.blu911.oddam.controller;
 
+import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
 import pl.blu911.oddam.domain.User;
+
 import pl.blu911.oddam.service.impl.UserServiceImpl;
 
 import javax.servlet.http.HttpServletRequest;

@@ -1,7 +1,8 @@
-package pl.blu911.oddam.domain;
+package pl.blu911.oddam.registration;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pl.blu911.oddam.domain.User;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

@@ -70,13 +70,13 @@ VALUES ('ROLE_USER'),
 # Admins password = admin
 INSERT INTO `oddam`.`users` (`id`, `created`, `username`, `password`, `enabled`, `email`, `phone_number`,
                              `user_first_name`, `user_last_name`)
-VALUES ('1', '2019-03-04 15:00:00', 'admin', '$2a$10$s3g9QrbfZv8v3cx7viNJOu4V7gcsnrz5Hzm8OqjRXjLMak7Td.42C', '1',
+VALUES ('1', '2019-03-04 15:00:00', 'admin', '$2a$10$s3g9QrbfZv8v3cx7viNJOu4V7gcsnrz5Hzm8OqjRXjLMak7Td.42C', TRUE,
         'admin@main.pl', '123456789',
         'Arkadiusz', 'Kowalski'),
-       ('2', '2019-03-01 11:00:00', 'admin2', '$2a$10$s3g9QrbfZv8v3cx7viNJOu4V7gcsnrz5Hzm8OqjRXjLMak7Td.42C', '1',
+       ('2', '2019-03-01 11:00:00', 'admin2', '$2a$10$s3g9QrbfZv8v3cx7viNJOu4V7gcsnrz5Hzm8OqjRXjLMak7Td.42C', TRUE,
         'admin@second.pl',
         '123123123', 'Paweł', 'Słomiński'),
-       ('3', '2019-04-04 22:00:00', 'admin3', '$2a$10$s3g9QrbfZv8v3cx7viNJOu4V7gcsnrz5Hzm8OqjRXjLMak7Td.42C', '1',
+       ('3', '2019-04-04 22:00:00', 'admin3', '$2a$10$s3g9QrbfZv8v3cx7viNJOu4V7gcsnrz5Hzm8OqjRXjLMak7Td.42C', TRUE,
         'admin@third.pl',
         '123456788', 'John', 'Smith');
 
@@ -84,19 +84,19 @@ VALUES ('1', '2019-03-04 15:00:00', 'admin', '$2a$10$s3g9QrbfZv8v3cx7viNJOu4V7gc
 # Users password = user
 INSERT INTO `oddam`.`users` (`id`, `created`, `username`, `password`, `enabled`, `email`, `phone_number`,
                              `user_first_name`, `user_last_name`)
-VALUES ('4', '2019-02-04 07:00:00', 'Jarkow', '$2a$10$7zc7spg6w6U8.CKunvcsOe64CtUbo3vRH3TKbIr5sMQ8WNU68/61.', '1',
+VALUES ('4', '2019-02-04 07:00:00', 'Jarkow', '$2a$10$7zc7spg6w6U8.CKunvcsOe64CtUbo3vRH3TKbIr5sMQ8WNU68/61.', TRUE,
         'user@main.pl', '987654321',
         'Jarosław', 'Kowalski'),
-       ('5', '2019-02-04 10:00:00', 'smoli67', '$2a$10$7zc7spg6w6U8.CKunvcsOe64CtUbo3vRH3TKbIr5sMQ8WNU68/61.', '1',
+       ('5', '2019-02-04 10:00:00', 'smoli67', '$2a$10$7zc7spg6w6U8.CKunvcsOe64CtUbo3vRH3TKbIr5sMQ8WNU68/61.', TRUE,
         'user@second.pl',
         '123443211', 'Adrian', 'Smolarek'),
-       ('6', '2019-01-14 17:00:00', 'madzia', '$2a$10$7zc7spg6w6U8.CKunvcsOe64CtUbo3vRH3TKbIr5sMQ8WNU68/61.', '1',
+       ('6', '2019-01-14 17:00:00', 'madzia', '$2a$10$7zc7spg6w6U8.CKunvcsOe64CtUbo3vRH3TKbIr5sMQ8WNU68/61.', TRUE,
         'user@third.pl', '888777666',
         'Magdalena', 'Kręcisz'),
-       ('7', '2019-01-23 15:00:00', 'crazyGirl', '$2a$10$7zc7spg6w6U8.CKunvcsOe64CtUbo3vRH3TKbIr5sMQ8WNU68/61.', '1',
+       ('7', '2019-01-23 15:00:00', 'crazyGirl', '$2a$10$7zc7spg6w6U8.CKunvcsOe64CtUbo3vRH3TKbIr5sMQ8WNU68/61.', TRUE,
         'user@fourth.pl', '121323434',
         'Julie', 'Bucket'),
-       ('8', '2019-01-10 13:30:00', 'Warrior', '$2a$10$7zc7spg6w6U8.CKunvcsOe64CtUbo3vRH3TKbIr5sMQ8WNU68/61.', '1',
+       ('8', '2019-01-10 13:30:00', 'Warrior', '$2a$10$7zc7spg6w6U8.CKunvcsOe64CtUbo3vRH3TKbIr5sMQ8WNU68/61.', TRUE,
         'user@fifth.pl', '343565787',
         'Adam', 'Samson');
 
@@ -104,13 +104,13 @@ VALUES ('4', '2019-02-04 07:00:00', 'Jarkow', '$2a$10$7zc7spg6w6U8.CKunvcsOe64Ct
 INSERT INTO `oddam`.`users` (`id`, `created`, `username`, `password`, `enabled`, `email`, `institution_name`,
                              `phone_number`, `institution_type_id`, `institution_goal_and_mission`)
 VALUES ('100', '2019-02-02 07:00:00', 'institution', '$2a$10$abBHifNBp3Spqw/u.zkJguXzE9M2hOOXZ1H8531Dn1kHRgtu8Oyi6',
-        '0',
+        FALSE,
         'institution@main.pl', 'Dla Malucha', '888777666', '5', 'Pomoc dzieciom pozbawionym rodziny'),
        ('101', '2019-02-05 09:00:00', 'institution2', '$2a$10$abBHifNBp3Spqw/u.zkJguXzE9M2hOOXZ1H8531Dn1kHRgtu8Oyi6',
-        '0',
+        FALSE,
         'institution@second.pl', 'Dla Dziadka', '123456789', '6', 'Pomoc osobom starszym bez wsparcia'),
        ('102', '2019-02-07 15:00:00', 'institution3', '$2a$10$abBHifNBp3Spqw/u.zkJguXzE9M2hOOXZ1H8531Dn1kHRgtu8Oyi6',
-        '0',
+        FALSE,
         'institution@third.pl', 'Bez domu', '123456789', '5', 'Pomoc osobom bez domu');
 
 INSERT INTO `oddam`.`users_role` (`users_id`, `role_id`)

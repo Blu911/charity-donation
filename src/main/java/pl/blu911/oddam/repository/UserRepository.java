@@ -13,7 +13,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     List<User> findAllByRolesNameOrderByCreatedDesc(String name);
 
-    User findByEmail(String email);
+    User findByEmailIgnoreCase(String email);
 
     Integer countAllByRolesName(String name);
 }

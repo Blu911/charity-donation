@@ -1,7 +1,8 @@
 package pl.blu911.oddam.service;
 
-import org.springframework.mail.SimpleMailMessage;
+import pl.blu911.oddam.domain.User;
+import pl.blu911.oddam.registration.ConfirmationToken;
 
 public interface EmailSenderService {
-    void sendEmail(SimpleMailMessage email);
+    void sendEmail(User user, ConfirmationToken confirmationToken);
 }

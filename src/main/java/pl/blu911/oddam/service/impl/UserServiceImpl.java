@@ -85,7 +85,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findByUserEmail(String email) {
-        return userRepository.findByEmailIgnoreCase(email);
+        return userRepository.findByEmail(email);
     }
 
     public void lockAndUnlockUserById(Long id, boolean lock) {

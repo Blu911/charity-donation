@@ -11,7 +11,7 @@
     <h2>Zaloguj się</h2>
     <form role="form" method="post">
         <div class="form-group">
-            <input class="form-control" type="username" name="username" placeholder="Login"/>
+            <input class="form-control" name="username" placeholder="E-mail"/>
         </div>
         <div class="form-group">
             <input class="form-control" type="password" name="password" placeholder="Hasło"/>

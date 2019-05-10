@@ -43,7 +43,7 @@ public class UserAccountController {
         User existingUser = userService.findByUserEmail(user.getEmail());
 
         if (existingUser != null) {
-            model.addAttribute("message", "This email already exists!");
+            model.addAttribute("message", "Ten adres e-mail jest już zarejestrowany!");
             view = "register-error";
         } else {
             userService.saveUser(user, "ROLE_USER");
@@ -57,18 +57,16 @@ public class UserAccountController {
         return view;
     }
 
-    @PostMapping("/register/confirm-account")
     @GetMapping("/register/confirm-account")
     public String confirmUserAccount(@RequestParam("token") String confirmationToken, Model model) {
         ConfirmationToken token = tokenService.findByConfirmationToken(confirmationToken);
         String view;
         if (token != null) {
             User user = userService.findByUserEmail(token.getUser().getEmail());
-            user.setEnabled(true);
-            userService.updateUser(user);
+            userService.lockAndUnlockUserById(user.getId(), true);
             view = "register-verified";
         } else {
-            model.addAttribute("message", "The link is invalid or broken!");
+            model.addAttribute("message", "Link aktywacyjny jest uszkodzony lub wygasł!");
             view = "register-error";
         }
         return view;

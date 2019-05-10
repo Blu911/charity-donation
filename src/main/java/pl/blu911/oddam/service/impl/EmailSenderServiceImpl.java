@@ -19,9 +19,8 @@ public class EmailSenderServiceImpl implements EmailSenderService {
     public void sendEmail(User user, ConfirmationToken confirmationToken) {
         SimpleMailMessage mailMessage = new SimpleMailMessage();
         mailMessage.setTo(user.getEmail());
-        mailMessage.setSubject("Complete Registration!");
-        mailMessage.setFrom("krys.blu@gmail.com");
-        mailMessage.setText("To confirm your account, please click here : "
+        mailMessage.setSubject("Aktywuj konto!");
+        mailMessage.setText("Aby aktywować swoje konto, kliknij tutaj: "
                 + "http://localhost:8080/register/confirm-account?token=" + confirmationToken.getConfirmationToken());
         javaMailSender.send(mailMessage);
     }

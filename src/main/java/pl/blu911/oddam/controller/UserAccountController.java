@@ -57,11 +57,11 @@ public class UserAccountController {
         return view;
     }
 
-    @GetMapping("/register/confirm-account")
+    @RequestMapping(value = "/register/confirm-account", method = {RequestMethod.GET, RequestMethod.POST})
     public String confirmUserAccount(@RequestParam("token") String confirmationToken, Model model) {
         ConfirmationToken token = tokenService.findByConfirmationToken(confirmationToken);
         String view;
-        if (token != null) {
+        if (token != null && !token.getUser().isEnabled()) {
             User user = userService.findByUserEmail(token.getUser().getEmail());
             userService.lockAndUnlockUserById(user.getId(), true);
             view = "register-verified";

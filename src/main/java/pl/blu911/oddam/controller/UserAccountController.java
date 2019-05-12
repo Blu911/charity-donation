@@ -93,4 +93,9 @@ public class UserAccountController {
         }
         return "redirect:/app";
     }
+
+    @GetMapping("/reset-password")
+    public String resetPassword(@ModelAttribute User user) {
+        return "reset-password";
+    }
 }

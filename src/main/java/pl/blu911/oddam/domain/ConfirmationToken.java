@@ -1,4 +1,4 @@
-package pl.blu911.oddam.registration;
+package pl.blu911.oddam.domain;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

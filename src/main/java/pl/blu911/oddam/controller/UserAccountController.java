@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import pl.blu911.oddam.domain.User;
-import pl.blu911.oddam.registration.ConfirmationToken;
+import pl.blu911.oddam.domain.ConfirmationToken;
 
 import pl.blu911.oddam.service.impl.ConfirmationTokenServiceImpl;
 import pl.blu911.oddam.service.impl.EmailSenderServiceImpl;
@@ -49,7 +49,7 @@ public class UserAccountController {
             userService.saveUser(user, "ROLE_USER");
             ConfirmationToken token = tokenService.generateToken(user);
             tokenService.saveToken(token);
-            emailSenderService.sendEmail(user, token);
+            emailSenderService.sendActivationEmail(user, token);
 
             model.addAttribute("email", user.getEmail());
             view = "register-success";
@@ -97,5 +97,36 @@ public class UserAccountController {
     @GetMapping("/reset-password")
     public String resetPassword(@ModelAttribute User user) {
         return "reset-password";
+    }
+
+    @PostMapping("/reset-password{email}")
+    public String resetPasswordPost(@PathVariable String email, Model model) {
+        User user = userService.findByUserEmail(email);
+        String view;
+        if (user == null) {
+            model.addAttribute("message", "Podany adres e-mail jest niepoprawny!");
+            view = "reset-password-error";
+        } else {
+            ConfirmationToken token = new ConfirmationToken(user);
+            tokenService.saveToken(token);
+            emailSenderService.sendResetPasswordEmail(user, token);
+
+            model.addAttribute("e-mail", user.getEmail());
+            view = "reset-password-send";
+        }
+        return view;
+    }
+
+    @RequestMapping(value = "/reset-password/confirm", method = {RequestMethod.GET, RequestMethod.POST})
+    public String resetPasswordConfirm(@RequestParam("token") String confirmationToken, Model model) {
+        ConfirmationToken token = tokenService.findByConfirmationToken(confirmationToken);
+        String view;
+        if (token != null) {
+            view = "reset-password-form";
+        } else {
+            model.addAttribute("message", "Link jest uszkodzony lub wygasł!");
+            view = "reset-password-error";
+        }
+        return view;
     }
 }

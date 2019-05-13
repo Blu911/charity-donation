@@ -2,7 +2,7 @@ package pl.blu911.oddam.service.impl;
 
 import org.springframework.stereotype.Service;
 import pl.blu911.oddam.domain.User;
-import pl.blu911.oddam.registration.ConfirmationToken;
+import pl.blu911.oddam.domain.ConfirmationToken;
 import pl.blu911.oddam.repository.ConfirmationTokenRepository;
 import pl.blu911.oddam.service.ConfirmationTokenService;
 

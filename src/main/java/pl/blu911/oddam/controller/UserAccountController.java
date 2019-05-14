@@ -99,19 +99,19 @@ public class UserAccountController {
         return "reset-password";
     }
 
-    @PostMapping("/reset-password{email}")
-    public String resetPasswordPost(@PathVariable String email, Model model) {
-        User user = userService.findByUserEmail(email);
+    @PostMapping("/reset-password")
+    public String resetPasswordSent(@ModelAttribute User user, Model model) {
+        User userToResetPassword = userService.findByUserEmail(user.getEmail());
         String view;
-        if (user == null) {
+        if (userToResetPassword == null) {
             model.addAttribute("message", "Podany adres e-mail jest niepoprawny!");
             view = "reset-password-error";
         } else {
-            ConfirmationToken token = new ConfirmationToken(user);
+            ConfirmationToken token = new ConfirmationToken(userToResetPassword);
             tokenService.saveToken(token);
-            emailSenderService.sendResetPasswordEmail(user, token);
+            emailSenderService.sendResetPasswordEmail(userToResetPassword, token);
 
-            model.addAttribute("e-mail", user.getEmail());
+            model.addAttribute("email", userToResetPassword.getEmail());
             view = "reset-password-send";
         }
         return view;

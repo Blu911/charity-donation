@@ -118,7 +118,7 @@ public class UserAccountController {
     }
 
     @RequestMapping(value = "/reset-password/confirm", method = {RequestMethod.GET, RequestMethod.POST})
-    public String resetPasswordConfirm(@RequestParam("token") String confirmationToken, Model model) {
+    public String resetPasswordConfirm(@RequestParam("token") String confirmationToken, Model model, @ModelAttribute User user) {
         ConfirmationToken token = tokenService.findByConfirmationToken(confirmationToken);
         String view;
         if (token != null) {

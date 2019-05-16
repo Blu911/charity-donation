@@ -5,17 +5,20 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import pl.blu911.oddam.domain.User;
 import pl.blu911.oddam.domain.ConfirmationToken;
 
+import pl.blu911.oddam.domain.dto.PasswordChangeDto;
 import pl.blu911.oddam.service.impl.ConfirmationTokenServiceImpl;
 import pl.blu911.oddam.service.impl.EmailSenderServiceImpl;
 import pl.blu911.oddam.service.impl.UserServiceImpl;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 @Controller
 public class UserAccountController {
@@ -117,16 +120,28 @@ public class UserAccountController {
         return view;
     }
 
-    @RequestMapping(value = "/reset-password/confirm", method = {RequestMethod.GET, RequestMethod.POST})
-    public String resetPasswordConfirm(@RequestParam("token") String confirmationToken, Model model, @ModelAttribute User user) {
+    @GetMapping("/reset-password/confirm")
+    public String resetPasswordForm(@RequestParam("token") String confirmationToken, @ModelAttribute PasswordChangeDto password, Model model) {
         ConfirmationToken token = tokenService.findByConfirmationToken(confirmationToken);
         String view;
         if (token != null) {
+            model.addAttribute("message", "Podaj nowe hasło");
             view = "reset-password-form";
         } else {
             model.addAttribute("message", "Link jest uszkodzony lub wygasł!");
             view = "reset-password-error";
         }
         return view;
+    }
+
+    @PostMapping("/reset-password/confirm")
+    public String resetPasswordConfirm(@Valid PasswordChangeDto password,
+                                       BindingResult result,
+                                       Model model) {
+        if (result.hasErrors() || !(password.getPasswordNew().equals(password.getPasswordNewConfirm()))) {
+            model.addAttribute("message", "Hasła muszą być takie same!");
+            return "reset-password-form";
+        }
+        return "reset-password-complete";
     }
 }

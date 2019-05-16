@@ -10,18 +10,14 @@
     <jsp:include page="components/navigation.jsp"/>
 </header>
 <section class="login-page">
-    <h2>Zresetuj hasło</h2>
-    <form:form method="post"
-               modelAttribute="user" role="form">
+    <h2>${message}</h2>
+    <form:form method="post" modelAttribute="password" role="form">
         <div class="form-group">
-            <h3>Podaj nowe hasło</h3>
             <form:input path="passwordNew" type="password" placeholder="Nowe hasło"/>
-            <form:errors path="password"/>
         </div>
         <div class="form-group">
             <h3>Powtórz nowe hasło</h3>
             <form:input path="passwordConfirm" type="password" placeholder="Potwierdź nowe hasło"/>
-            <form:errors path="password"/>
         </div>
         <div class="form-group form-group--buttons">
             <button class="btn" type="submit">Wyślij</button>

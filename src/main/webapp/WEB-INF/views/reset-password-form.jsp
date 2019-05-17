@@ -11,13 +11,13 @@
 </header>
 <section class="login-page">
     <h2>${message}</h2>
-    <form:form method="post" modelAttribute="password" role="form">
+    <form:form method="post" modelAttribute="password">
         <div class="form-group">
             <form:input path="passwordNew" type="password" placeholder="Nowe hasło"/>
         </div>
         <div class="form-group">
             <h3>Powtórz nowe hasło</h3>
-            <form:input path="passwordConfirm" type="password" placeholder="Potwierdź nowe hasło"/>
+            <form:input path="passwordNewConfirm" type="password" placeholder="Potwierdź nowe hasło"/>
         </div>
         <div class="form-group form-group--buttons">
             <button class="btn" type="submit">Wyślij</button>

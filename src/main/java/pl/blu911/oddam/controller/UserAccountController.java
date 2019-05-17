@@ -121,11 +121,13 @@ public class UserAccountController {
     }
 
     @GetMapping("/reset-password/confirm")
-    public String resetPasswordForm(@RequestParam("token") String confirmationToken, @ModelAttribute PasswordChangeDto password, Model model) {
+    public String resetPasswordForm(@RequestParam("token") String confirmationToken,
+                                    Model model) {
         ConfirmationToken token = tokenService.findByConfirmationToken(confirmationToken);
         String view;
         if (token != null) {
             model.addAttribute("message", "Podaj nowe hasło");
+            model.addAttribute("password", new PasswordChangeDto());
             view = "reset-password-form";
         } else {
             model.addAttribute("message", "Link jest uszkodzony lub wygasł!");
@@ -140,6 +142,7 @@ public class UserAccountController {
                                        Model model) {
         if (result.hasErrors() || !(password.getPasswordNew().equals(password.getPasswordNewConfirm()))) {
             model.addAttribute("message", "Hasła muszą być takie same!");
+            model.addAttribute("password", new PasswordChangeDto());
             return "reset-password-form";
         }
         return "reset-password-complete";

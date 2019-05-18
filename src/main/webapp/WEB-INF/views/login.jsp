@@ -8,7 +8,7 @@
     <jsp:include page="components/navigation.jsp"/>
 </header>
 <section class="login-page">
-    <h2>Zaloguj się</h2>
+    <h2>${message}</h2>
     <form role="form" method="post">
         <div class="form-group">
             <input class="form-control" name="username" placeholder="E-mail"/>

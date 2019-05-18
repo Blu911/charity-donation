@@ -17,7 +17,7 @@
         </div>
         <div class="form-group">
             <h3>Powtórz nowe hasło</h3>
-            <form:input path="passwordNewConfirm" type="password" placeholder="Potwierdź nowe hasło"/>
+            <form:input path="passwordNewConfirm" type="password" placeholder="Nowe hasło"/>
         </div>
         <div class="form-group form-group--buttons">
             <button class="btn" type="submit">Wyślij</button>

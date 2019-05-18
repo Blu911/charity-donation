@@ -76,7 +76,8 @@ public class UserAccountController {
     }
 
     @GetMapping("/login")
-    public String login() {
+    public String login(Model model) {
+        model.addAttribute("message", "Zaloguj się");
         return "login";
     }
 
@@ -145,6 +146,7 @@ public class UserAccountController {
             model.addAttribute("password", new PasswordChangeDto());
             return "reset-password-form";
         }
+        model.addAttribute("message", "Możesz powrócić do panelu logowania");
         return "reset-password-complete";
     }
 }

@@ -12,9 +12,9 @@ import pl.blu911.oddam.domain.User;
 import pl.blu911.oddam.domain.ConfirmationToken;
 
 import pl.blu911.oddam.domain.dto.PasswordChangeDto;
-import pl.blu911.oddam.service.impl.ConfirmationTokenServiceImpl;
-import pl.blu911.oddam.service.impl.EmailSenderServiceImpl;
-import pl.blu911.oddam.service.impl.UserServiceImpl;
+import pl.blu911.oddam.service.ConfirmationTokenService;
+import pl.blu911.oddam.service.EmailSenderService;
+import pl.blu911.oddam.service.UserService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,13 +23,13 @@ import javax.validation.Valid;
 @Controller
 public class UserAccountController {
 
-    private final UserServiceImpl userService;
-    private final ConfirmationTokenServiceImpl tokenService;
-    private final EmailSenderServiceImpl emailSenderService;
+    private final UserService userService;
+    private final ConfirmationTokenService tokenService;
+    private final EmailSenderService emailSenderService;
 
-    public UserAccountController(UserServiceImpl userService,
-                                 ConfirmationTokenServiceImpl tokenService,
-                                 EmailSenderServiceImpl emailSenderService) {
+    public UserAccountController(UserService userService,
+                                 ConfirmationTokenService tokenService,
+                                 EmailSenderService emailSenderService) {
         this.userService = userService;
         this.tokenService = tokenService;
         this.emailSenderService = emailSenderService;

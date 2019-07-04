@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.blu911.oddam.domain.CurrentUser;
 import pl.blu911.oddam.domain.User;
+import pl.blu911.oddam.service.DonationService;
+import pl.blu911.oddam.service.UserService;
 import pl.blu911.oddam.service.impl.DonationServiceImpl;
 import pl.blu911.oddam.service.impl.UserServiceImpl;
 
@@ -15,10 +17,10 @@ import java.util.Map;
 @RequestMapping("/admin")
 public class AdminController {
 
-    private final UserServiceImpl userService;
-    private final DonationServiceImpl donationService;
+    private final UserService userService;
+    private final DonationService donationService;
 
-    public AdminController(UserServiceImpl userService, DonationServiceImpl donationService) {
+    public AdminController(UserService userService, DonationService donationService) {
         this.userService = userService;
         this.donationService = donationService;
     }

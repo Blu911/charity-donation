@@ -11,7 +11,6 @@ import pl.blu911.oddam.repository.UserRepository;
 import pl.blu911.oddam.service.UserService;
 
 import java.util.*;
-
 @Service
 public class UserServiceImpl implements UserService {
 

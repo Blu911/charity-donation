@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.*;
 import pl.blu911.oddam.domain.CurrentUser;
 import pl.blu911.oddam.domain.Donation;
 import pl.blu911.oddam.domain.User;
-import pl.blu911.oddam.service.impl.DonationServiceImpl;
-import pl.blu911.oddam.service.impl.UserServiceImpl;
+import pl.blu911.oddam.service.DonationService;
+import pl.blu911.oddam.service.UserService;
 
 import java.util.List;
 
@@ -16,10 +16,10 @@ import java.util.List;
 @RequestMapping("/app/donations")
 public class MyDonationsController {
 
-    private final DonationServiceImpl donationService;
-    private final UserServiceImpl userService;
+    private final DonationService donationService;
+    private final UserService userService;
 
-    public MyDonationsController(DonationServiceImpl donationService, UserServiceImpl userService) {
+    public MyDonationsController(DonationService donationService, UserService userService) {
         this.donationService = donationService;
         this.userService = userService;
     }

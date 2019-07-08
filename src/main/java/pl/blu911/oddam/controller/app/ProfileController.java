@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import pl.blu911.oddam.domain.Address;
 import pl.blu911.oddam.domain.CurrentUser;
 import pl.blu911.oddam.domain.User;
-import pl.blu911.oddam.service.impl.AddressServiceImpl;
-import pl.blu911.oddam.service.impl.UserServiceImpl;
+import pl.blu911.oddam.service.AddressService;
+import pl.blu911.oddam.service.UserService;
 
 import javax.validation.Valid;
 
@@ -17,10 +17,10 @@ import javax.validation.Valid;
 @RequestMapping("/app/profile")
 public class ProfileController {
 
-    private final UserServiceImpl userService;
-    private final AddressServiceImpl addressService;
+    private final UserService userService;
+    private final AddressService addressService;
 
-    public ProfileController(UserServiceImpl userService, AddressServiceImpl addressService) {
+    public ProfileController(UserService userService, AddressService addressService) {
         this.userService = userService;
         this.addressService = addressService;
     }

@@ -6,10 +6,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.blu911.oddam.domain.*;
 import pl.blu911.oddam.domain.dto.DonationDto;
-import pl.blu911.oddam.service.impl.AddressServiceImpl;
-import pl.blu911.oddam.service.impl.CategoryServiceImpl;
-import pl.blu911.oddam.service.impl.DonationServiceImpl;
-import pl.blu911.oddam.service.impl.UserServiceImpl;
+import pl.blu911.oddam.service.AddressService;
+import pl.blu911.oddam.service.CategoryService;
+import pl.blu911.oddam.service.DonationService;
+import pl.blu911.oddam.service.UserService;
 
 import java.util.List;
 
@@ -17,12 +17,12 @@ import java.util.List;
 @RequestMapping("/app/form")
 public class FormController {
 
-    private final UserServiceImpl userService;
-    private final CategoryServiceImpl categoryService;
-    private final DonationServiceImpl donationService;
-    private final AddressServiceImpl addressService;
+    private final UserService userService;
+    private final CategoryService categoryService;
+    private final DonationService donationService;
+    private final AddressService addressService;
 
-    public FormController(UserServiceImpl userService, CategoryServiceImpl categoryService, DonationServiceImpl donationService, AddressServiceImpl addressService) {
+    public FormController(UserService userService, CategoryService categoryService, DonationService donationService, AddressService addressService) {
         this.userService = userService;
         this.categoryService = categoryService;
         this.donationService = donationService;

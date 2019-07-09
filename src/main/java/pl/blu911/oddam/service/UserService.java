@@ -26,4 +26,6 @@ public interface UserService {
     User findByUserId(Long id);
 
     void lockAndUnlockUserById(Long id, boolean b);
+
+    void deleteUserById(Long id);
 }

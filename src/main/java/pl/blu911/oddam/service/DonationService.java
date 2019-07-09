@@ -20,4 +20,6 @@ public interface DonationService {
     List<Donation> findAllByUserId(long id);
 
     Donation findByDonationId(Long id);
+
+    List<Donation> findAllByInstitutionId(long id);
 }

@@ -7,8 +7,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import pl.blu911.oddam.domain.CurrentUser;
 import pl.blu911.oddam.domain.User;
-import pl.blu911.oddam.service.impl.DonationServiceImpl;
-import pl.blu911.oddam.service.impl.UserServiceImpl;
+import pl.blu911.oddam.service.DonationService;
+import pl.blu911.oddam.service.UserService;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -17,10 +17,10 @@ import java.util.List;
 @RequestMapping("/admin")
 public class InstitutionsController {
 
-    private final UserServiceImpl userService;
-    private final DonationServiceImpl donationService;
+    private final UserService userService;
+    private final DonationService donationService;
 
-    public InstitutionsController(UserServiceImpl userService, DonationServiceImpl donationService) {
+    public InstitutionsController(UserService userService, DonationService donationService) {
         this.userService = userService;
         this.donationService = donationService;
     }
@@ -54,7 +54,6 @@ public class InstitutionsController {
         userService.saveUser(user, "ROLE_INSTITUTION");
         return "redirect:/admin/institutions";
     }
-
 
     @GetMapping("/institutions/view/{id}")
     public String viewInstitution(@PathVariable long id, Model model) {

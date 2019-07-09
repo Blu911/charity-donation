@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import pl.blu911.oddam.domain.CurrentUser;
 import pl.blu911.oddam.domain.Donation;
 import pl.blu911.oddam.domain.User;
-import pl.blu911.oddam.service.impl.DonationServiceImpl;
+import pl.blu911.oddam.service.DonationService;
 
 import java.util.List;
 
@@ -18,9 +18,9 @@ import java.util.List;
 @RequestMapping("/admin")
 public class DonationsController {
 
-    private final DonationServiceImpl donationService;
+    private final DonationService donationService;
 
-    public DonationsController(DonationServiceImpl donationService) {
+    public DonationsController(DonationService donationService) {
         this.donationService = donationService;
     }
 

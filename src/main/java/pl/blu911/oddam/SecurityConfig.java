@@ -29,6 +29,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .exceptionHandling().accessDeniedPage("/403")
                 .and().exceptionHandling();
+
+        http.authorizeRequests().antMatchers("/").permitAll().and()
+                .authorizeRequests().antMatchers("/h2-console/**").permitAll();
+        http.csrf().disable();
+        http.headers().frameOptions().disable();
     }
 
     @Bean

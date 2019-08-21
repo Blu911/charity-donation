@@ -19,19 +19,18 @@ document.addEventListener("DOMContentLoaded", function () {
             /**
              * Slide buttons
              */
-            this.$buttonsContainer.addEventListener("click", e = > {
+            this.$buttonsContainer.addEventListener("click", e => {
                 if(e.target.classList.contains("btn")
         )
             {
                 this.changeSlide(e);
             }
-        })
-            ;
+        });
 
             /**
              * Pagination buttons
              */
-            this.$el.addEventListener("click", e = > {
+            this.$el.addEventListener("click", e => {
                 if(e
                 .target.classList.contains("btn") && e.target.parentElement.parentElement.classList.contains("help--slides-pagination")
         )
@@ -49,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Buttons Active class change
             [...this.$buttonsContainer.children
         ].
-            forEach(btn = > btn.firstElementChild.classList.remove("active")
+            forEach(btn => btn.firstElementChild.classList.remove("active")
         )
             ;
             $btn.classList.add("active");
@@ -58,7 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
             this.currentSlide = $btn.parentElement.dataset.id;
 
             // Slides active class change
-            this.$slidesContainers.forEach(el = > {
+            this.$slidesContainers.forEach(el => {
                 el.classList.remove("active");
 
             if (el.dataset.id === this.currentSlide) {
@@ -116,7 +115,7 @@ document.addEventListener("DOMContentLoaded", function () {
             this.ul = document.createElement("ul");
 
             // All list options
-            this.options.forEach((el, i) = > {
+            this.options.forEach((el, i) => {
                 const li = document.createElement("li");
             li.dataset.value = el.value;
             li.innerText = el.innerText;
@@ -140,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         addEvents() {
-            this.dropdown.addEventListener("click", e = > {
+            this.dropdown.addEventListener("click", e => {
                 const target = e.target;
             this.dropdown.classList.toggle("selecting");
 
@@ -150,11 +149,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 this.current.innerText = target.innerText;
             }
         })
-            ;F
+            ;
         }
     }
 
-    document.querySelectorAll(".form-group--dropdown select").forEach(el = > {
+    document.querySelectorAll(".form-group--dropdown select").forEach(el => {
         new FormSelect(el);
 })
     ;
@@ -176,7 +175,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return false;
         }
 
-        document.querySelectorAll(".form-group--dropdown .dropdown").forEach(el = > {
+        document.querySelectorAll(".form-group--dropdown .dropdown").forEach(el => {
             el.classList.remove("selecting");
     })
         ;
@@ -218,8 +217,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         events() {
             // Next step
-            this.$next.forEach(btn = > {
-                btn.addEventListener("click", e = > {
+            this.$next.forEach(btn => {
+                btn.addEventListener("click", e => {
                     e.preventDefault();
             if (this.validate()) {
                 this.currentStep++;
@@ -231,8 +230,8 @@ document.addEventListener("DOMContentLoaded", function () {
             ;
 
             // Previous step
-            this.$prev.forEach(btn = > {
-                btn.addEventListener("click", e = > {
+            this.$prev.forEach(btn => {
+                btn.addEventListener("click", e => {
                     e.preventDefault();
             this.currentStep--;
             this.updateForm();
@@ -242,7 +241,7 @@ document.addEventListener("DOMContentLoaded", function () {
             ;
 
             // Form submit
-            this.$form.querySelector("form").addEventListener("submit", e = > this.submit(e)
+            this.$form.querySelector("form").addEventListener("submit", e => this.submit(e)
         )
             ;
         }
@@ -387,7 +386,7 @@ document.addEventListener("DOMContentLoaded", function () {
          */
         updateForm() {
             this.$step.innerText = this.currentStep;
-            this.slides.forEach(slide = > {
+            this.slides.forEach(slide => {
                 slide.classList.remove("active");
 
             if (slide.dataset.step == this.currentStep) {
